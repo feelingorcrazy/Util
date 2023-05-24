@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 192.168.0.49
+ Source Server         : local
  Source Server Type    : MySQL
- Source Server Version : 50738
- Source Host           : 192.168.0.49:3306
+ Source Server Version : 80023
+ Source Host           : localhost:3306
  Source Schema         : ranch
 
  Target Server Type    : MySQL
- Target Server Version : 50738
+ Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 19/05/2023 18:01:47
+ Date: 24/05/2023 15:39:36
 */
 
 SET NAMES utf8mb4;
@@ -22,7 +22,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `gen_table`;
 CREATE TABLE `gen_table`  (
-  `table_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `table_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `table_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '表名称',
   `table_comment` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '表描述',
   `sub_table_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '关联子表的表名',
@@ -43,21 +43,43 @@ CREATE TABLE `gen_table`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`table_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of gen_table
 -- ----------------------------
-INSERT INTO `gen_table` VALUES (1, 'rc_user', '用户信息表', NULL, NULL, 'RcUser', 'crud', 'com.sync.ranch.front', 'system', 'user', '用户信息', 'ranch', '0', '/', '{}', 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09', NULL);
-INSERT INTO `gen_table` VALUES (2, 'rc_category', '类别表', NULL, NULL, 'RcCategory', 'crud', 'com.sync.ranch.front', 'front', 'category', '类别', 'ranch', '0', '/', '{\"parentMenuId\":1068}', 'admin', '2023-05-05 14:43:56', '', '2023-05-05 14:49:47', NULL);
-INSERT INTO `gen_table` VALUES (4, 'rc_market', '市场表', NULL, NULL, 'RcMarket', 'crud', 'com.sync.ranch.front', 'front', 'market', '市场', 'ranch', '0', '/', '{\"parentMenuId\":\"1068\"}', 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38', NULL);
+INSERT INTO `gen_table` VALUES (1, 'rc_shop_category', '商品分类表', NULL, NULL, 'RcShopCategory', 'crud', 'com.sync.ranch.front', 'front', 'shop_category', '商品分类', 'ranch', '0', '/', '{\"parentMenuId\":\"1069\"}', 'admin', '2023-05-20 09:40:38', 'admin', '2023-05-20 18:05:01', NULL);
+INSERT INTO `gen_table` VALUES (2, 'rc_shop_goods', '商店商品表', NULL, NULL, 'RcShopGoods', 'crud', 'com.sync.ranch.front', 'front', 'shop_goods', '商店商品', 'ranch', '0', '/', '{\"parentMenuId\":\"1069\"}', 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24', NULL);
+INSERT INTO `gen_table` VALUES (3, 'rc_level', '等级表', NULL, NULL, 'RcLevel', 'crud', 'com.sync.ranch.front', 'front', 'level', '等级', 'ranch', '0', '/', '{\"parentMenuId\":\"1071\"}', 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45', NULL);
+INSERT INTO `gen_table` VALUES (4, 'rc_service_base', '基础食物配置表', NULL, NULL, 'RcServiceBase', 'crud', 'com.sync.ranch.front', 'front', 'service_base', '食物农资配置', 'ranch', '0', '/', '{\"parentMenuId\":\"1071\"}', 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08', NULL);
+INSERT INTO `gen_table` VALUES (5, 'rc_shop_order', '商店订单表', NULL, NULL, 'RcShopOrder', 'crud', 'com.sync.ranch.front', 'front', 'shop_order', '商店订单', 'ranch', '0', '/', '{\"parentMenuId\":\"1069\"}', 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30', NULL);
+INSERT INTO `gen_table` VALUES (6, 'rc_redeem_config', '兑换配置表', NULL, NULL, 'RcRedeemConfig', 'crud', 'com.sync.ranch.front', 'front', 'redeem_config', '兑换配置', 'ranch', '0', '/', '{\"parentMenuId\":\"1071\"}', 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 13:50:27', NULL);
+INSERT INTO `gen_table` VALUES (7, 'rc_time_config', '时间配置', NULL, NULL, 'RcTimeConfig', 'crud', 'com.sync.ranch.front', 'front', 'time_config', '时间配置', 'ranch', '0', '/', '{\"parentMenuId\":\"1071\"}', 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 15:16:21', NULL);
+INSERT INTO `gen_table` VALUES (8, 'rc_pack_config', '碎片配置', NULL, NULL, 'RcPackConfig', 'crud', 'com.sync.ranch.front', 'front', 'pack_config', '碎片配置', 'ranch', '0', '/', '{\"parentMenuId\":\"1071\"}', 'admin', '2023-05-22 15:27:59', 'admin', '2023-05-22 15:51:24', NULL);
+INSERT INTO `gen_table` VALUES (9, 'rc_pig_part_config', '猪部位配置', NULL, NULL, 'RcPigPartConfig', 'crud', 'com.sync.ranch.front', 'front', 'pig_part_config', '猪部位配置', 'ranch', '0', '/', '{\"parentMenuId\":\"1071\"}', 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39', NULL);
+INSERT INTO `gen_table` VALUES (10, 'rc_process_config', '加工配置', NULL, NULL, 'RcProcessConfig', 'crud', 'com.sync.ranch.front', 'front', 'process_config', '加工配置', 'ranch', '0', '/', '{\"parentMenuId\":\"1071\"}', 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31', NULL);
+INSERT INTO `gen_table` VALUES (11, 'rc_appointment_config', '预约单配置', NULL, NULL, 'RcAppointmentConfig', 'crud', 'com.sync.ranch.front', 'front', 'appointment_config', '预约单配置', 'ranch', '0', '/', '{\"parentMenuId\":1071}', 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52', NULL);
+INSERT INTO `gen_table` VALUES (12, 'rc_config', '配置表', NULL, NULL, 'RcConfig', 'crud', 'com.sync.ranch.front', 'front', 'config', '配置', 'ranch', '0', '/', '{\"parentMenuId\":1071}', 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 18:06:39', NULL);
+INSERT INTO `gen_table` VALUES (13, 'rc_invite_config', '邀请奖励配置', NULL, NULL, 'RcInviteConfig', 'crud', 'com.sync.ranch.front', 'front', 'invite_config', '邀请奖励配置', 'ranch', '0', '/', '{\"parentMenuId\":\"1071\"}', 'admin', '2023-05-22 16:32:05', 'admin', '2023-05-22 18:10:38', NULL);
+INSERT INTO `gen_table` VALUES (14, 'rc_appointment_order', '预约单', NULL, NULL, 'RcAppointmentOrder', 'crud', 'com.sync.ranch.front', 'front', 'appointment_order', '预约单', 'ranch', '0', '/', '{\"parentMenuId\":\"1206\"}', 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:28', NULL);
+INSERT INTO `gen_table` VALUES (15, 'rc_market', '市场表', NULL, NULL, 'RcMarket', 'crud', 'com.sync.ranch.front', 'front', 'market', '市场', 'ranch', '0', '/', '{\"parentMenuId\":\"1068\"}', 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15', NULL);
+INSERT INTO `gen_table` VALUES (16, 'rc_market_order', '市场订单', NULL, NULL, 'RcMarketOrder', 'crud', 'com.sync.ranch.front', 'front', 'market_order', '市场订单', 'ranch', '0', '/', '{\"parentMenuId\":1068}', 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27', NULL);
+INSERT INTO `gen_table` VALUES (17, 'rc_user', '用户信息表', NULL, NULL, 'RcUser', 'crud', 'com.sync.ranch.front', 'front', 'user', '用户信息', 'ranch', '0', '/', '{\"parentMenuId\":\"1061\"}', 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34', NULL);
+INSERT INTO `gen_table` VALUES (18, 'rc_user_friend', '好友', NULL, NULL, 'RcUserFriend', 'crud', 'com.sync.ranch.front', 'front', 'user_friend', '好友', 'ranch', '0', '/', '{\"parentMenuId\":1067}', 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:28:21', NULL);
+INSERT INTO `gen_table` VALUES (19, 'rc_user_fruiter', '用户果树表', NULL, NULL, 'RcUserFruiter', 'crud', 'com.sync.ranch.front', 'front', 'user_fruiter', '用户果树', 'ranch', '0', '/', '{\"parentMenuId\":1067}', 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02', NULL);
+INSERT INTO `gen_table` VALUES (20, 'rc_user_pig', '用户小猪表', NULL, NULL, 'RcUserPig', 'crud', 'com.sync.ranch.front', 'front', 'user_pig', '用户小猪', 'ranch', '0', '/', '{\"parentMenuId\":1067}', 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08', NULL);
+INSERT INTO `gen_table` VALUES (21, 'rc_user_warehouse', '用户仓库', NULL, NULL, 'RcUserWarehouse', 'crud', 'com.sync.ranch.front', 'front', 'user_warehouse', '用户仓库', 'ranch', '0', '/', '{\"parentMenuId\":\"1067\"}', 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:09', NULL);
+INSERT INTO `gen_table` VALUES (22, 'rc_vaccin', '疫苗表', NULL, NULL, 'RcVaccin', 'crud', 'com.sync.ranch.front', 'front', 'vaccin', '疫苗', 'ranch', '0', '/', '{\"parentMenuId\":1067}', 'admin', '2023-05-24 11:13:24', 'admin', '2023-05-24 11:14:29', NULL);
+INSERT INTO `gen_table` VALUES (23, 'rc_portal_article', '门户文章信息', NULL, NULL, 'RcPortalArticle', 'crud', 'com.sync.ranch.front', 'front', 'portal_article', '门户文章信息', 'ranch', '0', '/', '{\"parentMenuId\":\"4\"}', 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:39:17', NULL);
+INSERT INTO `gen_table` VALUES (24, 'rc_protocol', '门户信息', NULL, NULL, 'RcProtocol', 'crud', 'com.sync.ranch.front', 'front', 'protocol', '门户信息', 'ranch', '0', '/', '{\"parentMenuId\":\"4\"}', 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:43:38', NULL);
+INSERT INTO `gen_table` VALUES (48, 'rc_process_order', '加工订单', NULL, NULL, 'RcProcessOrder', 'crud', 'com.sync.ranch.front', 'front', 'process_order', '加工订单', 'ranch', '0', '/', '{\"parentMenuId\":1206}', 'admin', '2023-05-24 14:26:48', 'admin', '2023-05-24 14:30:39', NULL);
 
 -- ----------------------------
 -- Table structure for gen_table_column
 -- ----------------------------
 DROP TABLE IF EXISTS `gen_table_column`;
 CREATE TABLE `gen_table_column`  (
-  `column_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `column_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `table_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '归属表编号',
   `column_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '列名称',
   `column_comment` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '列描述',
@@ -74,68 +96,406 @@ CREATE TABLE `gen_table_column`  (
   `query_type` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'EQ' COMMENT '查询方式（等于、不等于、大于、小于、范围）',
   `html_type` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '显示类型（文本框、文本域、下拉框、复选框、单选框、日期控件）',
   `dict_type` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典类型',
-  `sort` int(11) NULL DEFAULT NULL COMMENT '排序',
+  `sort` int(0) NULL DEFAULT NULL COMMENT '排序',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`column_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 78 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 491 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of gen_table_column
 -- ----------------------------
-INSERT INTO `gen_table_column` VALUES (1, '1', 'user_id', '用户ID', 'bigint(20)', 'Long', 'userId', '1', '1', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (2, '1', 'user_no', '用户编号', 'varchar(20)', 'String', 'userNo', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 2, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (3, '1', 'wx_openid', '用户微信openid', 'varchar(50)', 'String', 'wxOpenid', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (4, '1', 'mini_openid', '小程序用户openid', 'varchar(50)', 'String', 'miniOpenid', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (5, '1', 'user_name', '用户账号', 'varchar(30)', 'String', 'userName', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 5, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (6, '1', 'nick_name', '用户昵称', 'varchar(30)', 'String', 'nickName', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 6, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (7, '1', 'coins', '持有金币数', 'bigint(20)', 'Long', 'coins', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 7, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (8, '1', 'coin_consume', '消耗金币数', 'bigint(20)', 'Long', 'coinConsume', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 8, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (9, '1', 'email', '用户邮箱', 'varchar(50)', 'String', 'email', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 9, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (10, '1', 'phonenumber', '手机号码', 'varchar(11)', 'String', 'phonenumber', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 10, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (11, '1', 'sex', '用户性别（0男', 'char(1)', 'String', 'sex', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'ranch_user_sex', 11, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (12, '1', 'avatar', '头像地址', 'varchar(100)', 'String', 'avatar', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 12, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (13, '1', 'real_name', '真实姓名', 'varchar(20)', 'String', 'realName', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 13, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (14, '1', 'id_number', '身份证ID', 'varchar(18)', 'String', 'idNumber', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 14, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (15, '1', 'password', '密码', 'varchar(100)', 'String', 'password', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 15, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (16, '1', 'status', '帐号状态（0正常', 'char(1)', 'String', 'status', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'radio', 'ranch_user_status', 16, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (17, '1', 'del_flag', '删除标志（0代表存在', 'char(1)', 'String', 'delFlag', '0', '0', '1', '1', NULL, NULL, NULL, 'EQ', 'input', 'ranch_del_flag', 17, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (18, '1', 'login_ip', '最后登录IP', 'varchar(128)', 'String', 'loginIp', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 18, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (19, '1', 'login_date', '最后登录时间', 'datetime', 'Date', 'loginDate', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'datetime', '', 19, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (20, '1', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'datetime', '', 20, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (21, '1', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '1', '1', NULL, NULL, 'EQ', 'datetime', '', 21, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (22, '1', 'remark', '备注', 'varchar(500)', 'String', 'remark', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'textarea', '', 22, 'admin', '2023-04-28 11:15:52', '', '2023-04-28 13:25:09');
-INSERT INTO `gen_table_column` VALUES (27, '2', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'datetime', '', 5, 'admin', '2023-05-05 14:43:56', '', '2023-05-05 14:49:47');
-INSERT INTO `gen_table_column` VALUES (28, '2', 'update_by', '更新者', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '1', '1', NULL, NULL, 'EQ', 'input', '', 6, 'admin', '2023-05-05 14:43:56', '', '2023-05-05 14:49:47');
-INSERT INTO `gen_table_column` VALUES (29, '2', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '1', '1', NULL, NULL, 'EQ', 'datetime', '', 7, 'admin', '2023-05-05 14:43:56', '', '2023-05-05 14:49:47');
-INSERT INTO `gen_table_column` VALUES (30, '2', 'remark', '备注', 'varchar(500)', 'String', 'remark', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'textarea', '', 8, 'admin', '2023-05-05 14:43:56', '', '2023-05-05 14:49:47');
-INSERT INTO `gen_table_column` VALUES (31, '2', 'category_id', '类别id', 'int(11)', 'Long', 'categoryId', '1', '1', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, '', '2023-05-05 14:46:17', '', '2023-05-05 14:49:47');
-INSERT INTO `gen_table_column` VALUES (32, '2', 'type', '类别：', 'char(1)', 'String', 'type', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'ranch_market_category', 2, '', '2023-05-05 14:46:17', '', '2023-05-05 14:49:47');
-INSERT INTO `gen_table_column` VALUES (33, '2', 'name', '品类名称', 'varchar(50)', 'String', 'name', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 3, '', '2023-05-05 14:46:17', '', '2023-05-05 14:49:47');
-INSERT INTO `gen_table_column` VALUES (34, '2', 'video', '监控链接', 'varchar(500)', 'String', 'video', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'textarea', '', 4, '', '2023-05-05 14:46:17', '', '2023-05-05 14:49:47');
-INSERT INTO `gen_table_column` VALUES (57, '4', 'market_id', '产品id', 'int(11)', 'Long', 'marketId', '1', '1', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (58, '4', 'type', '类别', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'ranch_market_category', 2, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (59, '4', 'category_id', '类别id', 'int(11)', 'Long', 'categoryId', '0', '0', '1', '1', '1', '0', '0', 'EQ', 'input', '', 3, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (60, '4', 'img', '图片', 'varchar(255)', 'String', 'img', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'imageUpload', '', 5, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (61, '4', 'age', '猪龄', 'int(11)', 'Long', 'age', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (62, '4', 'stock', '库存', 'int(11)', 'Long', 'stock', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (63, '4', 'weight', '重量', 'int(11)', 'Long', 'weight', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 8, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (64, '4', 'pick_desc', '采摘描述', 'varchar(256)', 'String', 'pickDesc', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 9, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (65, '4', 'years_limit', '领养年限', 'tinyint(1)', 'Integer', 'yearsLimit', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 10, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (66, '4', 'is_discount', '折扣', 'char(1)', 'String', 'isDiscount', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'ranch_market_discount', 11, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (67, '4', 'package_id', '套餐', 'int(11)', 'Long', 'packageId', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 12, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (68, '4', 'is_package', '套餐', 'char(1)', 'String', 'isPackage', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'ranch_market_package', 13, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (69, '4', 'cost_price', '原价', 'decimal(10,2)', 'BigDecimal', 'costPrice', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 14, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (70, '4', 'price', '现价', 'decimal(10,2)', 'BigDecimal', 'price', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 15, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (71, '4', 'detail', '详情', 'text', 'String', 'detail', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'textarea', '', 16, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (72, '4', 'create_by', '创建者', 'varchar(64)', 'String', 'createBy', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 17, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (73, '4', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'datetime', '', 18, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (74, '4', 'update_by', '更新者', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '1', '1', NULL, NULL, 'EQ', 'input', '', 19, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (75, '4', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '1', '1', NULL, NULL, 'EQ', 'datetime', '', 20, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (76, '4', 'remark', '备注', 'varchar(500)', 'String', 'remark', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'textarea', '', 21, 'admin', '2023-05-12 15:44:18', '', '2023-05-12 16:10:38');
-INSERT INTO `gen_table_column` VALUES (77, '4', 'category_name', '品类名称', 'varchar(50)', 'String', 'categoryName', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 4, '', '2023-05-12 15:56:31', '', '2023-05-12 16:10:38');
+INSERT INTO `gen_table_column` VALUES (1, '1', 'category_id', '分类id', 'bigint(20)', 'Long', 'categoryId', '1', '1', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-20 09:40:38', 'admin', '2023-05-20 18:05:01');
+INSERT INTO `gen_table_column` VALUES (2, '1', 'name', '分类名称', 'varchar(50)', 'String', 'name', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 2, 'admin', '2023-05-20 09:40:38', 'admin', '2023-05-20 18:05:01');
+INSERT INTO `gen_table_column` VALUES (3, '1', 'status', '状态', 'char(1)', 'String', 'status', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_status', 3, 'admin', '2023-05-20 09:40:38', 'admin', '2023-05-20 18:05:01');
+INSERT INTO `gen_table_column` VALUES (4, '1', 'del_flag', '删除', 'char(1)', 'String', 'delFlag', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_del_flag', 4, 'admin', '2023-05-20 09:40:38', 'admin', '2023-05-20 18:05:01');
+INSERT INTO `gen_table_column` VALUES (5, '1', 'sort', '分类排序', 'int(11)', 'Long', 'sort', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 5, 'admin', '2023-05-20 09:40:38', 'admin', '2023-05-20 18:05:01');
+INSERT INTO `gen_table_column` VALUES (6, '1', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', NULL, '0', NULL, '0', NULL, 'EQ', 'input', '', 6, 'admin', '2023-05-20 09:40:38', 'admin', '2023-05-20 18:05:01');
+INSERT INTO `gen_table_column` VALUES (7, '1', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', '0', NULL, 'EQ', 'input', '', 7, 'admin', '2023-05-20 09:40:38', 'admin', '2023-05-20 18:05:01');
+INSERT INTO `gen_table_column` VALUES (8, '1', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '0', NULL, '0', '0', 'EQ', 'datetime', '', 8, 'admin', '2023-05-20 09:40:38', 'admin', '2023-05-20 18:05:01');
+INSERT INTO `gen_table_column` VALUES (9, '1', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', '0', NULL, 'EQ', 'datetime', '', 9, 'admin', '2023-05-20 09:40:38', 'admin', '2023-05-20 18:05:01');
+INSERT INTO `gen_table_column` VALUES (10, '2', 'goods_id', '商品id', 'bigint(20)', 'Long', 'goodsId', '1', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (11, '2', 'category_id', '商品类目id', 'bigint(20)', 'Long', 'categoryId', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 2, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (12, '2', 'type', '市场类别', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'ranch_market_category', 3, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (13, '2', 'level_id', '商品适用等级id', 'bigint(20)', 'Long', 'levelId', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (14, '2', 'months', '商品适用月份', 'int(11)', 'Long', 'months', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 5, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (15, '2', 'name', '商品名称', 'varchar(64)', 'String', 'name', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 6, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (16, '2', 'img', '图片', 'varchar(255)', 'String', 'img', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'imageUpload', '', 7, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (17, '2', 'is_discount', '折扣', 'char(1)', 'String', 'isDiscount', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_discount', 8, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (18, '2', 'cost_price', '原价', 'int(11)', 'Long', 'costPrice', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 9, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (19, '2', 'price', '商品价格', 'int(11)', 'Long', 'price', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 10, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (20, '2', 'settle_price', '结算价格', 'int(11)', 'Long', 'settlePrice', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 11, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (21, '2', 'stock', '库存', 'int(11)', 'Long', 'stock', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 12, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (22, '2', 'weight', '重量', 'decimal(10,2)', 'BigDecimal', 'weight', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 13, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (23, '2', 'is_send', '赠送状态', 'char(1)', 'String', 'isSend', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_send', 14, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (24, '2', 'is_package', '套餐', 'char(1)', 'String', 'isPackage', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_package', 15, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (25, '2', 'package_use_goods', '套餐使用商品', 'varchar(500)', 'String', 'packageUseGoods', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'textarea', '', 16, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (26, '2', 'goods_status', '商品状态', 'char(1)', 'String', 'goodsStatus', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_goods_status', 17, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (27, '2', 'sort', '排序', 'int(11)', 'Long', 'sort', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 18, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (28, '2', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 19, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (29, '2', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 20, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (30, '2', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 21, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (31, '2', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 22, 'admin', '2023-05-20 11:51:32', 'admin', '2023-05-20 16:14:24');
+INSERT INTO `gen_table_column` VALUES (32, '3', 'level_id', NULL, 'bigint(20)', 'Long', 'levelId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (33, '3', 'applied_level_min', '最低适用等级', 'int(11)', 'Long', 'appliedLevelMin', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 2, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (34, '3', 'applied_level_max', '最高适用等级', 'int(11)', 'Long', 'appliedLevelMax', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (35, '3', 'hand_amount', '手工费', 'int(11)', 'Long', 'handAmount', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (36, '3', 'food_ids', '可食用食物', 'varchar(500)', 'String', 'foodIds', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'textarea', '', 5, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (37, '3', 'applied_food_min', '最低食物量', 'int(11)', 'Long', 'appliedFoodMin', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 6, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (38, '3', 'applied_food_max', '最高食物量', 'int(11)', 'Long', 'appliedFoodMax', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 7, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (39, '3', 'sort', '排序', 'int(11)', 'Long', 'sort', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 8, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (40, '3', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 9, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (41, '3', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 10, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (42, '3', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 11, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (43, '3', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 12, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (44, '3', 'status', '状态', 'char(1)', 'String', 'status', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_status', 13, 'admin', '2023-05-20 13:19:57', 'admin', '2023-05-20 16:10:45');
+INSERT INTO `gen_table_column` VALUES (45, '4', 'service_id', '', 'bigint(20)', 'Long', 'serviceId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (46, '4', 'name', '名称', 'varchar(50)', 'String', 'name', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 2, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (47, '4', 'type', '服务类别', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_service_base_type', 3, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (48, '4', 'img', '图片', 'varchar(255)', 'String', 'img', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'imageUpload', '', 4, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (49, '4', 'is_patch', '发放碎片', 'tinyint(1)', 'Integer', 'isPatch', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_service_base_patch', 5, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (50, '4', 'patch_img', '碎片图片', 'varchar(255)', 'String', 'patchImg', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'imageUpload', '', 6, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (51, '4', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 7, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (52, '4', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 8, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (53, '4', 'status', '状态', 'char(1)', 'String', 'status', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_status', 9, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (54, '4', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 10, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (55, '4', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 11, 'admin', '2023-05-20 13:24:16', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (56, '4', 'sort', '排序', 'int(255)', 'Long', 'sort', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 12, '', '2023-05-20 13:41:32', 'admin', '2023-05-20 16:11:08');
+INSERT INTO `gen_table_column` VALUES (57, '5', 'order_id', '订单id', 'bigint(20)', 'Long', 'orderId', '1', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (58, '5', 'type', '市场类别', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'ranch_market_category', 2, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (59, '5', 'months', '商品适用月份', 'int(11)', 'Long', 'months', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (60, '5', 'order_no', '订单号', 'varchar(64)', 'String', 'orderNo', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (61, '5', 'is_discount', '折扣', 'char(1)', 'String', 'isDiscount', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_discount', 5, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (62, '5', 'goods_coin', '商品总金币', 'int(11)', 'Long', 'goodsCoin', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 6, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (63, '5', 'weight', '总重量', 'decimal(10,2)', 'BigDecimal', 'weight', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 7, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (64, '5', 'is_send', '赠送', 'char(1)', 'String', 'isSend', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'radio', 'rc_send', 8, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (65, '5', 'is_package', '套餐', 'char(1)', 'String', 'isPackage', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'radio', 'rc_package', 9, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (66, '5', 'package_use_goods', '套餐使用商品', 'varchar(500)', 'String', 'packageUseGoods', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 10, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (67, '5', 'status', '支付状态', 'char(1)', 'String', 'status', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_order_status', 11, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (68, '5', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 12, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (69, '5', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 13, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (70, '5', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 14, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (71, '5', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 15, 'admin', '2023-05-22 10:43:31', 'admin', '2023-05-22 11:16:30');
+INSERT INTO `gen_table_column` VALUES (72, '6', 'config_id', NULL, 'bigint(20) unsigned', 'Long', 'configId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 13:50:27');
+INSERT INTO `gen_table_column` VALUES (73, '6', 'type', '兑换类型', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_redeem_type', 2, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 13:50:27');
+INSERT INTO `gen_table_column` VALUES (74, '6', 'coin', '金币', 'int(11)', 'Long', 'coin', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 13:50:27');
+INSERT INTO `gen_table_column` VALUES (75, '6', 'goods_id', '商品id', 'bigint(20)', 'Long', 'goodsId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 13:50:27');
+INSERT INTO `gen_table_column` VALUES (76, '6', 'market_id', '市场id', 'bigint(20)', 'Long', 'marketId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 5, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 13:50:27');
+INSERT INTO `gen_table_column` VALUES (77, '6', 'create_by', '创建者', 'varchar(64)', 'String', 'createBy', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 6, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 13:50:27');
+INSERT INTO `gen_table_column` VALUES (78, '6', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 7, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 13:50:27');
+INSERT INTO `gen_table_column` VALUES (79, '6', 'update_by', '更新者', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 8, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 13:50:27');
+INSERT INTO `gen_table_column` VALUES (80, '6', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 9, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 13:50:27');
+INSERT INTO `gen_table_column` VALUES (81, '7', 'id', NULL, 'bigint(20)', 'Long', 'id', '1', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 15:16:21');
+INSERT INTO `gen_table_column` VALUES (82, '7', 'type', '类型', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_time_config_type', 2, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 15:16:21');
+INSERT INTO `gen_table_column` VALUES (83, '7', 'num', '数量', 'int(11)', 'Long', 'num', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 15:16:21');
+INSERT INTO `gen_table_column` VALUES (84, '7', 'day', '时间', 'datetime', 'Date', 'day', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'datetime', '', 4, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 15:16:21');
+INSERT INTO `gen_table_column` VALUES (85, '7', 'create_by', '创建者', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 5, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 15:16:21');
+INSERT INTO `gen_table_column` VALUES (86, '7', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 6, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 15:16:21');
+INSERT INTO `gen_table_column` VALUES (87, '7', 'update_by', '更新者', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 7, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 15:16:21');
+INSERT INTO `gen_table_column` VALUES (88, '7', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 8, 'admin', '2023-05-22 11:24:28', 'admin', '2023-05-22 15:16:21');
+INSERT INTO `gen_table_column` VALUES (89, '8', 'config_id', '', 'bigint(20)', 'Long', 'configId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-22 15:27:59', 'admin', '2023-05-22 15:51:24');
+INSERT INTO `gen_table_column` VALUES (90, '8', 'pack_category', '碎片种类', 'char(1)', 'String', 'packCategory', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_pack_category', 2, 'admin', '2023-05-22 15:27:59', 'admin', '2023-05-22 15:51:24');
+INSERT INTO `gen_table_column` VALUES (92, '8', 'pack_num', '碎片数量', 'int(11)', 'Long', 'packNum', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-05-22 15:27:59', 'admin', '2023-05-22 15:51:24');
+INSERT INTO `gen_table_column` VALUES (93, '8', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 5, 'admin', '2023-05-22 15:27:59', 'admin', '2023-05-22 15:51:24');
+INSERT INTO `gen_table_column` VALUES (94, '8', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 6, 'admin', '2023-05-22 15:27:59', 'admin', '2023-05-22 15:51:25');
+INSERT INTO `gen_table_column` VALUES (95, '8', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 7, 'admin', '2023-05-22 15:27:59', 'admin', '2023-05-22 15:51:25');
+INSERT INTO `gen_table_column` VALUES (96, '8', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 8, 'admin', '2023-05-22 15:27:59', 'admin', '2023-05-22 15:51:25');
+INSERT INTO `gen_table_column` VALUES (97, '8', 'type', '碎片类型', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_pack_type', 9, 'admin', '2023-05-22 15:27:59', 'admin', '2023-05-22 15:51:25');
+INSERT INTO `gen_table_column` VALUES (98, '8', 'shop_goods_id', '商店商品id', 'bigint(20)', 'Long', 'shopGoodsId', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2023-05-22 15:50:38', 'admin', '2023-05-22 15:51:24');
+INSERT INTO `gen_table_column` VALUES (99, '9', 'config_id', NULL, 'bigint(20)', 'Long', 'configId', '1', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39');
+INSERT INTO `gen_table_column` VALUES (100, '9', 'name', '部位名称', 'varchar(255)', 'String', 'name', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 2, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39');
+INSERT INTO `gen_table_column` VALUES (101, '9', 'type', '部位类型', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_part_type', 3, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39');
+INSERT INTO `gen_table_column` VALUES (102, '9', 'sort', '排序', 'int(11)', 'Long', 'sort', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39');
+INSERT INTO `gen_table_column` VALUES (103, '9', 'mode', '屠宰方式', 'char(1)', 'String', 'mode', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_mode', 5, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39');
+INSERT INTO `gen_table_column` VALUES (104, '9', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 6, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39');
+INSERT INTO `gen_table_column` VALUES (105, '9', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 7, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39');
+INSERT INTO `gen_table_column` VALUES (106, '9', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 8, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39');
+INSERT INTO `gen_table_column` VALUES (107, '9', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 9, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39');
+INSERT INTO `gen_table_column` VALUES (108, '9', 'mode_gut', '屠宰方式类别', 'char(1)', 'String', 'modeGut', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_mode_gut', 10, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:00:39');
+INSERT INTO `gen_table_column` VALUES (109, '10', 'config_id', '', 'bigint(20)', 'Long', 'configId', '1', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (110, '10', 'name', '名称', 'varchar(255)', 'String', 'name', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 2, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (111, '10', 'process_coin', '加工费', 'int(11)', 'Long', 'processCoin', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 3, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (112, '10', 'weight', '重量', 'decimal(10,2)', 'BigDecimal', 'weight', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (113, '10', 'type', '加工类型', 'char(255)', 'String', 'type', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'rc_process_type', 5, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (114, '10', 'material_total_coin', '材料总费用', 'int(11)', 'Long', 'materialTotalCoin', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (115, '10', 'material_ids', '材料ids', 'varchar(500)', 'String', 'materialIds', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'textarea', '', 7, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (116, '10', 'desc', '说明', 'varchar(255)', 'String', 'desc', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 8, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (117, '10', 'content', '内容', 'varchar(255)', 'String', 'content', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'textarea', '', 9, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (118, '10', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 10, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (119, '10', 'update_by', '更新时间', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 11, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (120, '10', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 12, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (121, '10', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 13, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (122, '10', 'img', '', 'varchar(255)', 'String', 'img', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 14, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (123, '10', 'detail', '详情', 'varchar(255)', 'String', 'detail', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'textarea', '', 15, 'admin', '2023-05-22 16:31:20', 'admin', '2023-05-22 17:30:31');
+INSERT INTO `gen_table_column` VALUES (124, '11', 'config_id', NULL, 'bigint(20)', 'Long', 'configId', '1', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (125, '11', 'type', '市场类别', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'ranch_market_category', 2, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (126, '11', 'name', '名称', 'varchar(255)', 'String', 'name', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 3, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (127, '11', 'fee2', '采摘费', 'int(11)', 'Long', 'fee2', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (128, '11', 'fee1', '出栏费', 'int(11)', 'Long', 'fee1', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 5, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (129, '11', 'slaughter_fee', '屠宰费用', 'int(11)', 'Long', 'slaughterFee', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (130, '11', 'sort', '排序', 'int(11)', 'Long', 'sort', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (131, '11', 'mode', '屠宰方式', 'char(1)', 'String', 'mode', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_mode', 8, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (132, '11', 'mode_gut', '屠宰方式类别', 'char(1)', 'String', 'modeGut', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_mode_gut', 9, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (133, '11', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 10, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (134, '11', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 11, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (135, '11', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 12, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (136, '11', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 13, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 17:43:52');
+INSERT INTO `gen_table_column` VALUES (137, '12', 'config_id', '参数主键', 'int(11)', 'Long', 'configId', '1', '1', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 18:06:39');
+INSERT INTO `gen_table_column` VALUES (138, '12', 'config_name', '参数名称', 'varchar(100)', 'String', 'configName', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 2, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 18:06:39');
+INSERT INTO `gen_table_column` VALUES (139, '12', 'config_key', '参数键名', 'varchar(100)', 'String', 'configKey', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 18:06:39');
+INSERT INTO `gen_table_column` VALUES (140, '12', 'config_value', '参数键值', 'varchar(2000)', 'String', 'configValue', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'textarea', '', 4, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 18:06:39');
+INSERT INTO `gen_table_column` VALUES (141, '12', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 5, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 18:06:39');
+INSERT INTO `gen_table_column` VALUES (142, '12', 'update_by', '更新者', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 6, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 18:06:39');
+INSERT INTO `gen_table_column` VALUES (143, '12', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '1', NULL, NULL, 'EQ', 'datetime', '', 7, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 18:06:39');
+INSERT INTO `gen_table_column` VALUES (144, '12', 'remark', '备注', 'varchar(500)', 'String', 'remark', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'textarea', '', 8, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 18:06:39');
+INSERT INTO `gen_table_column` VALUES (145, '12', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 9, 'admin', '2023-05-22 16:31:47', 'admin', '2023-05-22 18:06:39');
+INSERT INTO `gen_table_column` VALUES (146, '13', 'config_id', '邀请奖励配置id', 'bigint(20)', 'Long', 'configId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-22 16:32:05', 'admin', '2023-05-22 18:10:38');
+INSERT INTO `gen_table_column` VALUES (147, '13', 'config_type', '邀请类型', 'char(1)', 'String', 'configType', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_invite_config_type', 2, 'admin', '2023-05-22 16:32:05', 'admin', '2023-05-22 18:10:38');
+INSERT INTO `gen_table_column` VALUES (148, '13', 'reward_num', '赠送数量', 'int(11)', 'Long', 'rewardNum', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 3, 'admin', '2023-05-22 16:32:05', 'admin', '2023-05-22 18:10:38');
+INSERT INTO `gen_table_column` VALUES (149, '13', 'goods_id', '商品id', 'bigint(20)', 'Long', 'goodsId', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-05-22 16:32:05', 'admin', '2023-05-22 18:10:38');
+INSERT INTO `gen_table_column` VALUES (150, '13', 'invite_num', '邀请数量', 'int(11)', 'Long', 'inviteNum', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 5, 'admin', '2023-05-22 16:32:05', 'admin', '2023-05-22 18:10:38');
+INSERT INTO `gen_table_column` VALUES (151, '13', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 6, 'admin', '2023-05-22 16:32:05', 'admin', '2023-05-22 18:10:38');
+INSERT INTO `gen_table_column` VALUES (152, '13', 'create_time', '删除时间', 'timestamp', 'Date', 'createTime', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 7, 'admin', '2023-05-22 16:32:05', 'admin', '2023-05-22 18:10:38');
+INSERT INTO `gen_table_column` VALUES (153, '13', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 8, 'admin', '2023-05-22 16:32:05', 'admin', '2023-05-22 18:10:38');
+INSERT INTO `gen_table_column` VALUES (154, '13', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 9, 'admin', '2023-05-22 16:32:05', 'admin', '2023-05-22 18:10:38');
+INSERT INTO `gen_table_column` VALUES (155, '14', 'order_id', '预约单id', 'bigint(20)', 'Long', 'orderId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:28');
+INSERT INTO `gen_table_column` VALUES (156, '14', 'fruiter_id', '树id', 'bigint(20)', 'Long', 'fruiterId', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 2, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:28');
+INSERT INTO `gen_table_column` VALUES (157, '14', 'pig_id', '猪id', 'bigint(20)', 'Long', 'pigId', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 3, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:28');
+INSERT INTO `gen_table_column` VALUES (158, '14', 'order_no', '预约单号', 'varchar(64)', 'String', 'orderNo', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:28');
+INSERT INTO `gen_table_column` VALUES (159, '14', 'type', '市场类别', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'ranch_market_category', 5, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:28');
+INSERT INTO `gen_table_column` VALUES (160, '14', 'pick_fee', '采摘费', 'int(11)', 'Long', 'pickFee', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:28');
+INSERT INTO `gen_table_column` VALUES (161, '14', 'listing_fee', '出栏费', 'int(11)', 'Long', 'listingFee', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (162, '14', 'slaughter_fee', '屠宰费用', 'int(11)', 'Long', 'slaughterFee', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 8, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (163, '14', 'imprest_coin', '备用金', 'int(11)', 'Long', 'imprestCoin', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'input', '', 9, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (164, '14', 'coin', '抵扣金币', 'int(11)', 'Long', 'coin', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'input', '', 10, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (165, '14', 'appointment_time', '预约时间', 'datetime', 'Date', 'appointmentTime', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'datetime', '', 11, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (166, '14', 'pay_coin', '总支付金币', 'int(11)', 'Long', 'payCoin', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 12, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (167, '14', 'mode_gut', '屠宰方式类别', 'char(1)', 'String', 'modeGut', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_mode_gut', 13, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (168, '14', 'pay_time', '支付时间', 'datetime', 'Date', 'payTime', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'datetime', '', 14, 'admin', '2023-05-23 10:49:02', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (169, '14', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '1', '0', NULL, NULL, NULL, 'EQ', 'input', '', 15, 'admin', '2023-05-23 10:49:03', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (170, '14', 'status', '支付状态', 'char(1)', 'String', 'status', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'rc_order_status', 16, 'admin', '2023-05-23 10:49:03', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (171, '14', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', '1', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 17, 'admin', '2023-05-23 10:49:03', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (172, '14', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 18, 'admin', '2023-05-23 10:49:03', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (173, '14', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 19, 'admin', '2023-05-23 10:49:03', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (174, '14', 'mode', '屠宰方式', 'char(1)', 'String', 'mode', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'rc_mode', 20, 'admin', '2023-05-23 11:18:46', 'admin', '2023-05-23 11:22:29');
+INSERT INTO `gen_table_column` VALUES (175, '15', 'market_id', '产品id', 'int(11)', 'Long', 'marketId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (176, '15', 'type', '市场类别', 'char(1)', 'String', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'ranch_market_category', 2, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (177, '15', 'category_id', '类别id', 'int(11)', 'Long', 'categoryId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 3, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (178, '15', 'category_name', '品类名称', 'varchar(50)', 'String', 'categoryName', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 4, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (179, '15', 'img', '图片', 'varchar(255)', 'String', 'img', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 5, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (180, '15', 'age', '猪龄', 'int(11)', 'Long', 'age', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (181, '15', 'stock', '库存', 'int(11)', 'Long', 'stock', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (182, '15', 'weight', '重量', 'int(11)', 'Long', 'weight', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 8, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (183, '15', 'insure_coin', '保证金', 'int(11)', 'Long', 'insureCoin', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 9, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (184, '15', 'pick_desc', '采摘描述', 'varchar(256)', 'String', 'pickDesc', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 10, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (185, '15', 'years_limit', '领养年限', 'tinyint(1)', 'Integer', 'yearsLimit', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 11, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (186, '15', 'is_discount', '折扣', 'char(1)', 'String', 'isDiscount', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_discount', 12, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (187, '15', 'package_ids', '套餐', 'varchar(255)', 'String', 'packageIds', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 13, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (188, '15', 'is_package', '套餐', 'char(1)', 'String', 'isPackage', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_package', 14, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (189, '15', 'cost_price', '原价', 'int(11)', 'Long', 'costPrice', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 15, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (190, '15', 'price', '现价', 'int(11)', 'Long', 'price', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 16, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (191, '15', 'detail', '详情', 'text', 'String', 'detail', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'textarea', '', 17, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (192, '15', 'create_by', '创建者', 'varchar(64)', 'String', 'createBy', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 18, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (193, '15', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 19, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (194, '15', 'update_by', '更新者', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 20, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (195, '15', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 21, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (196, '15', 'remark', '备注', 'varchar(500)', 'String', 'remark', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'textarea', '', 22, 'admin', '2023-05-23 14:31:42', 'admin', '2023-05-23 14:35:15');
+INSERT INTO `gen_table_column` VALUES (197, '16', 'market_order_id', NULL, 'bigint(20)', 'Long', 'marketOrderId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (198, '16', 'user_id', '用户ID', 'bigint(20)', 'Long', 'userId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 2, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (199, '16', 'market_id', '产品id', 'bigint(20)', 'Long', 'marketId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 3, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (200, '16', 'order_no', '订单编号', 'varchar(30)', 'String', 'orderNo', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (201, '16', 'is_insure', '投保', 'char(1)', 'String', 'isInsure', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_insure', 5, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (202, '16', 'price', '商品价格', 'decimal(10,2)', 'BigDecimal', 'price', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (203, '16', 'num', '商品数量', 'int(11)', 'Long', 'num', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (204, '16', 'total_price', '订单价格', 'int(11)', 'Long', 'totalPrice', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 8, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (205, '16', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 9, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (206, '16', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 10, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (207, '16', 'create_by', '创建人\r\n', 'varchar(64)', 'String', 'createBy', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 11, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (208, '16', 'status', '订单状态', 'char(1)', 'String', 'status', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_market_stauts', 12, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (209, '16', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 13, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (210, '16', 'is_exchange', '兑换', 'char(1)', 'String', 'isExchange', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_exchange', 14, 'admin', '2023-05-23 15:03:52', 'admin', '2023-05-23 15:08:27');
+INSERT INTO `gen_table_column` VALUES (211, '17', 'user_id', '用户ID', 'bigint(20)', 'Long', 'userId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (212, '17', 'user_no', '用户编号', 'varchar(20)', 'String', 'userNo', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 2, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (213, '17', 'wx_openid', '用户微信openid', 'varchar(50)', 'String', 'wxOpenid', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 3, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (214, '17', 'mini_openid', '小程序用户openid', 'varchar(50)', 'String', 'miniOpenid', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (215, '17', 'user_name', '用户账号', 'varchar(30)', 'String', 'userName', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 5, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (216, '17', 'receivable_pack', '可收取碎片', 'int(11)', 'Long', 'receivablePack', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (217, '17', 'total_pack', '碎片总数', 'int(11)', 'Long', 'totalPack', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (218, '17', 'nick_name', '用户昵称', 'varchar(30)', 'String', 'nickName', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 8, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (219, '17', 'coins', '持有金币数', 'bigint(20)', 'Long', 'coins', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 9, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (220, '17', 'coin_consume', '消耗金币数', 'bigint(20)', 'Long', 'coinConsume', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 10, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (221, '17', 'email', '用户邮箱', 'varchar(50)', 'String', 'email', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 11, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (222, '17', 'phone', '手机号码', 'varchar(11)', 'String', 'phone', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 12, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (223, '17', 'sex', '用户性别', 'char(1)', 'String', 'sex', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'rc_sex', 13, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (224, '17', 'avatar', '头像地址', 'varchar(100)', 'String', 'avatar', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 14, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (225, '17', 'real_name', '真实姓名', 'varchar(20)', 'String', 'realName', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 15, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (226, '17', 'id_number', '身份证ID', 'varchar(18)', 'String', 'idNumber', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 16, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (227, '17', 'password', '密码', 'varchar(100)', 'String', 'password', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 17, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (228, '17', 'status', '帐号状态', 'char(1)', 'String', 'status', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_user_status', 18, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (229, '17', 'del_flag', '删除标志', 'char(1)', 'String', 'delFlag', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_del_flag', 19, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (230, '17', 'login_ip', '最后登录IP', 'varchar(128)', 'String', 'loginIp', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 20, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (231, '17', 'login_date', '最后登录时间', 'datetime', 'Date', 'loginDate', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'datetime', '', 21, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (232, '17', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'datetime', '', 22, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (233, '17', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '1', '1', NULL, NULL, 'EQ', 'datetime', '', 23, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (234, '17', 'remark', '备注', 'varchar(500)', 'String', 'remark', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'textarea', '', 24, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (235, '17', 'referrer', '直推', 'bigint(20)', 'Long', 'referrer', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 25, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (236, '17', 'invite_code', '用户邀请码', 'varchar(255)', 'String', 'inviteCode', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 26, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (237, '17', 'jpush_id', '极光推送id', 'varchar(255)', 'String', 'jpushId', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 27, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (238, '17', 'pay_pwd', '支付密码', 'varchar(255)', 'String', 'payPwd', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'input', '', 28, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:20:34');
+INSERT INTO `gen_table_column` VALUES (239, '18', 'id', NULL, 'bigint(20)', 'Long', 'id', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:28:21');
+INSERT INTO `gen_table_column` VALUES (240, '18', 'user_id', '用户ID', 'bigint(20)', 'Long', 'userId', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 2, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:28:21');
+INSERT INTO `gen_table_column` VALUES (241, '18', 'fuid', '好友uid', 'bigint(20)', 'Long', 'fuid', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 3, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:28:21');
+INSERT INTO `gen_table_column` VALUES (242, '18', 'is_steal', '偷取', 'char(1)', 'String', 'isSteal', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'select', 'rc_steal', 4, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:28:21');
+INSERT INTO `gen_table_column` VALUES (243, '18', 'status', '好友通过状态', 'char(1)', 'String', 'status', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'rc_friend_status', 5, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:28:21');
+INSERT INTO `gen_table_column` VALUES (244, '18', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 6, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:28:21');
+INSERT INTO `gen_table_column` VALUES (245, '18', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 7, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:28:21');
+INSERT INTO `gen_table_column` VALUES (246, '18', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 8, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:28:21');
+INSERT INTO `gen_table_column` VALUES (247, '18', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 9, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:28:21');
+INSERT INTO `gen_table_column` VALUES (248, '19', 'fruiter_id', '果树ID', 'bigint(20) unsigned', 'Long', 'fruiterId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (249, '19', 'user_id', '用户ID', 'bigint(20)', 'Long', 'userId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 2, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (250, '19', 'remark', '备注', 'varchar(500)', 'String', 'remark', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'textarea', '', 3, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (251, '19', 'market_id', '领养种类', 'bigint(20)', 'Long', 'marketId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (252, '19', 'raise_user_ids', '合养人', 'varchar(500)', 'String', 'raiseUserIds', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'textarea', '', 5, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (253, '19', 'farmer_id', '农户id', 'bigint(20)', 'Long', 'farmerId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (254, '19', 'farmer_name', '农户名称', 'varchar(64)', 'String', 'farmerName', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (255, '19', 'nickname', '昵称', 'varchar(50)', 'String', 'nickname', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 8, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (256, '19', 'level', '当前等级', 'int(11)', 'Long', 'level', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 9, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (257, '19', 'sn', '领养编号', 'varchar(30)', 'String', 'sn', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 10, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (258, '19', 'coin', '保证金金币', 'int(11)', 'Long', 'coin', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 11, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (259, '19', 'is_raise', '合养', 'char(1)', 'String', 'isRaise', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_raise', 12, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (260, '19', 'is_insure', '投保', 'char(1)', 'String', 'isInsure', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_insure', 13, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (261, '19', 'is_control', '托管', 'char(1)', 'String', 'isControl', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_control', 14, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (262, '19', 'control_day', '托管天数', 'int(11)', 'Long', 'controlDay', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'input', '', 15, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (263, '19', 'unlock_month', '已解锁月份', 'int(11)', 'Long', 'unlockMonth', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'input', '', 16, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (264, '19', 'seat', '位置', 'varchar(100)', 'String', 'seat', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 17, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (265, '19', 'camera_id', '摄像id', 'bigint(20)', 'Long', 'cameraId', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 18, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (266, '19', 'freeze_credit', '农户冻结金额', 'decimal(10,2)', 'BigDecimal', 'freezeCredit', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 19, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (267, '19', 'status', '果树状态', 'char(1)', 'String', 'status', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_fruiter_status', 20, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (268, '19', 'service_status', '服务状态', 'char(1)', 'String', 'serviceStatus', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'rc_fruiter_service_status', 21, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (269, '19', 'settlement_method', '农户结算方式', 'char(1)', 'String', 'settlementMethod', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'rc_settlement_method', 22, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (270, '19', 'trace_source_code', '溯源码地址', 'varchar(256)', 'String', 'traceSourceCode', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 23, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (271, '19', 'pick_time', '采摘时间', 'timestamp', 'Date', 'pickTime', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'datetime', '', 24, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (272, '19', 'market_order_id', '购买订单id', 'bigint(20)', 'Long', 'marketOrderId', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 25, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (273, '19', 'min_weight', '保底收成', 'decimal(10,2)', 'BigDecimal', 'minWeight', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 26, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (274, '19', 'like_num', '点赞数量', 'int(11)', 'Long', 'likeNum', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 27, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (275, '19', 'create_by', '创建者', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 28, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (276, '19', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 29, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (277, '19', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 30, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (278, '19', 'is_exchange', '兑换', 'char(1)', 'String', 'isExchange', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', 'rc_exchange', 31, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:39:02');
+INSERT INTO `gen_table_column` VALUES (279, '20', 'pig_id', '小猪ID', 'bigint(20) unsigned', 'Long', 'pigId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (280, '20', 'user_id', '用户ID', 'bigint(20)', 'Long', 'userId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 2, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (281, '20', 'remark', '备注', 'varchar(500)', 'String', 'remark', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'textarea', '', 3, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (282, '20', 'market_id', '领养种类', 'bigint(20)', 'Long', 'marketId', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (283, '20', 'raise_user_ids', '合养人', 'varchar(500)', 'String', 'raiseUserIds', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'textarea', '', 5, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (284, '20', 'farmer_id', '农户id', 'bigint(20)', 'Long', 'farmerId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (285, '20', 'farmer_name', '农户名称', 'varchar(64)', 'String', 'farmerName', '0', '0', NULL, '1', '1', '1', '0', 'LIKE', 'input', '', 7, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (286, '20', 'nickname', '昵称', 'varchar(50)', 'String', 'nickname', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 8, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (287, '20', 'level', '当前等级', 'int(11)', 'Long', 'level', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 9, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (288, '20', 'sn', '领养编号', 'varchar(30)', 'String', 'sn', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 10, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (289, '20', 'coin', '备用金金币', 'int(11)', 'Long', 'coin', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 11, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (290, '20', 'used_coin', '消耗金币', 'int(11)', 'Long', 'usedCoin', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 12, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (291, '20', 'is_raise', '合养', 'char(1)', 'String', 'isRaise', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'select', 'rc_raise', 13, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (292, '20', 'is_insure', '投保', 'char(1)', 'String', 'isInsure', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_insure', 14, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (293, '20', 'is_pig_insure', '投保养猪险', 'char(1)', 'String', 'isPigInsure', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_pig_insure', 15, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (294, '20', 'is_control', '托管', 'char(1)', 'String', 'isControl', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_control', 16, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (295, '20', 'control_day', '托管天数', 'int(11)', 'Long', 'controlDay', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 17, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (296, '20', 'seat', '位置', 'varchar(100)', 'String', 'seat', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 18, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (297, '20', 'camera_id', '摄像id', 'bigint(20)', 'Long', 'cameraId', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 19, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (298, '20', 'freeze_credit', '农户冻结金额', 'decimal(10,2)', 'BigDecimal', 'freezeCredit', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 20, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (299, '20', 'part_num', '部位数量', 'int(11)', 'Long', 'partNum', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 21, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (300, '20', 'mode', '[屠宰方式,rc_mode,1=标准,2=精细,3=加工]', 'char(1)', 'String', 'mode', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_mode', 22, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (301, '20', 'status', '[,rc_user_pig_status,1=准备中,2=正常,3=已预约,4=屠宰中', 'char(1)', 'String', 'status', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'select', 'rc_user_pig_status', 23, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (302, '20', 'feed_status', '喂养', 'char(1)', 'String', 'feedStatus', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_feed', 24, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (303, '20', 'settlement_method', '农户结算方式', 'char(1)', 'String', 'settlementMethod', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_settlement_method', 25, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (304, '20', 'trace_source_code', '溯源码地址', 'varchar(256)', 'String', 'traceSourceCode', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 26, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (305, '20', 'slaughter_at', '屠宰时间', 'datetime', 'Date', 'slaughterAt', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'datetime', '', 27, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (306, '20', 'is_pig_king', '猪王', 'char(1)', 'String', 'isPigKing', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'select', 'rc_pig_king', 28, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (307, '20', 'market_order_id', '购买订单id', 'bigint(20)', 'Long', 'marketOrderId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 29, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (308, '20', 'like_num', '点赞数量', 'int(11)', 'Long', 'likeNum', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 30, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (309, '20', 'create_by', '创建者', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 31, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (310, '20', 'create_time', '创建时间', 'datetime', 'Date', 'createTime', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 32, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:08');
+INSERT INTO `gen_table_column` VALUES (311, '20', 'update_time', '更新时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 33, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:09');
+INSERT INTO `gen_table_column` VALUES (312, '20', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 34, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:09');
+INSERT INTO `gen_table_column` VALUES (313, '20', 'is_first_name', '第一次改名', 'char(1)', 'String', 'isFirstName', '0', '0', '1', '1', '1', '1', '0', 'LIKE', 'select', 'rc_first_name', 35, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:09');
+INSERT INTO `gen_table_column` VALUES (314, '20', 'is_exchange', '兑换', 'char(1)', 'String', 'isExchange', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_exchange', 36, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:09');
+INSERT INTO `gen_table_column` VALUES (315, '20', 'mode_gut', '屠宰方式类别', 'char(1)', 'String', 'modeGut', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_mode_gut', 37, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:09');
+INSERT INTO `gen_table_column` VALUES (316, '20', 'invite_code', '邀请码', 'varchar(255)', 'String', 'inviteCode', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 38, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 17:58:09');
+INSERT INTO `gen_table_column` VALUES (317, '21', 'warehouse_id', '仓库配送物品id', 'bigint(20)', 'Long', 'warehouseId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:09');
+INSERT INTO `gen_table_column` VALUES (318, '21', 'pet_type', '市场类别', 'char(1)', 'String', 'petType', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'ranch_market_category', 2, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:09');
+INSERT INTO `gen_table_column` VALUES (319, '21', 'status', '用户物品使用状态', 'char(1)', 'String', 'status', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_user_warehouse_status', 3, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:09');
+INSERT INTO `gen_table_column` VALUES (320, '21', 'shop_order_id', '对应订单ID', 'bigint(20)', 'Long', 'shopOrderId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:09');
+INSERT INTO `gen_table_column` VALUES (321, '21', 'goods_id', '商品ID', 'bigint(20)', 'Long', 'goodsId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 5, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:09');
+INSERT INTO `gen_table_column` VALUES (322, '21', 'shop_category_id', '类目id', 'bigint(20)', 'Long', 'shopCategoryId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (323, '21', 'months', '适用月份', 'int(11)', 'Long', 'months', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (324, '21', 'pig_id', '使用物品猪ID', 'bigint(20)', 'Long', 'pigId', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 8, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (325, '21', 'fruiter_id', '使用物品果树id\r\n', 'bigint(20)', 'Long', 'fruiterId', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'input', '', 9, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (326, '21', 'user_id', '用户ID', 'int(11)', 'Long', 'userId', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 10, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (327, '21', 'name', '商品名称', 'varchar(255)', 'String', 'name', '0', '0', '1', '1', '1', '1', '0', 'LIKE', 'input', '', 11, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (328, '21', 'dosage_ids', '加量食物', 'varchar(255)', 'String', 'dosageIds', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 12, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (329, '21', 'img', '商品图片', 'varchar(255)', 'String', 'img', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'imageUpload', '', 13, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (330, '21', 'is_send', '赠送', 'char(1)', 'String', 'isSend', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_send', 14, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (331, '21', 'is_package', '套餐', 'char(1)', 'String', 'isPackage', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_package', 15, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (332, '21', 'is_exchange', '兑换', 'char(1)', 'String', 'isExchange', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_exchange', 16, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (333, '21', 'package_use', '套餐使用商品', 'varchar(50)', 'String', 'packageUse', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 17, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (334, '21', 'applied_level_min', '最低适用等级', 'int(11)', 'Long', 'appliedLevelMin', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 18, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (335, '21', 'applied_level_max', '最高适用等级', 'int(11)', 'Long', 'appliedLevelMax', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 19, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (336, '21', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 20, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (337, '21', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 21, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (338, '21', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 22, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (339, '21', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 23, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (340, '21', 'is_compose', '合成', 'char(1)', 'String', 'isCompose', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'select', 'rc_compose', 24, 'admin', '2023-05-23 17:14:51', 'admin', '2023-05-23 18:02:10');
+INSERT INTO `gen_table_column` VALUES (341, '22', 'vaccin_id', NULL, 'bigint(20)', 'Long', 'vaccinId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-24 11:13:24', 'admin', '2023-05-24 11:14:29');
+INSERT INTO `gen_table_column` VALUES (342, '22', 'name', '疫苗名称', 'tinyint(4)', 'Integer', 'name', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 2, 'admin', '2023-05-24 11:13:24', 'admin', '2023-05-24 11:14:29');
+INSERT INTO `gen_table_column` VALUES (343, '22', 'coin', '需要金币', 'int(11)', 'Long', 'coin', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 3, 'admin', '2023-05-24 11:13:24', 'admin', '2023-05-24 11:14:29');
+INSERT INTO `gen_table_column` VALUES (344, '22', 'detail', '内容', 'varchar(255)', 'String', 'detail', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-05-24 11:13:24', 'admin', '2023-05-24 11:14:29');
+INSERT INTO `gen_table_column` VALUES (345, '22', 'status', '疫苗状态', 'tinyint(4)', 'Integer', 'status', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_vaccin_status', 5, 'admin', '2023-05-24 11:13:24', 'admin', '2023-05-24 11:14:29');
+INSERT INTO `gen_table_column` VALUES (346, '22', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', '1', '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 6, 'admin', '2023-05-24 11:13:24', 'admin', '2023-05-24 11:14:29');
+INSERT INTO `gen_table_column` VALUES (347, '22', 'update_by', '更新时间', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 7, 'admin', '2023-05-24 11:13:24', 'admin', '2023-05-24 11:14:29');
+INSERT INTO `gen_table_column` VALUES (348, '22', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 8, 'admin', '2023-05-24 11:13:24', 'admin', '2023-05-24 11:14:29');
+INSERT INTO `gen_table_column` VALUES (349, '22', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '0', '0', NULL, NULL, NULL, 'EQ', 'input', '', 9, 'admin', '2023-05-24 11:13:24', 'admin', '2023-05-24 11:14:29');
+INSERT INTO `gen_table_column` VALUES (350, '23', 'id', '', 'bigint(20) unsigned', 'Long', 'id', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (351, '23', 'type', '类型', 'tinyint(4)', 'Integer', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_portal_article_type', 2, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (352, '23', 'description', '描述', 'varchar(255)', 'String', 'description', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'input', '', 3, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (353, '23', 'video_url', '视频地址', 'varchar(255)', 'String', 'videoUrl', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (354, '23', 'images', '多图', 'text', 'String', 'images', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'imageUpload', '', 5, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (355, '23', 'content', '内容', 'text', 'String', 'content', '0', '0', '0', '1', '1', '1', '0', 'EQ', 'editor', '', 6, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (356, '23', 'status', '状态', 'tinyint(4)', 'Integer', 'status', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_portal_article_status', 7, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (360, '24', 'id', '', 'bigint(20) unsigned', 'Long', 'id', '1', '1', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (361, '24', 'title', '标题', 'varchar(255)', 'String', 'title', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 2, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (362, '24', 'type', '类型', 'tinyint(4)', 'Integer', 'type', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'rc_protocol_type', 3, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (363, '24', 'img', '图片', 'varchar(255)', 'String', 'img', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'imageUpload', '', 4, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (364, '24', 'content', '内容', 'text', 'String', 'content', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'editor', '', 5, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (365, '24', 'status', '状态', 'tinyint(4)', 'Integer', 'status', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'select', 'rc_protocol_status', 6, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (366, '24', 'sort', '排序', 'int(11)', 'Long', 'sort', '0', '0', NULL, '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-05-24 11:20:14', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (370, '23', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 8, 'admin', '2023-05-24 11:25:24', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (371, '23', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 9, 'admin', '2023-05-24 11:25:24', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (372, '23', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 10, 'admin', '2023-05-24 11:25:24', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (373, '23', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 11, 'admin', '2023-05-24 11:25:24', 'admin', '2023-05-24 11:39:17');
+INSERT INTO `gen_table_column` VALUES (374, '24', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'datetime', '', 8, 'admin', '2023-05-24 11:25:26', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (375, '24', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'datetime', '', 9, 'admin', '2023-05-24 11:25:26', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (376, '24', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 10, 'admin', '2023-05-24 11:25:26', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (377, '24', 'update_by', '更新人', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, '0', '0', NULL, NULL, 'EQ', 'input', '', 11, 'admin', '2023-05-24 11:25:26', 'admin', '2023-05-24 11:43:39');
+INSERT INTO `gen_table_column` VALUES (632, '48', 'order_id', NULL, 'bigint', 'Long', 'orderId', '1', '0', NULL, NULL, NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-05-24 14:26:48', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (633, '48', 'order_no', NULL, 'varchar(64)', 'String', 'orderNo', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'input', '', 2, 'admin', '2023-05-24 14:26:48', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (634, '48', 'config_id', 'process_config_id', 'bigint', 'Long', 'configId', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'input', '', 3, 'admin', '2023-05-24 14:26:48', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (635, '48', 'pig_id', NULL, 'int', 'Long', 'pigId', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'input', '', 4, 'admin', '2023-05-24 14:26:48', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (636, '48', 'process_name', '配置名称', 'varchar(64)', 'String', 'processName', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 5, 'admin', '2023-05-24 14:26:48', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (637, '48', 'process_time', '加工时间', 'datetime', 'Date', 'processTime', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'datetime', '', 6, 'admin', '2023-05-24 14:26:48', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (638, '48', 'process_coin', '加工金币', 'int', 'Long', 'processCoin', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'input', '', 7, 'admin', '2023-05-24 14:26:48', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (639, '48', 'total_coin', '总金币', 'int', 'Long', 'totalCoin', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'input', '', 8, 'admin', '2023-05-24 14:26:48', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (640, '48', 'meteria_coin', '材料总金币', 'int', 'Long', 'meteriaCoin', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'input', '', 9, 'admin', '2023-05-24 14:26:48', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (641, '48', 'process_status', '加工状态', 'char(1)', 'String', 'processStatus', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'select', 'rc_process_status', 10, 'admin', '2023-05-24 14:26:51', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (642, '48', 'pay_time', '支付时间', 'datetime', 'Date', 'payTime', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'datetime', '', 11, 'admin', '2023-05-24 14:26:51', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (643, '48', 'status', '支付状态', 'char(1)', 'String', 'status', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'select', 'rc_order_status', 12, 'admin', '2023-05-24 14:26:51', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (644, '48', 'create_time', '创建时间', 'timestamp', 'Date', 'createTime', '0', '0', '1', NULL, NULL, NULL, NULL, 'EQ', 'datetime', '', 13, 'admin', '2023-05-24 14:26:51', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (645, '48', 'update_by', '更新时间', 'varchar(64)', 'String', 'updateBy', '0', '0', NULL, NULL, NULL, NULL, NULL, 'EQ', 'input', '', 14, 'admin', '2023-05-24 14:26:51', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (646, '48', 'update_time', '修改时间', 'timestamp', 'Date', 'updateTime', '0', '0', NULL, NULL, NULL, NULL, NULL, 'EQ', 'datetime', '', 15, 'admin', '2023-05-24 14:26:51', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (647, '48', 'create_by', '创建人', 'varchar(64)', 'String', 'createBy', '0', '0', '1', NULL, NULL, NULL, NULL, 'EQ', 'input', '', 16, 'admin', '2023-05-24 14:26:51', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (648, '48', 'desc', '说明', 'varchar(255)', 'String', 'desc', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'input', '', 17, 'admin', '2023-05-24 14:26:51', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (649, '48', 'content', '内容', 'varchar(255)', 'String', 'content', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'editor', '', 18, 'admin', '2023-05-24 14:26:51', 'admin', '2023-05-24 14:30:39');
+INSERT INTO `gen_table_column` VALUES (650, '48', 'detail', '详情', 'varchar(255)', 'String', 'detail', '0', '0', NULL, '1', '1', '1', NULL, 'EQ', 'input', '', 19, 'admin', '2023-05-24 14:26:51', 'admin', '2023-05-24 14:30:39');
 
 -- ----------------------------
 -- Table structure for qrtz_blob_triggers
@@ -197,9 +557,9 @@ CREATE TABLE `qrtz_fired_triggers`  (
   `trigger_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
   `trigger_group` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
   `instance_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '调度器实例名',
-  `fired_time` bigint(20) NOT NULL COMMENT '触发的时间',
-  `sched_time` bigint(20) NOT NULL COMMENT '定时器制定的时间',
-  `priority` int(11) NOT NULL COMMENT '优先级',
+  `fired_time` bigint(0) NOT NULL COMMENT '触发的时间',
+  `sched_time` bigint(0) NOT NULL COMMENT '定时器制定的时间',
+  `priority` int(0) NOT NULL COMMENT '优先级',
   `state` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '状态',
   `job_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '任务名称',
   `job_group` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '任务组名',
@@ -269,8 +629,8 @@ DROP TABLE IF EXISTS `qrtz_scheduler_state`;
 CREATE TABLE `qrtz_scheduler_state`  (
   `sched_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '调度名称',
   `instance_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '实例名称',
-  `last_checkin_time` bigint(20) NOT NULL COMMENT '上次检查时间',
-  `checkin_interval` bigint(20) NOT NULL COMMENT '检查间隔时间',
+  `last_checkin_time` bigint(0) NOT NULL COMMENT '上次检查时间',
+  `checkin_interval` bigint(0) NOT NULL COMMENT '检查间隔时间',
   PRIMARY KEY (`sched_name`, `instance_name`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '调度器状态表' ROW_FORMAT = Dynamic;
 
@@ -286,9 +646,9 @@ CREATE TABLE `qrtz_simple_triggers`  (
   `sched_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '调度名称',
   `trigger_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
   `trigger_group` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-  `repeat_count` bigint(20) NOT NULL COMMENT '重复的次数统计',
-  `repeat_interval` bigint(20) NOT NULL COMMENT '重复的间隔时间',
-  `times_triggered` bigint(20) NOT NULL COMMENT '已经触发的次数',
+  `repeat_count` bigint(0) NOT NULL COMMENT '重复的次数统计',
+  `repeat_interval` bigint(0) NOT NULL COMMENT '重复的间隔时间',
+  `times_triggered` bigint(0) NOT NULL COMMENT '已经触发的次数',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_simple_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '简单触发器的信息表' ROW_FORMAT = Dynamic;
@@ -308,10 +668,10 @@ CREATE TABLE `qrtz_simprop_triggers`  (
   `str_prop_1` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'String类型的trigger的第一个参数',
   `str_prop_2` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'String类型的trigger的第二个参数',
   `str_prop_3` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'String类型的trigger的第三个参数',
-  `int_prop_1` int(11) NULL DEFAULT NULL COMMENT 'int类型的trigger的第一个参数',
-  `int_prop_2` int(11) NULL DEFAULT NULL COMMENT 'int类型的trigger的第二个参数',
-  `long_prop_1` bigint(20) NULL DEFAULT NULL COMMENT 'long类型的trigger的第一个参数',
-  `long_prop_2` bigint(20) NULL DEFAULT NULL COMMENT 'long类型的trigger的第二个参数',
+  `int_prop_1` int(0) NULL DEFAULT NULL COMMENT 'int类型的trigger的第一个参数',
+  `int_prop_2` int(0) NULL DEFAULT NULL COMMENT 'int类型的trigger的第二个参数',
+  `long_prop_1` bigint(0) NULL DEFAULT NULL COMMENT 'long类型的trigger的第一个参数',
+  `long_prop_2` bigint(0) NULL DEFAULT NULL COMMENT 'long类型的trigger的第二个参数',
   `dec_prop_1` decimal(13, 4) NULL DEFAULT NULL COMMENT 'decimal类型的trigger的第一个参数',
   `dec_prop_2` decimal(13, 4) NULL DEFAULT NULL COMMENT 'decimal类型的trigger的第二个参数',
   `bool_prop_1` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Boolean类型的trigger的第一个参数',
@@ -335,15 +695,15 @@ CREATE TABLE `qrtz_triggers`  (
   `job_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'qrtz_job_details表job_name的外键',
   `job_group` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'qrtz_job_details表job_group的外键',
   `description` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '相关介绍',
-  `next_fire_time` bigint(20) NULL DEFAULT NULL COMMENT '上一次触发时间（毫秒）',
-  `prev_fire_time` bigint(20) NULL DEFAULT NULL COMMENT '下一次触发时间（默认为-1表示不触发）',
-  `priority` int(11) NULL DEFAULT NULL COMMENT '优先级',
+  `next_fire_time` bigint(0) NULL DEFAULT NULL COMMENT '上一次触发时间（毫秒）',
+  `prev_fire_time` bigint(0) NULL DEFAULT NULL COMMENT '下一次触发时间（默认为-1表示不触发）',
+  `priority` int(0) NULL DEFAULT NULL COMMENT '优先级',
   `trigger_state` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '触发器状态',
   `trigger_type` varchar(8) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '触发器的类型',
-  `start_time` bigint(20) NOT NULL COMMENT '开始时间',
-  `end_time` bigint(20) NULL DEFAULT NULL COMMENT '结束时间',
+  `start_time` bigint(0) NOT NULL COMMENT '开始时间',
+  `end_time` bigint(0) NULL DEFAULT NULL COMMENT '结束时间',
   `calendar_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '日程表名称',
-  `misfire_instr` smallint(6) NULL DEFAULT NULL COMMENT '补偿执行的策略',
+  `misfire_instr` smallint(0) NULL DEFAULT NULL COMMENT '补偿执行的策略',
   `job_data` blob NULL COMMENT '存放持久化job对象',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   INDEX `sched_name`(`sched_name`, `job_name`, `job_group`) USING BTREE,
@@ -359,7 +719,7 @@ CREATE TABLE `qrtz_triggers`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_app_version`;
 CREATE TABLE `rc_app_version`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[类型,rc_app_type,1=客户端,2=农户端]',
   `version` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '版本号',
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '下载地址',
@@ -381,63 +741,67 @@ CREATE TABLE `rc_app_version`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_appointment_config`;
 CREATE TABLE `rc_appointment_config`  (
-  `config_id` bigint(20) NOT NULL,
-  `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[市场类别,ranch_market_category,1=猪,2=树]',
+  `config_id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[市场类别,ranch_market_category,1=猪,2=树]',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
-  `fee2` int(11) NULL DEFAULT NULL COMMENT '采摘费',
-  `fee1` int(11) NULL DEFAULT NULL COMMENT '出栏费',
-  `slaughter_fee` int(11) NULL DEFAULT NULL COMMENT '屠宰费用',
-  `sort` int(11) NULL DEFAULT NULL COMMENT '排序',
-  `mode` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[屠宰方式,rc_mode,1=标准,2=精细,3=加工]',
-  `mode_gut` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[屠宰方式类别,rc_mode_gut,1=要内脏,2=不要内脏]',
+  `fee2` int(0) NULL DEFAULT NULL COMMENT '采摘费',
+  `fee1` int(0) NULL DEFAULT NULL COMMENT '出栏费',
+  `slaughter_fee` int(0) NULL DEFAULT NULL COMMENT '屠宰费用',
+  `sort` int(0) NULL DEFAULT NULL COMMENT '排序',
+  `mode` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[屠宰方式,rc_mode,1=标准,2=精细,3=加工]',
+  `mode_gut` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[屠宰方式类别,rc_mode_gut,1=要内脏,2=不要内脏]',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '预约单配置' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '预约单配置' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_appointment_config
 -- ----------------------------
+INSERT INTO `rc_appointment_config` VALUES (1, '2', '就', 10, NULL, NULL, 1, NULL, NULL, 'admin', '2023-05-22 18:05:00', 'admin', '2023-05-22 18:05:00');
+INSERT INTO `rc_appointment_config` VALUES (2, '1', '方式', NULL, 1, 1, 1, '1', '1', 'admin', '2023-05-22 18:05:18', 'admin', '2023-05-22 18:05:18');
 
 -- ----------------------------
 -- Table structure for rc_appointment_order
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_appointment_order`;
 CREATE TABLE `rc_appointment_order`  (
-  `order_id` bigint(20) NOT NULL COMMENT '预约单id',
-  `fruiter_id` bigint(20) NULL DEFAULT NULL COMMENT '树id',
-  `pig_id` bigint(20) NULL DEFAULT NULL COMMENT '猪id',
+  `order_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '预约单id',
+  `fruiter_id` bigint(0) NULL DEFAULT NULL COMMENT '用户树id',
+  `pig_id` bigint(0) NULL DEFAULT NULL COMMENT '用户猪id',
   `order_no` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '预约单号',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[市场类别,ranch_market_category,1=猪,2=树]',
-  `pick_fee` int(11) NULL DEFAULT NULL COMMENT '采摘费',
-  `listing_fee` int(11) NULL DEFAULT NULL COMMENT '出栏费',
-  `slaughter_fee` int(11) NULL DEFAULT NULL COMMENT '屠宰费用',
-  `imprest_coin` int(11) NOT NULL COMMENT '备用金',
-  `coin` int(11) NOT NULL COMMENT '抵扣金币',
+  `pick_fee` int(0) NULL DEFAULT NULL COMMENT '采摘费',
+  `listing_fee` int(0) NULL DEFAULT NULL COMMENT '出栏费',
+  `slaughter_fee` int(0) NULL DEFAULT NULL COMMENT '屠宰费用',
+  `imprest_coin` int(0) NOT NULL COMMENT '备用金',
+  `coin` int(0) NOT NULL COMMENT '抵扣金币',
   `appointment_time` datetime(0) NULL DEFAULT NULL COMMENT '预约（屠宰/采摘）时间',
-  `pay_coin` int(11) NOT NULL COMMENT '总支付金币',
-  `mode_gut` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[屠宰方式类别,rc_mode_gut,1=要内脏,2=不要内脏]',
+  `pay_coin` int(0) NOT NULL COMMENT '总支付金币',
+  `mode_gut` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[屠宰方式类别,rc_mode_gut,1=要内脏,2=不要内脏]',
   `pay_time` datetime(0) NOT NULL COMMENT '支付时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[支付状态,rc_order_status,1=待支付,2=已支付,3=取消支付]',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `mode` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[屠宰方式,rc_mode,1=标准,2=精细,3=加工]',
   PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '预约单' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '预约单' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_appointment_order
 -- ----------------------------
+INSERT INTO `rc_appointment_order` VALUES (1, 1, NULL, '1', '2', 1, NULL, NULL, 1, 1, '2023-05-24 00:00:00', 1, NULL, '2023-05-23 00:00:00', 'admin', '1', '2023-05-23 16:44:51', 'admin', '2023-05-23 16:44:51', NULL);
 
 -- ----------------------------
 -- Table structure for rc_camera
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_camera`;
 CREATE TABLE `rc_camera`  (
-  `camera_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '摄像头ID',
+  `camera_id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '摄像头ID',
   `device_serial` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '设备序列号',
   `channel_no` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '通道号',
   `video_live_url` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '摄像头直播源URL',
@@ -459,18 +823,18 @@ CREATE TABLE `rc_camera`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_camera_living`;
 CREATE TABLE `rc_camera_living`  (
-  `living_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '直播ID',
-  `camera_id` bigint(20) NOT NULL COMMENT '摄像头id',
+  `living_id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '直播ID',
+  `camera_id` bigint(0) NOT NULL COMMENT '摄像头id',
   `video_live_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '摄像头直播源URL',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[摄像头状态,rc_camera_status,0=停用,1=正常,2=未使用]\r\n',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
-  `fruiter_id` bigint(20) NULL DEFAULT NULL,
-  `pig_id` bigint(20) NULL DEFAULT NULL,
+  `user_id` bigint(0) NULL DEFAULT NULL COMMENT '用户id',
+  `fruiter_id` bigint(0) NULL DEFAULT NULL,
+  `pig_id` bigint(0) NULL DEFAULT NULL,
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[市场类别,ranch_market_category,1=猪,2=树]',
-  `farmer_id` bigint(20) NULL DEFAULT NULL COMMENT '农户id',
+  `farmer_id` bigint(0) NULL DEFAULT NULL COMMENT '农户id',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`living_id`) USING BTREE
@@ -485,7 +849,7 @@ CREATE TABLE `rc_camera_living`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_category`;
 CREATE TABLE `rc_category`  (
-  `category_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '类别id',
+  `category_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '类别id',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '[市场类别,ranch_market_category,1=猪,2=树]',
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '品类名称',
   `video` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '监控链接',
@@ -495,27 +859,29 @@ CREATE TABLE `rc_category`  (
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
   PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '类别表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '类别表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_category
 -- ----------------------------
+INSERT INTO `rc_category` VALUES (1, '1', '12', '123', '2023-05-23 15:36:49', 'admin', '2023-05-23 15:36:49', '123', NULL);
+INSERT INTO `rc_category` VALUES (2, '2', '123', '123', '2023-05-23 15:36:55', 'admin', '2023-05-23 15:36:55', '123', NULL);
 
 -- ----------------------------
 -- Table structure for rc_cloud_warehouse
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_cloud_warehouse`;
 CREATE TABLE `rc_cloud_warehouse`  (
-  `cloud_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '仓库配送物品id',
+  `cloud_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '仓库配送物品id',
   `part_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '部位类型',
-  `part_id` bigint(20) NULL DEFAULT NULL COMMENT '猪部位id',
-  `user_fruiter_id` bigint(20) NULL DEFAULT NULL COMMENT '用户果树id',
+  `part_id` bigint(0) NULL DEFAULT NULL COMMENT '猪部位id',
+  `user_fruiter_id` bigint(0) NULL DEFAULT NULL COMMENT '用户果树id',
   `is_send` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[赠送状态,rc_send,1=否,2=是]',
-  `user_pig_id` bigint(20) NULL DEFAULT NULL COMMENT '用户猪id',
-  `deposit_coin` int(11) NULL DEFAULT 0 COMMENT '托管超时金币',
+  `user_pig_id` bigint(0) NULL DEFAULT NULL COMMENT '用户猪id',
+  `deposit_coin` int(0) NULL DEFAULT 0 COMMENT '托管超时金币',
   `ending_time` datetime(0) NOT NULL COMMENT '托管到期时间',
-  `send_user_id` bigint(20) NULL DEFAULT NULL COMMENT '赠送用户id',
-  `user_id` bigint(20) NOT NULL COMMENT '用户id',
+  `send_user_id` bigint(0) NULL DEFAULT NULL COMMENT '赠送用户id',
+  `user_id` bigint(0) NOT NULL COMMENT '用户id',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[云仓配送状态,rc_cloud_status,1=未邮寄,2=部分邮寄,3=已邮寄,4=超时,5=加工中.6=已加工]\r\n\r\n\r\n',
   `total_weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '总重量',
   `use_weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '可邮寄重量',
@@ -536,13 +902,13 @@ CREATE TABLE `rc_cloud_warehouse`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_coins_log`;
 CREATE TABLE `rc_coins_log`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '记录ID',
-  `user_id` bigint(20) NOT NULL COMMENT '用户ID',
+  `id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '记录ID',
+  `user_id` bigint(0) NOT NULL COMMENT '用户ID',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[金币日志内容类型,rc_coin_log_type,1=增加,2=减少,3=后台增加,4=后台减少]',
   `op_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[金币日志操作类型,rc_coin_op_type,1=充值,2=消耗,3=提现,4=手续费,5=扣除,6=备用金]',
-  `before_coin` int(11) NULL DEFAULT NULL COMMENT '前金币',
-  `after_coin` int(11) NULL DEFAULT NULL COMMENT '后金币',
-  `coins` int(11) NOT NULL COMMENT '金币数，正数表示增加，负数表示消费',
+  `before_coin` int(0) NULL DEFAULT NULL COMMENT '前金币',
+  `after_coin` int(0) NULL DEFAULT NULL COMMENT '后金币',
+  `coins` int(0) NOT NULL COMMENT '金币数，正数表示增加，负数表示消费',
   `record_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '记录时间',
   `record_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '记录描述',
   `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
@@ -561,12 +927,12 @@ CREATE TABLE `rc_coins_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_comment`;
 CREATE TABLE `rc_comment`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `pig_id` bigint(20) NULL DEFAULT 0 COMMENT '宠物ID',
-  `user_id` bigint(20) NULL DEFAULT 0 COMMENT '评论用户ID',
-  `fruiter_id` bigint(20) NULL DEFAULT NULL COMMENT '果树id',
-  `pid` int(11) NULL DEFAULT 0 COMMENT '评论id',
-  `like_num` int(11) NULL DEFAULT 0 COMMENT '点赞数量',
+  `id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `pig_id` bigint(0) NULL DEFAULT 0 COMMENT '宠物ID',
+  `user_id` bigint(0) NULL DEFAULT 0 COMMENT '评论用户ID',
+  `fruiter_id` bigint(0) NULL DEFAULT NULL COMMENT '果树id',
+  `pid` int(0) NULL DEFAULT 0 COMMENT '评论id',
+  `like_num` int(0) NULL DEFAULT 0 COMMENT '点赞数量',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '评论内容',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
@@ -584,7 +950,7 @@ CREATE TABLE `rc_comment`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_config`;
 CREATE TABLE `rc_config`  (
-  `config_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '参数主键',
+  `config_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '参数主键',
   `config_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '参数名称',
   `config_key` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '参数键名',
   `config_value` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '参数键值',
@@ -594,26 +960,27 @@ CREATE TABLE `rc_config`  (
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '配置表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '配置表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_config
 -- ----------------------------
+INSERT INTO `rc_config` VALUES (1, '1', '1', '1', '2023-05-22 18:23:41', 'admin', '2023-05-22 18:23:41', '1', 'admin');
 
 -- ----------------------------
 -- Table structure for rc_dog
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_dog`;
 CREATE TABLE `rc_dog`  (
-  `dog_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '守护犬ID',
+  `dog_id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '守护犬ID',
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '名称',
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '图片',
-  `health` int(11) NULL DEFAULT NULL COMMENT '生命值',
-  `exp` int(11) NULL DEFAULT NULL COMMENT '经验',
+  `health` int(0) NULL DEFAULT NULL COMMENT '生命值',
+  `exp` int(0) NULL DEFAULT NULL COMMENT '经验',
   `describe` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
-  `attack` int(11) NOT NULL COMMENT '攻击',
-  `agile` int(11) NULL DEFAULT NULL COMMENT '敏捷',
-  `intel` int(11) NULL DEFAULT NULL COMMENT '智力',
+  `attack` int(0) NOT NULL COMMENT '攻击',
+  `agile` int(0) NULL DEFAULT NULL COMMENT '敏捷',
+  `intel` int(0) NULL DEFAULT NULL COMMENT '智力',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[宠物状态,rc_dog_status,0=停用,1=正常]\r\n',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
@@ -632,7 +999,7 @@ CREATE TABLE `rc_dog`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_express_company`;
 CREATE TABLE `rc_express_company`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '快递名称',
   `code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '快递编码',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[物流公司状态,rc_exp_company,0=停用,1=正常]',
@@ -653,8 +1020,8 @@ CREATE TABLE `rc_express_company`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_express_log`;
 CREATE TABLE `rc_express_log`  (
-  `log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `express_order_id` bigint(20) NOT NULL COMMENT '物流订单id',
+  `log_id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `express_order_id` bigint(0) NOT NULL COMMENT '物流订单id',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '物流信息内容json',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[物流日志状态,rc_exp_status,0=异常,1=正常]',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
@@ -673,24 +1040,24 @@ CREATE TABLE `rc_express_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_express_order`;
 CREATE TABLE `rc_express_order`  (
-  `order_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '物流订单id',
+  `order_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '物流订单id',
   `total_weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '仓库物品重量',
   `cloud_ids` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '云仓库ID',
-  `user_id` bigint(20) NOT NULL COMMENT '用户ID',
-  `address_id` bigint(20) NOT NULL COMMENT '地址id',
+  `user_id` bigint(0) NOT NULL COMMENT '用户ID',
+  `address_id` bigint(0) NOT NULL COMMENT '地址id',
   `sn` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单号',
   `express_company` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '快递公司',
   `express_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '快递单号',
   `status` char(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '4' COMMENT '[物流订单状态,rc_exp_order_status,1=已发货,2=在途中,3=已签收,4=待发货]',
-  `express_id` bigint(20) NULL DEFAULT NULL COMMENT '物流公司id',
+  `express_id` bigint(0) NULL DEFAULT NULL COMMENT '物流公司id',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `express_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[物流方式,rc_exp_type,1=自提,2=邮寄]',
-  `express_coin` int(11) NULL DEFAULT NULL COMMENT '物流费用',
+  `express_coin` int(0) NULL DEFAULT NULL COMMENT '物流费用',
   `package_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '打包方式类型',
-  `package_coin` int(11) NULL DEFAULT NULL COMMENT '打包金币',
+  `package_coin` int(0) NULL DEFAULT NULL COMMENT '打包金币',
   PRIMARY KEY (`order_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '物流订单表' ROW_FORMAT = Compact;
 
@@ -703,7 +1070,7 @@ CREATE TABLE `rc_express_order`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_farmer`;
 CREATE TABLE `rc_farmer`  (
-  `user_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '农户ID',
+  `user_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '农户ID',
   `user_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '农户编号',
   `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '农户账号',
   `nick_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '农户昵称',
@@ -750,11 +1117,11 @@ CREATE TABLE `rc_farmer`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_farmer_amount_log`;
 CREATE TABLE `rc_farmer_amount_log`  (
-  `log_id` bigint(20) NOT NULL,
-  `farmer_id` bigint(20) NULL DEFAULT NULL COMMENT '农户id',
+  `log_id` bigint(0) NOT NULL,
+  `farmer_id` bigint(0) NULL DEFAULT NULL COMMENT '农户id',
   `type` char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[农户流水类型,rc_farmer_amount_type,0=提现,1=喂养,2=服务,3=治疗,4=耕作]',
   `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
-  `withdraw_id` bigint(20) NULL DEFAULT NULL COMMENT '提现记录详情id',
+  `withdraw_id` bigint(0) NULL DEFAULT NULL COMMENT '提现记录详情id',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[农户流水状态,rc_farmer_amount_status,1=成功,2=失败,3=结算中]',
   `before_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '前金额',
   `after_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '后金额',
@@ -774,9 +1141,9 @@ CREATE TABLE `rc_farmer_amount_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_farmer_service`;
 CREATE TABLE `rc_farmer_service`  (
-  `service_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '农户服务id',
-  `service_base_id` bigint(20) NOT NULL COMMENT '服务基础id',
-  `farmer_id` bigint(20) NOT NULL COMMENT '农户id',
+  `service_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '农户服务id',
+  `service_base_id` bigint(0) NOT NULL COMMENT '服务基础id',
+  `farmer_id` bigint(0) NOT NULL COMMENT '农户id',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '[农户服务,rc_farmer_service_status,0=正常,1=停用]',
@@ -794,7 +1161,7 @@ CREATE TABLE `rc_farmer_service`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_farmer_withdraw`;
 CREATE TABLE `rc_farmer_withdraw`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `farmer_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '农户id',
   `order_no` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '订单号(农户生成)',
   `trade_no_3rd` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '第三方交易订单号',
@@ -827,52 +1194,36 @@ CREATE TABLE `rc_farmer_withdraw`  (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for rc_fruiter_log
--- ----------------------------
-DROP TABLE IF EXISTS `rc_fruiter_log`;
-CREATE TABLE `rc_fruiter_log`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '视频ID',
-  `status` tinyint(3) UNSIGNED NOT NULL COMMENT '[视频状态,rc_video_status,0=停用,1=正常,2=删除]',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '摄像头记录表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of rc_fruiter_log
--- ----------------------------
-
--- ----------------------------
 -- Table structure for rc_invite_config
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_invite_config`;
 CREATE TABLE `rc_invite_config`  (
-  `config_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '邀请奖励配置id',
+  `config_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '邀请奖励配置id',
   `config_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[邀请配置类型,rc_invite_config_type,1=碎片,2=礼包]',
-  `reward_num` int(11) NULL DEFAULT NULL COMMENT '赠送数量',
-  `goods_id` bigint(20) NULL DEFAULT NULL COMMENT '商品id',
-  `invite_num` int(11) NULL DEFAULT NULL COMMENT '邀请数量',
+  `reward_num` int(0) NULL DEFAULT NULL COMMENT '赠送数量',
+  `goods_id` bigint(0) NULL DEFAULT NULL COMMENT '商品id',
+  `invite_num` int(0) NULL DEFAULT NULL COMMENT '邀请数量',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '删除时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '邀请奖励配置' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '邀请奖励配置' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of rc_invite_config
 -- ----------------------------
+INSERT INTO `rc_invite_config` VALUES (1, '1', 12, 1, 12, '2023-05-22 18:23:30', '2023-05-22 18:23:30', 'admin', 'admin');
 
 -- ----------------------------
 -- Table structure for rc_invite_log
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_invite_log`;
 CREATE TABLE `rc_invite_log`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
-  `referrer` bigint(20) NULL DEFAULT NULL COMMENT '直推',
-  `pid` bigint(20) NULL DEFAULT NULL COMMENT '上级id',
+  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(0) NULL DEFAULT NULL COMMENT '用户id',
+  `referrer` bigint(0) NULL DEFAULT NULL COMMENT '直推',
+  `pid` bigint(0) NULL DEFAULT NULL COMMENT '上级id',
   `is_valid` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[是否实名,rc_invite_log_valid,1=是,2=否]',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
@@ -895,12 +1246,12 @@ CREATE TABLE `rc_invite_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_invite_reward_log`;
 CREATE TABLE `rc_invite_reward_log`  (
-  `log_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `log_id` bigint(0) NOT NULL AUTO_INCREMENT,
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[奖励类型,rc_reward,1=碎片,2=礼包]',
-  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户ID',
-  `goods_id` bigint(20) NULL DEFAULT NULL COMMENT '商品ID',
-  `reward_num` int(11) NULL DEFAULT NULL COMMENT '赠送数量',
-  `invite_num` int(11) NULL DEFAULT NULL COMMENT '邀请数量',
+  `user_id` bigint(0) NULL DEFAULT NULL COMMENT '用户ID',
+  `goods_id` bigint(0) NULL DEFAULT NULL COMMENT '商品ID',
+  `reward_num` int(0) NULL DEFAULT NULL COMMENT '赠送数量',
+  `invite_num` int(0) NULL DEFAULT NULL COMMENT '邀请数量',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
@@ -917,47 +1268,49 @@ CREATE TABLE `rc_invite_reward_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_level`;
 CREATE TABLE `rc_level`  (
-  `level_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `applied_level_min` int(11) NOT NULL COMMENT '最低适用等级',
-  `applied_level_max` int(11) NOT NULL COMMENT '最高适用等级',
-  `hand_amount` int(11) NOT NULL COMMENT '手工费',
+  `level_id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `applied_level_min` int(0) NOT NULL COMMENT '最低适用等级',
+  `applied_level_max` int(0) NOT NULL COMMENT '最高适用等级',
+  `hand_amount` int(0) NOT NULL COMMENT '手工费',
   `food_ids` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '可食用食物',
-  `applied_food_min` int(11) NOT NULL COMMENT '最低食物量',
-  `applied_food_max` int(11) NOT NULL COMMENT '最高食物量',
-  `sort` int(11) NULL DEFAULT 1 COMMENT '排序',
+  `applied_food_min` int(0) NOT NULL COMMENT '最低食物量',
+  `applied_food_max` int(0) NOT NULL COMMENT '最高食物量',
+  `sort` int(0) NULL DEFAULT 1 COMMENT '排序',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '[状态,rc_status,0=正常,1=停用]',
   PRIMARY KEY (`level_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '等级表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '等级表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of rc_level
 -- ----------------------------
+INSERT INTO `rc_level` VALUES (1, 1, 10, 10, '3,4', 1, 100, 1, '2023-05-20 17:21:27', '2023-05-20 17:21:27', 'admin', 'admin', '0');
+INSERT INTO `rc_level` VALUES (2, 20, 30, 30, '3,4', 1, 20, 2, '2023-05-22 09:43:16', '2023-05-22 09:43:16', 'admin', 'admin', '0');
 
 -- ----------------------------
 -- Table structure for rc_market
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_market`;
 CREATE TABLE `rc_market`  (
-  `market_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '产品id',
+  `market_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '产品id',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '[市场类别,ranch_market_category,1=猪,2=树]',
-  `category_id` int(11) NOT NULL COMMENT '类别id',
+  `category_id` int(0) NOT NULL COMMENT '类别id',
   `category_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '品类名称',
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片',
-  `age` int(11) NULL DEFAULT NULL COMMENT '猪龄',
-  `stock` int(11) NULL DEFAULT NULL COMMENT '库存',
-  `weight` int(11) NULL DEFAULT NULL COMMENT '重量',
-  `insure_coin` int(11) NULL DEFAULT NULL COMMENT '保证金',
+  `age` int(0) NULL DEFAULT NULL COMMENT '猪龄',
+  `stock` int(0) NULL DEFAULT NULL COMMENT '库存',
+  `weight` int(0) NULL DEFAULT NULL COMMENT '重量',
+  `insure_coin` int(0) NULL DEFAULT NULL COMMENT '保证金',
   `pick_desc` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '采摘描述',
   `years_limit` tinyint(1) NULL DEFAULT 1 COMMENT '领养年限',
   `is_discount` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[折扣,rc_discount,1=是,2=否]',
   `package_ids` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '套餐 market_id',
   `is_package` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[套餐,rc_package,1=是,2=否]',
-  `cost_price` int(11) NULL DEFAULT 0 COMMENT '原价',
-  `price` int(11) NULL DEFAULT 0 COMMENT '现价',
+  `cost_price` int(0) NULL DEFAULT 0 COMMENT '原价',
+  `price` int(0) NULL DEFAULT 0 COMMENT '现价',
   `detail` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '详情',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
@@ -965,25 +1318,27 @@ CREATE TABLE `rc_market`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`market_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '市场表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '市场表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_market
 -- ----------------------------
+INSERT INTO `rc_market` VALUES (1, '1', 1, 'A', '123', 123, 123, 123, 123, '', 1, '1', '0', '1', 123, 0, NULL, 'admin', '2023-05-23 15:37:15', 'admin', '2023-05-23 15:37:15', NULL);
+INSERT INTO `rc_market` VALUES (2, '2', 2, 'B', '123', 123, 123, 123, 123, '123', 123, '1', '12', '1', 123, 123, '31', 'admin', '2023-05-23 15:37:35', 'admin', '2023-05-23 15:37:35', NULL);
 
 -- ----------------------------
 -- Table structure for rc_market_order
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_market_order`;
 CREATE TABLE `rc_market_order`  (
-  `market_order_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户ID',
-  `market_id` bigint(20) NULL DEFAULT NULL COMMENT '产品id',
+  `market_order_id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(0) NULL DEFAULT NULL COMMENT '用户ID',
+  `market_id` bigint(0) NULL DEFAULT NULL COMMENT '产品id',
   `order_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '订单编号',
-  `is_insure` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否投保',
+  `is_insure` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[投保,rc_insure,1=是,2=否]',
   `price` decimal(10, 2) NOT NULL COMMENT '商品价格',
-  `num` int(11) NULL DEFAULT 1 COMMENT '商品数量',
-  `total_price` int(11) NULL DEFAULT NULL COMMENT '订单价格',
+  `num` int(0) NULL DEFAULT 1 COMMENT '商品数量',
+  `total_price` int(0) NULL DEFAULT NULL COMMENT '订单价格',
   `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人\r\n',
@@ -991,20 +1346,21 @@ CREATE TABLE `rc_market_order`  (
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `is_exchange` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[兑换,rc_exchange,1=是,2=否]',
   PRIMARY KEY (`market_order_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '市场订单' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '市场订单' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of rc_market_order
 -- ----------------------------
+INSERT INTO `rc_market_order` VALUES (1, 1, 1, '1', '1', 1.00, 1, 1, '2023-05-23 17:03:28', '2023-05-23 17:03:28', 'admin', '0', 'admin', '1');
 
 -- ----------------------------
 -- Table structure for rc_materia
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_materia`;
 CREATE TABLE `rc_materia`  (
-  `material_id` bigint(20) NULL DEFAULT NULL,
+  `material_id` bigint(0) NULL DEFAULT NULL,
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `coin` int(11) NULL DEFAULT NULL COMMENT '金币',
+  `coin` int(0) NULL DEFAULT NULL COMMENT '金币',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[材料类型,rc_material_type,1=白酒,2=食用盐]',
   `weight` decimal(2, 0) NULL DEFAULT NULL COMMENT '重量',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0使用 1停用',
@@ -1024,15 +1380,15 @@ CREATE TABLE `rc_materia`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_materia_log`;
 CREATE TABLE `rc_materia_log`  (
-  `log_id` bigint(20) NULL DEFAULT NULL,
+  `log_id` bigint(0) NULL DEFAULT NULL,
   `weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '重量',
   `reality_weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '实际重量',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新时间',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
-  `order_id` bigint(20) NULL DEFAULT NULL,
-  `materia_id` bigint(20) NULL DEFAULT NULL COMMENT '材料'
+  `order_id` bigint(0) NULL DEFAULT NULL,
+  `materia_id` bigint(0) NULL DEFAULT NULL COMMENT '材料'
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '材料日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -1044,13 +1400,13 @@ CREATE TABLE `rc_materia_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_msg_log`;
 CREATE TABLE `rc_msg_log`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[消息类型,rc_msg_type,1=服务消息,2=系统消息]',
   `op` char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[消息标识,rc_msg_op,1=赠送小猪,2=合养,3=添加好友,4=赠送礼券]',
   `send_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[消息发送类型,rc_send_type,1=用户,2=农场主]',
-  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '接收人',
-  `send_uid` bigint(20) NULL DEFAULT 0 COMMENT '发送人',
-  `pig_id` int(11) NULL DEFAULT 0 COMMENT '小猪ID',
+  `user_id` bigint(0) NULL DEFAULT NULL COMMENT '接收人',
+  `send_uid` bigint(0) NULL DEFAULT 0 COMMENT '发送人',
+  `pig_id` int(0) NULL DEFAULT 0 COMMENT '小猪ID',
   `title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标题',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容',
   `is_confirm` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[确认,rc_msg_confim,1=是,2=否]',
@@ -1059,7 +1415,7 @@ CREATE TABLE `rc_msg_log`  (
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
-  `fruiter_id` bigint(20) NULL DEFAULT NULL COMMENT '果树id',
+  `fruiter_id` bigint(0) NULL DEFAULT NULL COMMENT '果树id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '信息日志' ROW_FORMAT = Compact;
 
@@ -1072,31 +1428,32 @@ CREATE TABLE `rc_msg_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_pack_config`;
 CREATE TABLE `rc_pack_config`  (
-  `config_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `config_id` bigint(0) NOT NULL AUTO_INCREMENT,
   `pack_category` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[碎片种类,rc_pack_category,1=玉米糊]',
-  `shop_good_id` bigint(20) NULL DEFAULT NULL COMMENT '商店商品id',
-  `pack_num` int(11) NULL DEFAULT NULL COMMENT '碎片数量\r\n',
+  `shop_goods_id` bigint(0) NULL DEFAULT NULL COMMENT '商店商品id',
+  `pack_num` int(0) NULL DEFAULT NULL COMMENT '碎片数量',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[碎片类型,rc_pack_type,1=合成,2=掉落]',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '碎片配置' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '碎片配置' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of rc_pack_config
 -- ----------------------------
+INSERT INTO `rc_pack_config` VALUES (1, '1', 1, 10, '2023-05-22 16:21:38', '2023-05-22 16:24:23', 'admin', 'admin', '1');
 
 -- ----------------------------
 -- Table structure for rc_pig_part_config
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_pig_part_config`;
 CREATE TABLE `rc_pig_part_config`  (
-  `config_id` bigint(20) NOT NULL,
+  `config_id` bigint(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '部位名称',
-  `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '部位类型',
-  `sort` int(11) NOT NULL COMMENT '排序',
+  `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[部位类型,rc_part_type,1=头]',
+  `sort` int(0) NOT NULL COMMENT '排序',
   `mode` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[屠宰方式,rc_mode,1=标准,2=精细,3=加工]',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
@@ -1104,24 +1461,25 @@ CREATE TABLE `rc_pig_part_config`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `mode_gut` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[屠宰方式类别,rc_mode_gut,1=要内脏,2=不要内脏]',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '猪部位配置' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '猪部位配置' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_pig_part_config
 -- ----------------------------
+INSERT INTO `rc_pig_part_config` VALUES (1, '头', '1', 1, '1', 'admin', '2023-05-22 17:15:26', 'admin', '2023-05-22 17:15:26', '1');
 
 -- ----------------------------
 -- Table structure for rc_pig_vaccin
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_pig_vaccin`;
 CREATE TABLE `rc_pig_vaccin`  (
-  `pig_vaccin_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `type` tinyint(4) NULL DEFAULT 1 COMMENT '类型:1=疫苗,2=治疗',
-  `pig_id` bigint(20) NULL DEFAULT NULL COMMENT '猪id',
+  `pig_vaccin_id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `type` tinyint(0) NULL DEFAULT 1 COMMENT '类型:1=疫苗,2=治疗',
+  `pig_id` bigint(0) NULL DEFAULT NULL COMMENT '猪id',
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标题',
-  `coin` int(11) NULL DEFAULT NULL COMMENT '需要缴纳的金币',
+  `coin` int(0) NULL DEFAULT NULL COMMENT '需要缴纳的金币',
   `detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容',
-  `status` tinyint(4) NULL DEFAULT 4 COMMENT '状态:1=已完成,2=等待中,3=治疗中,4=待确认',
+  `status` tinyint(0) NULL DEFAULT 4 COMMENT '状态:1=已完成,2=等待中,3=治疗中,4=待确认',
   `verify_time` timestamp(0) NULL DEFAULT NULL COMMENT '确认时间',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新时间',
@@ -1139,16 +1497,17 @@ CREATE TABLE `rc_pig_vaccin`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_portal_article`;
 CREATE TABLE `rc_portal_article`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '[门户文章类型,rc_portal_article_type,1=品牌故事,2=领养,3=喂养,4=屠宰,5=果园]',
+  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[门户文章类型,rc_portal_article_type,1=品牌故事,2=领养,3=喂养,4=屠宰,5=果园]',
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '描述',
   `video_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '视频地址',
   `images` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '多图',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容',
-  `status` tinyint(4) NULL DEFAULT 1 COMMENT '[门户文章状态,rc_portal_article_status,1=显示,2=隐藏]',
-  `created_at` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `updated_at` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
-  `deleted_at` timestamp(0) NULL DEFAULT NULL COMMENT '删除时间',
+  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[门户文章状态,rc_portal_article_status,1=显示,2=隐藏]',
+  `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
+  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
+  `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '门户文章信息' ROW_FORMAT = Compact;
@@ -1162,12 +1521,12 @@ CREATE TABLE `rc_portal_article`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_process_config`;
 CREATE TABLE `rc_process_config`  (
-  `config_id` bigint(20) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `process_coin` int(11) NULL DEFAULT NULL COMMENT '加工费',
-  `weight` decimal(10, 2) NULL DEFAULT NULL,
+  `config_id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
+  `process_coin` int(0) NULL DEFAULT NULL COMMENT '加工费',
+  `weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '重量',
   `type` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[加工类型,rc_process_type,1=香肠,2=腊肉]',
-  `material_total_coin` int(11) NULL DEFAULT NULL COMMENT '材料总费用',
+  `material_total_coin` int(0) NULL DEFAULT NULL COMMENT '材料总费用',
   `material_ids` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '材料ids',
   `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '说明',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容',
@@ -1178,7 +1537,7 @@ CREATE TABLE `rc_process_config`  (
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '详情',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '加工配置' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '加工配置' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_process_config
@@ -1189,15 +1548,15 @@ CREATE TABLE `rc_process_config`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_process_order`;
 CREATE TABLE `rc_process_order`  (
-  `order_id` bigint(20) NOT NULL,
+  `order_id` bigint(0) NOT NULL,
   `order_no` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `config_id` bigint(20) NULL DEFAULT NULL COMMENT 'process_config_id',
-  `pig_id` int(11) NULL DEFAULT NULL,
+  `config_id` bigint(0) NULL DEFAULT NULL COMMENT 'process_config_id',
+  `pig_id` int(0) NULL DEFAULT NULL,
   `process_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '配置名称',
   `process_time` datetime(0) NULL DEFAULT NULL COMMENT '加工时间',
-  `process_coin` int(11) NULL DEFAULT NULL COMMENT '加工金币',
-  `total_coin` int(11) NULL DEFAULT NULL COMMENT '总金币',
-  `meteria_coin` int(11) NULL DEFAULT NULL COMMENT '材料总金币',
+  `process_coin` int(0) NULL DEFAULT NULL COMMENT '加工金币',
+  `total_coin` int(0) NULL DEFAULT NULL COMMENT '总金币',
+  `meteria_coin` int(0) NULL DEFAULT NULL COMMENT '材料总金币',
   `process_status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[加工状态,rc_process_status,1=待加工,2=加工中,3=加工完成]',
   `pay_time` datetime(0) NULL DEFAULT NULL COMMENT '支付时间',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[支付状态,rc_order_status,1=待支付,2=已支付,3=取消支付]',
@@ -1220,9 +1579,9 @@ CREATE TABLE `rc_process_order`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_product_relation`;
 CREATE TABLE `rc_product_relation`  (
-  `relation_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '商品ID',
-  `pig_product_id` bigint(20) UNSIGNED NOT NULL COMMENT '小猪ID',
-  `fruiter_product_id` bigint(20) UNSIGNED NOT NULL COMMENT '果树ID',
+  `relation_id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '商品ID',
+  `pig_product_id` bigint(0) UNSIGNED NOT NULL COMMENT '小猪ID',
+  `fruiter_product_id` bigint(0) UNSIGNED NOT NULL COMMENT '果树ID',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
@@ -1238,16 +1597,17 @@ CREATE TABLE `rc_product_relation`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_protocol`;
 CREATE TABLE `rc_protocol`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标题',
-  `type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '类型:1=学院信息,2=用户协议,3=隐私公告,4=关于我们',
+  `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[类型,rc_protocol_type,1=学院信息,2=用户协议,3=隐私公告,4=关于我们]',
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容',
-  `status` tinyint(4) NULL DEFAULT 1 COMMENT '状态:1=显示,2=隐藏',
-  `sort` int(11) NULL DEFAULT 100 COMMENT '排序',
-  `created_at` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `updated_at` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
-  `deleted_at` timestamp(0) NULL DEFAULT NULL COMMENT '删除时间',
+  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[状态,rc_protocol_status,1=显示,2=隐藏]',
+  `sort` int(0) NULL DEFAULT 100 COMMENT '排序',
+  `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
+  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
+  `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '门户信息' ROW_FORMAT = Compact;
@@ -1261,19 +1621,19 @@ CREATE TABLE `rc_protocol`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_recharge_log`;
 CREATE TABLE `rc_recharge_log`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '充值记录ID',
-  `user_id` bigint(20) UNSIGNED NOT NULL COMMENT '充值用户ID',
+  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '充值记录ID',
+  `user_id` bigint(0) UNSIGNED NOT NULL COMMENT '充值用户ID',
   `pay_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[充值类型,rc_recharge_type,1=支付宝,2=VX]',
   `order_no` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单号',
   `trade_no` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '流水号',
   `amount` decimal(10, 2) NOT NULL COMMENT '充值金额',
-  `status` tinyint(3) UNSIGNED NOT NULL COMMENT '[充值状态,rc_recharge_status,0=待支付,1=支付成功,2=支付失败]',
+  `status` tinyint(0) UNSIGNED NOT NULL COMMENT '[充值状态,rc_recharge_status,0=待支付,1=支付成功,2=支付失败]',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `coin` int(11) NULL DEFAULT NULL COMMENT '金币',
+  `coin` int(0) NULL DEFAULT NULL COMMENT '金币',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '充值记录表' ROW_FORMAT = Dynamic;
 
@@ -1286,10 +1646,10 @@ CREATE TABLE `rc_recharge_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_recharge_plans`;
 CREATE TABLE `rc_recharge_plans`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '方案ID',
+  `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '方案ID',
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '充值方案名称，例如1000钻石大礼包',
-  `price` int(11) NOT NULL DEFAULT 0 COMMENT '充值方案价格，单位为分，例如100元表示一元钱',
-  `coin` int(11) NOT NULL DEFAULT 0 COMMENT '充值获取的虚拟货币数量，可以是金币、钻石',
+  `price` int(0) NOT NULL DEFAULT 0 COMMENT '充值方案价格，单位为分，例如100元表示一元钱',
+  `coin` int(0) NOT NULL DEFAULT 0 COMMENT '充值获取的虚拟货币数量，可以是金币、钻石',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用于记录一些特别的说明，例如是否限购、是否赠送额外物品等',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
@@ -1307,19 +1667,19 @@ CREATE TABLE `rc_recharge_plans`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_redeem_code`;
 CREATE TABLE `rc_redeem_code`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT,
   `redeem_code` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '兑换码',
-  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
-  `coin` int(11) NULL DEFAULT NULL COMMENT '金币',
-  `reality_coin` int(11) NULL DEFAULT NULL COMMENT '实际金币',
-  `status` tinyint(4) NOT NULL DEFAULT 2 COMMENT '[兑换码状态,rc_redeem_code_status,1=已使用,2=未使用,3=已过期]',
+  `user_id` bigint(0) NULL DEFAULT NULL COMMENT '用户id',
+  `coin` int(0) NULL DEFAULT NULL COMMENT '金币',
+  `reality_coin` int(0) NULL DEFAULT NULL COMMENT '实际金币',
+  `status` tinyint(0) NOT NULL DEFAULT 2 COMMENT '[兑换码状态,rc_redeem_code_status,1=已使用,2=未使用,3=已过期]',
   `expire_time` datetime(0) NULL DEFAULT NULL COMMENT '过期时间',
   `used_time` timestamp(0) NULL DEFAULT NULL COMMENT '使用时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `config_id` bigint(20) NULL DEFAULT NULL COMMENT '兑换配置id',
+  `config_id` bigint(0) NULL DEFAULT NULL COMMENT '兑换配置id',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `redeem_code_unique`(`redeem_code`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '兑换码表' ROW_FORMAT = Dynamic;
@@ -1333,28 +1693,30 @@ CREATE TABLE `rc_redeem_code`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_redeem_config`;
 CREATE TABLE `rc_redeem_config`  (
-  `config_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `config_id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT,
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '[兑换类型,rc_redeem_type,1=市场,2=商品]',
-  `coin` int(11) NULL DEFAULT NULL COMMENT '金币',
-  `goods_id` bigint(20) NULL DEFAULT NULL COMMENT '商品id',
-  `market_id` bigint(20) NULL DEFAULT NULL COMMENT '市场id',
+  `coin` int(0) NULL DEFAULT NULL COMMENT '金币',
+  `goods_id` bigint(0) NULL DEFAULT NULL COMMENT '商品id',
+  `market_id` bigint(0) NULL DEFAULT NULL COMMENT '市场id',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '兑换配置表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '兑换配置表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_redeem_config
 -- ----------------------------
+INSERT INTO `rc_redeem_config` VALUES (1, '2', 50, 1, NULL, 'admin', '2023-05-22 13:19:04', 'admin', '2023-05-22 15:10:03');
+INSERT INTO `rc_redeem_config` VALUES (2, '2', 88, 1, NULL, 'admin', '2023-05-22 15:05:43', 'admin', '2023-05-22 15:05:43');
 
 -- ----------------------------
 -- Table structure for rc_service_base
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_service_base`;
 CREATE TABLE `rc_service_base`  (
-  `service_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `service_id` bigint(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '名称',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[基础服务类别,rc_service_base_type,0=食物,1=农资]',
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片',
@@ -1365,82 +1727,88 @@ CREATE TABLE `rc_service_base`  (
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '[状态,rc_status,0=正常,1=停用]',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
+  `sort` int(0) NULL DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`service_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '基础食物配置表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '基础食物配置表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of rc_service_base
 -- ----------------------------
+INSERT INTO `rc_service_base` VALUES (3, '食物1', '0', NULL, 1, NULL, '2023-05-20 14:34:33', '2023-05-20 14:34:33', '0', 'admin', 'admin', 1);
+INSERT INTO `rc_service_base` VALUES (4, '农资1', '1', NULL, 1, NULL, '2023-05-20 14:35:01', '2023-05-20 14:35:01', '0', 'admin', 'admin', 2);
 
 -- ----------------------------
 -- Table structure for rc_shop_category
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_shop_category`;
 CREATE TABLE `rc_shop_category`  (
-  `category_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '分类id',
+  `category_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '分类id',
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分类名称',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '[状态,rc_status,0=正常,1=停用]',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '[删除标志,rc_del_flag,0=正常,2=删除]',
-  `sort` int(11) NULL DEFAULT NULL COMMENT '分类排序',
+  `sort` int(0) NULL DEFAULT NULL COMMENT '分类排序',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品分类表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品分类表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_shop_category
 -- ----------------------------
+INSERT INTO `rc_shop_category` VALUES (1, '分类1', '0', '0', 1, 'admin', 'admin', '2023-05-20 18:06:17', '2023-05-20 18:06:17');
+INSERT INTO `rc_shop_category` VALUES (2, '分类2', '0', '0', 2, 'admin', 'admin', '2023-05-20 18:06:24', '2023-05-20 18:06:24');
 
 -- ----------------------------
 -- Table structure for rc_shop_goods
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_shop_goods`;
 CREATE TABLE `rc_shop_goods`  (
-  `goods_id` bigint(20) NOT NULL COMMENT '商品id',
-  `category_id` bigint(20) NOT NULL COMMENT '商品类目id',
+  `goods_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '商品id',
+  `category_id` bigint(0) NOT NULL COMMENT '商品类目id',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[市场类别,ranch_market_category,1=猪,2=树]',
-  `level_id` bigint(20) NOT NULL COMMENT '商品适用等级id',
-  `months` int(11) NULL DEFAULT NULL COMMENT '商品适用月份',
+  `level_id` bigint(0) NOT NULL COMMENT '商品适用等级id',
+  `months` int(0) NULL DEFAULT NULL COMMENT '商品适用月份',
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品名称',
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片',
   `is_discount` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[折扣,rc_discount,1=是,2=否]',
-  `cost_price` int(11) NOT NULL COMMENT '原价',
-  `price` int(11) NOT NULL COMMENT '商品价格',
-  `settle_price` int(11) NOT NULL COMMENT '结算价格',
-  `stock` int(11) NOT NULL DEFAULT 0 COMMENT '库存',
+  `cost_price` int(0) NOT NULL COMMENT '原价',
+  `price` int(0) NOT NULL COMMENT '商品价格',
+  `settle_price` int(0) NOT NULL COMMENT '结算价格',
+  `stock` int(0) NOT NULL DEFAULT 0 COMMENT '库存',
   `weight` decimal(10, 2) NOT NULL COMMENT '重量',
   `is_send` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[赠送状态,rc_send,1=否,2=是]',
   `is_package` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[套餐,rc_package,1=是,2=否]',
   `package_use_goods` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '套餐使用商品',
   `goods_status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[商品状态,rc_goods_status,1=上架,2=下架]',
-  `sort` int(11) NULL DEFAULT NULL COMMENT '排序',
+  `sort` int(0) NULL DEFAULT NULL COMMENT '排序',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`goods_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商店商品表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商店商品表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_shop_goods
 -- ----------------------------
+INSERT INTO `rc_shop_goods` VALUES (1, 1, '1', 1, 1, '商品1', NULL, '1', 10, 10, 10, 10, 1.00, '1', '1', '1', '1', 1, 'admin', 'admin', '2023-05-22 10:39:36', '2023-05-20 18:24:53');
 
 -- ----------------------------
 -- Table structure for rc_shop_order
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_shop_order`;
 CREATE TABLE `rc_shop_order`  (
-  `order_id` bigint(20) NOT NULL COMMENT '订单id',
+  `order_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '订单id',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[市场类别,ranch_market_category,1=猪,2=树]',
-  `months` int(11) NULL DEFAULT NULL COMMENT '商品适用月份',
+  `months` int(0) NULL DEFAULT NULL COMMENT '商品适用月份',
   `order_no` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单号',
-  `is_discount` tinyint(1) NOT NULL COMMENT '[折扣,rc_discount,1=是,2=否]',
-  `goods_coin` int(11) NOT NULL COMMENT '商品总金币',
+  `is_discount` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[折扣,rc_discount,1=是,2=否]',
+  `goods_coin` int(0) NOT NULL COMMENT '商品总金币',
   `weight` decimal(10, 2) NOT NULL COMMENT '总重量',
-  `is_send` tinyint(1) NULL DEFAULT NULL COMMENT '[赠送状态,rc_send,1=否,2=是]',
-  `is_package` tinyint(1) NULL DEFAULT NULL COMMENT '[套餐,rc_package,1=是,2=否]',
+  `is_send` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[赠送状态,rc_send,1=否,2=是]',
+  `is_package` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[套餐,rc_package,1=是,2=否]',
   `package_use_goods` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '套餐使用商品',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[支付状态,rc_order_status,1=待支付,2=已支付,3=取消支付]',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
@@ -1448,25 +1816,26 @@ CREATE TABLE `rc_shop_order`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商店商品表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商店订单表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_shop_order
 -- ----------------------------
+INSERT INTO `rc_shop_order` VALUES (1, '1', 123, '123', '1', 123, 123.00, '1', '1', '1', '1', 'admin', 'admin', '2023-05-22 11:17:40', '2023-05-22 11:17:40');
 
 -- ----------------------------
 -- Table structure for rc_sms_code
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_sms_code`;
 CREATE TABLE `rc_sms_code`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '记录ID',
+  `id` int(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '记录ID',
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '手机号码',
-  `type` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '短信类型\r\n验证码\r\n活动信息等',
+  `type` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[短信类型,sms_code_type,1=验证码,2=活动信息]',
   `code` varchar(6) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '短信验证码',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '短信验证码' ROW_FORMAT = Dynamic;
 
@@ -1479,8 +1848,8 @@ CREATE TABLE `rc_sms_code`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_sms_log`;
 CREATE TABLE `rc_sms_log`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '记录ID',
-  `user_id` bigint(20) NOT NULL COMMENT '用户ID',
+  `id` int(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '记录ID',
+  `user_id` bigint(0) NOT NULL COMMENT '用户ID',
   `mobile` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '手机号码',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '短信内容',
   `type` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[短信类型,rc_sms_log_type,1=登录,2=注册,3=修改密码,4=找回密码]',
@@ -1504,36 +1873,39 @@ CREATE TABLE `rc_sms_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_time_config`;
 CREATE TABLE `rc_time_config`  (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(0) NOT NULL AUTO_INCREMENT,
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[时间配置类型,rc_time_config_type,1=屠宰,2=加工,3=采摘]',
-  `num` int(11) NOT NULL COMMENT '数量',
-  `day` datetime(0) NOT NULL,
+  `num` int(0) NOT NULL COMMENT '数量',
+  `day` datetime(0) NOT NULL COMMENT '时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '时间配置' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '时间配置' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_time_config
 -- ----------------------------
+INSERT INTO `rc_time_config` VALUES (1, '1', 12, '2023-05-24 00:00:00', 'admin', '2023-05-22 15:17:34', 'admin', '2023-05-22 15:17:34');
+INSERT INTO `rc_time_config` VALUES (2, '2', 12, '2023-05-25 00:00:00', 'admin', '2023-05-22 15:17:48', 'admin', '2023-05-22 15:17:48');
+INSERT INTO `rc_time_config` VALUES (3, '3', 33, '2023-05-27 00:00:00', 'admin', '2023-05-22 15:17:57', 'admin', '2023-05-22 15:17:57');
 
 -- ----------------------------
 -- Table structure for rc_user
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_user`;
 CREATE TABLE `rc_user`  (
-  `user_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `user_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `user_no` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户编号',
   `wx_openid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户微信openid',
   `mini_openid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '小程序用户openid',
   `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户账号',
-  `receivable_pack` int(11) NULL DEFAULT NULL COMMENT '可收取碎片',
-  `total_pack` int(11) NULL DEFAULT 0 COMMENT '碎片总数',
+  `receivable_pack` int(0) NULL DEFAULT 0 COMMENT '可收取碎片',
+  `total_pack` int(0) NULL DEFAULT 0 COMMENT '碎片总数',
   `nick_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户昵称',
-  `coins` bigint(20) NULL DEFAULT 0 COMMENT '持有金币数',
-  `coin_consume` bigint(20) NULL DEFAULT 0 COMMENT '消耗金币数',
+  `coins` bigint(0) NULL DEFAULT 0 COMMENT '持有金币数',
+  `coin_consume` bigint(0) NULL DEFAULT 0 COMMENT '消耗金币数',
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '用户邮箱',
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '手机号码',
   `sex` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '[用户性别,rc_sex,0=男,1=女,2=未知]',
@@ -1548,31 +1920,32 @@ CREATE TABLE `rc_user`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `referrer` bigint(20) NULL DEFAULT NULL COMMENT '直推',
+  `referrer` bigint(0) NULL DEFAULT NULL COMMENT '直推',
   `invite_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户邀请码',
   `jpush_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '极光推送id',
   `pay_pwd` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '支付密码',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_user
 -- ----------------------------
+INSERT INTO `rc_user` VALUES (1, 'u1000288', NULL, NULL, 'ranch', 0, 0, 'ranch', 0, 0, '', '', '0', 'http://yipinnongchang.oss-cn-beijing.aliyuncs.com/user-images/3cd8e392ed629bf4191a5b1e16d60cff.jpg', NULL, NULL, '', '0', '0', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for rc_user_addresses
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_user_addresses`;
 CREATE TABLE `rc_user_addresses`  (
-  `address_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '收货地址ID',
-  `user_id` bigint(20) NOT NULL COMMENT '用户ID',
+  `address_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '收货地址ID',
+  `user_id` bigint(0) NOT NULL COMMENT '用户ID',
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '收件人姓名',
   `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '收件人电话',
   `province` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '所在省份',
   `city` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '所在城市',
   `district` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '所在区县',
   `detail_address` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '详细地址',
-  `is_default` tinyint(4) NULL DEFAULT 0 COMMENT '[默认地址,rc_address_default,1=是,2=否]',
+  `is_default` tinyint(0) NULL DEFAULT 0 COMMENT '[默认地址,rc_address_default,1=是,2=否]',
   `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
@@ -1589,11 +1962,11 @@ CREATE TABLE `rc_user_addresses`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_user_friend`;
 CREATE TABLE `rc_user_friend`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户ID',
-  `fuid` bigint(20) NULL DEFAULT NULL COMMENT '好友uid',
+  `id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(0) NULL DEFAULT NULL COMMENT '用户ID',
+  `fuid` bigint(0) NULL DEFAULT NULL COMMENT '好友uid',
   `is_steal` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[偷取,rc_steal,1=是,2=否]',
-  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[好友通过状态rc_friend_status,1=已同意,2=等待中,3=已拒绝]',
+  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[好友通过状态,rc_friend_status,1=已同意,2=等待中,3=已拒绝]',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
@@ -1610,33 +1983,33 @@ CREATE TABLE `rc_user_friend`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_user_fruiter`;
 CREATE TABLE `rc_user_fruiter`  (
-  `fruiter_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '果树ID',
-  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户ID',
+  `fruiter_id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '果树ID',
+  `user_id` bigint(0) NULL DEFAULT NULL COMMENT '用户ID',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `market_id` bigint(20) NULL DEFAULT NULL COMMENT '领养种类',
+  `market_id` bigint(0) NULL DEFAULT NULL COMMENT '领养种类',
   `raise_user_ids` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '合养人',
-  `farmer_id` bigint(20) NULL DEFAULT NULL COMMENT '农户id',
+  `farmer_id` bigint(0) NULL DEFAULT NULL COMMENT '农户id',
   `farmer_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '农户名称',
   `nickname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '昵称',
-  `level` int(11) NULL DEFAULT 31 COMMENT '当前等级',
+  `level` int(0) NULL DEFAULT 31 COMMENT '当前等级',
   `sn` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '领养编号',
-  `coin` int(11) NULL DEFAULT NULL COMMENT '保证金金币',
+  `coin` int(0) NULL DEFAULT NULL COMMENT '保证金金币',
   `is_raise` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[合养,rc_raise,1=是,2=否]',
   `is_insure` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[投保,rc_insure,1=是,2=否]',
   `is_control` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '2' COMMENT '[托管,rc_control,1=是,2=否]',
-  `control_day` int(11) NULL DEFAULT NULL COMMENT '托管天数',
-  `unlock_month` int(11) NOT NULL DEFAULT 0 COMMENT '已解锁月份',
+  `control_day` int(0) NULL DEFAULT NULL COMMENT '托管天数',
+  `unlock_month` int(0) NOT NULL DEFAULT 0 COMMENT '已解锁月份',
   `seat` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '位置',
-  `camera_id` bigint(20) NULL DEFAULT NULL COMMENT '摄像id',
+  `camera_id` bigint(0) NULL DEFAULT NULL COMMENT '摄像id',
   `freeze_credit` decimal(10, 2) NULL DEFAULT NULL COMMENT '农户冻结金额',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '3' COMMENT '[果树状态,rc_fruiter_status,1=准备中,2=正常,3=采摘中,4=已采摘,5=死亡]',
   `service_status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '4' COMMENT '[果树服务状态,rc_fruiter_service_status,1=已服务,2=未服务]',
   `settlement_method` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[农户结算方式,rc_settlement_method,1=任务分配,2=总数分配]',
   `trace_source_code` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '溯源码地址',
   `pick_time` timestamp(0) NULL DEFAULT NULL COMMENT '采摘时间',
-  `market_order_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '购买订单id',
+  `market_order_id` bigint(0) NOT NULL DEFAULT 0 COMMENT '购买订单id',
   `min_weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '保底收成',
-  `like_num` int(11) NULL DEFAULT 0 COMMENT '点赞数量',
+  `like_num` int(0) NULL DEFAULT 0 COMMENT '点赞数量',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
@@ -1653,18 +2026,18 @@ CREATE TABLE `rc_user_fruiter`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_user_pack_log`;
 CREATE TABLE `rc_user_pack_log`  (
-  `log_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `pay_user_id` bigint(20) NULL DEFAULT NULL COMMENT '支出用户ID',
-  `pack_config_id` bigint(20) NULL DEFAULT 0 COMMENT '碎片配置id',
+  `log_id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `pay_user_id` bigint(0) NULL DEFAULT NULL COMMENT '支出用户ID',
+  `pack_config_id` bigint(0) NULL DEFAULT 0 COMMENT '碎片配置id',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[碎片日志类型,rc_pack_log_type,1=收入,2=支出]',
-  `warehouse_id` bigint(20) NULL DEFAULT 0 COMMENT '用户仓库物品id',
+  `warehouse_id` bigint(0) NULL DEFAULT 0 COMMENT '用户仓库物品id',
   `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人\r\n',
-  `before_pack` int(11) NULL DEFAULT NULL COMMENT '支出/收入前 碎片',
-  `after_pack` int(11) NULL DEFAULT NULL COMMENT '支出/收入后 碎片',
-  `income_user_id` int(11) NULL DEFAULT NULL COMMENT '收入用户id',
+  `before_pack` int(0) NULL DEFAULT NULL COMMENT '支出/收入前 碎片',
+  `after_pack` int(0) NULL DEFAULT NULL COMMENT '支出/收入后 碎片',
+  `income_user_id` int(0) NULL DEFAULT NULL COMMENT '收入用户id',
   PRIMARY KEY (`log_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '碎片日志' ROW_FORMAT = Compact;
 
@@ -1677,27 +2050,27 @@ CREATE TABLE `rc_user_pack_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_user_pig`;
 CREATE TABLE `rc_user_pig`  (
-  `pig_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '小猪ID',
-  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户ID',
+  `pig_id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '小猪ID',
+  `user_id` bigint(0) NULL DEFAULT NULL COMMENT '用户ID',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `market_id` bigint(20) NULL DEFAULT NULL COMMENT '领养种类',
+  `market_id` bigint(0) NULL DEFAULT NULL COMMENT '领养种类',
   `raise_user_ids` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '合养人',
-  `farmer_id` bigint(20) NULL DEFAULT NULL COMMENT '农户id',
+  `farmer_id` bigint(0) NULL DEFAULT NULL COMMENT '农户id',
   `farmer_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '农户名称',
   `nickname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '昵称',
-  `level` int(11) NULL DEFAULT 31 COMMENT '当前等级',
+  `level` int(0) NULL DEFAULT 31 COMMENT '当前等级',
   `sn` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '领养编号',
-  `coin` int(11) NULL DEFAULT NULL COMMENT '备用金金币',
-  `used_coin` int(11) NULL DEFAULT NULL COMMENT '消耗金币',
+  `coin` int(0) NULL DEFAULT NULL COMMENT '备用金金币',
+  `used_coin` int(0) NULL DEFAULT NULL COMMENT '消耗金币',
   `is_raise` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[合养,rc_raise,1=是,2=否]',
   `is_insure` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[投保,rc_insure,1=是,2=否]',
   `is_pig_insure` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[投保养猪险,rc_pig_insure,1=是,2=否]',
   `is_control` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[托管,rc_control,1=是,2=否]',
-  `control_day` int(11) NULL DEFAULT NULL COMMENT '托管天数',
+  `control_day` int(0) NULL DEFAULT NULL COMMENT '托管天数',
   `seat` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '位置',
-  `camera_id` bigint(20) NULL DEFAULT NULL COMMENT '摄像id',
+  `camera_id` bigint(0) NULL DEFAULT NULL COMMENT '摄像id',
   `freeze_credit` decimal(10, 2) NULL DEFAULT NULL COMMENT '农户冻结金额',
-  `part_num` int(11) NOT NULL COMMENT '部位数量',
+  `part_num` int(0) NOT NULL COMMENT '部位数量',
   `mode` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[屠宰方式,rc_mode,1=标准,2=精细,3=加工]',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '3' COMMENT '[用户猪状态,rc_user_pig_status,1=准备中,2=正常,3=已预约,4=屠宰中 5已完成,0=死亡]',
   `feed_status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '4' COMMENT '[喂养,rc_feed,1=已喂养,2=待喂养]',
@@ -1705,8 +2078,8 @@ CREATE TABLE `rc_user_pig`  (
   `trace_source_code` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '溯源码地址',
   `slaughter_at` datetime(0) NULL DEFAULT NULL COMMENT '屠宰时间',
   `is_pig_king` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[猪王,rc_pig_king,1=是,2=否]',
-  `market_order_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '购买订单id',
-  `like_num` int(11) NULL DEFAULT 0 COMMENT '点赞数量',
+  `market_order_id` bigint(0) NOT NULL DEFAULT 0 COMMENT '购买订单id',
+  `like_num` int(0) NULL DEFAULT 0 COMMENT '点赞数量',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
@@ -1727,20 +2100,20 @@ CREATE TABLE `rc_user_pig`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_user_service_log`;
 CREATE TABLE `rc_user_service_log`  (
-  `log_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `feed_type` tinyint(4) NULL DEFAULT 1 COMMENT '[喂养类型,rc_feed_type,1=早,2=中,3=晚]',
-  `type` tinyint(4) NULL DEFAULT 1 COMMENT '[服务类型,rc_service_type,1=喂养,2=服务,3=治疗,4=耕作]',
-  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '喂养用户',
-  `farmer_id` bigint(20) NULL DEFAULT NULL COMMENT '农场主',
-  `fruiter_id` bigint(20) NULL DEFAULT NULL COMMENT '果树id',
-  `pig_id` bigint(20) NULL DEFAULT NULL COMMENT '猪ID',
-  `status` tinyint(4) NULL DEFAULT 2 COMMENT '[服务状态,rc_service_status,1=已完成,2=等待中,3=进行中]',
+  `log_id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `feed_type` tinyint(0) NULL DEFAULT 1 COMMENT '[喂养类型,rc_feed_type,1=早,2=中,3=晚]',
+  `type` tinyint(0) NULL DEFAULT 1 COMMENT '[服务类型,rc_service_type,1=喂养,2=服务,3=治疗,4=耕作]',
+  `user_id` bigint(0) NULL DEFAULT NULL COMMENT '喂养用户',
+  `farmer_id` bigint(0) NULL DEFAULT NULL COMMENT '农场主',
+  `fruiter_id` bigint(0) NULL DEFAULT NULL COMMENT '果树id',
+  `pig_id` bigint(0) NULL DEFAULT NULL COMMENT '猪ID',
+  `status` tinyint(0) NULL DEFAULT 2 COMMENT '[服务状态,rc_service_status,1=已完成,2=等待中,3=进行中]',
   `start_time` timestamp(0) NULL DEFAULT NULL COMMENT '开始时间',
   `end_time` timestamp(0) NULL DEFAULT NULL COMMENT '结束时间',
   `weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '重量',
   `reality_weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '实际重量',
   `opr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '操作',
-  `use_coin` int(11) NULL DEFAULT 0 COMMENT '消耗金币',
+  `use_coin` int(0) NULL DEFAULT 0 COMMENT '消耗金币',
   `feedback_type` tinyint(1) NULL DEFAULT NULL COMMENT '[反馈类型,rc_feedback_type,1=反馈,2=点赞]',
   `feedback` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '反馈',
   `feedback_detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '反馈详情',
@@ -1750,13 +2123,13 @@ CREATE TABLE `rc_user_service_log`  (
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
-  `warehouse_id` bigint(20) NULL DEFAULT NULL COMMENT '用户仓库id',
+  `warehouse_id` bigint(0) NULL DEFAULT NULL COMMENT '用户仓库id',
   `video_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '视频名称',
   `video_url` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '视频URL',
-  `file_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '视频文件格式',
-  `duration` bigint(20) NULL DEFAULT NULL COMMENT '视频时长（秒）',
+  `file_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[视频文件格式,rc_file_type,1=mp4,2=rmvb,3=avi]',
+  `duration` bigint(0) NULL DEFAULT NULL COMMENT '视频时长（秒）',
   `resolution` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '视频分辨率',
-  `video_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '[视频状态,rc_video_status,0=停用,1=正常,2=删除]',
+  `video_status` tinyint(0) UNSIGNED NULL DEFAULT NULL COMMENT '[视频状态,rc_video_status,0=停用,1=正常,2=删除]',
   PRIMARY KEY (`log_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '农/用户操作记录日志' ROW_FORMAT = Compact;
 
@@ -1769,16 +2142,16 @@ CREATE TABLE `rc_user_service_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_user_warehouse`;
 CREATE TABLE `rc_user_warehouse`  (
-  `warehouse_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '仓库配送物品id',
+  `warehouse_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '仓库配送物品id',
   `pet_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[市场类别,ranch_market_category,1=猪,2=树]',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[用户物品使用状态,rc_user_warehouse_status,1=未使用,2=已使用,3=托管]',
-  `shop_order_id` bigint(20) NULL DEFAULT NULL COMMENT '对应订单ID',
-  `goods_id` bigint(20) NULL DEFAULT NULL COMMENT '商品ID',
-  `shop_category_id` bigint(20) NULL DEFAULT NULL COMMENT '类目id',
-  `months` int(11) NULL DEFAULT 0 COMMENT '适用月份',
-  `pig_id` bigint(20) NULL DEFAULT 0 COMMENT '使用物品猪ID',
-  `fruiter_id` bigint(20) NULL DEFAULT 0 COMMENT '使用物品果树id\r\n',
-  `user_id` int(11) NULL DEFAULT NULL COMMENT '用户ID',
+  `shop_order_id` bigint(0) NULL DEFAULT NULL COMMENT '对应订单ID',
+  `goods_id` bigint(0) NULL DEFAULT NULL COMMENT '商品ID',
+  `shop_category_id` bigint(0) NULL DEFAULT NULL COMMENT '类目id',
+  `months` int(0) NULL DEFAULT 0 COMMENT '适用月份',
+  `pig_id` bigint(0) NULL DEFAULT 0 COMMENT '使用物品猪ID',
+  `fruiter_id` bigint(0) NULL DEFAULT 0 COMMENT '使用物品果树id',
+  `user_id` int(0) NULL DEFAULT NULL COMMENT '用户ID',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品名称',
   `dosage_ids` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '加量食物',
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品图片',
@@ -1786,8 +2159,8 @@ CREATE TABLE `rc_user_warehouse`  (
   `is_package` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[套餐,rc_package,1=是,2=否]',
   `is_exchange` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[兑换,rc_exchange,1=是,2=否]',
   `package_use` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '套餐使用商品',
-  `applied_level_min` int(11) NULL DEFAULT NULL COMMENT '最低适用等级',
-  `applied_level_max` int(11) NULL DEFAULT NULL COMMENT '最高适用等级',
+  `applied_level_min` int(0) NULL DEFAULT NULL COMMENT '最低适用等级',
+  `applied_level_max` int(0) NULL DEFAULT NULL COMMENT '最高适用等级',
   `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1805,11 +2178,11 @@ CREATE TABLE `rc_user_warehouse`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_vaccin`;
 CREATE TABLE `rc_vaccin`  (
-  `vaccin_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` tinyint(4) NULL DEFAULT 1 COMMENT '疫苗名称',
-  `coin` int(11) NULL DEFAULT NULL COMMENT '需要金币',
+  `vaccin_id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `name` tinyint(0) NULL DEFAULT 1 COMMENT '疫苗名称',
+  `coin` int(0) NULL DEFAULT NULL COMMENT '需要金币',
   `detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容',
-  `status` tinyint(4) NULL DEFAULT 4 COMMENT '[疫苗状态,rc_vaccin_status,1=上架,2=下架]',
+  `status` tinyint(0) NULL DEFAULT 4 COMMENT '[疫苗状态,rc_vaccin_status,1=上架,2=下架]',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新时间',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
@@ -1826,7 +2199,7 @@ CREATE TABLE `rc_vaccin`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_config`;
 CREATE TABLE `sys_config`  (
-  `config_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '参数主键',
+  `config_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '参数主键',
   `config_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '参数名称',
   `config_key` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '参数键名',
   `config_value` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '参数键值',
@@ -1857,11 +2230,11 @@ INSERT INTO `sys_config` VALUES (9, '用户端-微信小程序授权登录开关
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dept`;
 CREATE TABLE `sys_dept`  (
-  `dept_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '部门id',
-  `parent_id` bigint(20) NULL DEFAULT 0 COMMENT '父部门id',
+  `dept_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '部门id',
+  `parent_id` bigint(0) NULL DEFAULT 0 COMMENT '父部门id',
   `ancestors` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '祖级列表',
   `dept_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '部门名称',
-  `order_num` int(11) NULL DEFAULT 0 COMMENT '显示顺序',
+  `order_num` int(0) NULL DEFAULT 0 COMMENT '显示顺序',
   `leader` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '负责人',
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系电话',
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
@@ -1893,8 +2266,8 @@ INSERT INTO `sys_dept` VALUES (109, 102, '0,100,102', '财务部门', 2, '若依
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict_data`;
 CREATE TABLE `sys_dict_data`  (
-  `dict_code` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典编码',
-  `dict_sort` int(11) NULL DEFAULT 0 COMMENT '字典排序',
+  `dict_code` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '字典编码',
+  `dict_sort` int(0) NULL DEFAULT 0 COMMENT '字典排序',
   `dict_label` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典标签',
   `dict_value` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典键值',
   `dict_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典类型',
@@ -1908,7 +2281,7 @@ CREATE TABLE `sys_dict_data`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 256 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict_data
@@ -1948,7 +2321,7 @@ INSERT INTO `sys_dict_data` VALUES (29, 2, '失败', '1', 'sys_common_status', '
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict_type`;
 CREATE TABLE `sys_dict_type`  (
-  `dict_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典主键',
+  `dict_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '字典主键',
   `dict_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典名称',
   `dict_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典类型',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '状态（0正常 1停用）',
@@ -1959,7 +2332,7 @@ CREATE TABLE `sys_dict_type`  (
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_id`) USING BTREE,
   UNIQUE INDEX `dict_type`(`dict_type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 98 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict_type
@@ -1980,7 +2353,7 @@ INSERT INTO `sys_dict_type` VALUES (10, '系统状态', 'sys_common_status', '0'
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_job`;
 CREATE TABLE `sys_job`  (
-  `job_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务ID',
+  `job_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '任务ID',
   `job_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '任务名称',
   `job_group` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'DEFAULT' COMMENT '任务组名',
   `invoke_target` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '调用目标字符串',
@@ -2008,7 +2381,7 @@ INSERT INTO `sys_job` VALUES (3, '系统默认（多参）', 'DEFAULT', 'ryTask.
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_job_log`;
 CREATE TABLE `sys_job_log`  (
-  `job_log_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务日志ID',
+  `job_log_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '任务日志ID',
   `job_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '任务名称',
   `job_group` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '任务组名',
   `invoke_target` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '调用目标字符串',
@@ -2028,7 +2401,7 @@ CREATE TABLE `sys_job_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_logininfor`;
 CREATE TABLE `sys_logininfor`  (
-  `info_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '访问ID',
+  `info_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '访问ID',
   `user_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '用户账号',
   `ipaddr` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '登录IP地址',
   `login_location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '登录地点',
@@ -2040,7 +2413,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status`) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 59 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -2085,21 +2458,39 @@ INSERT INTO `sys_logininfor` VALUES (37, 'admin', '127.0.0.1', '内网IP', 'Chro
 INSERT INTO `sys_logininfor` VALUES (38, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-13 15:49:48');
 INSERT INTO `sys_logininfor` VALUES (39, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-18 16:57:48');
 INSERT INTO `sys_logininfor` VALUES (40, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-18 18:09:16');
+INSERT INTO `sys_logininfor` VALUES (41, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-19 18:13:56');
+INSERT INTO `sys_logininfor` VALUES (42, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-20 09:34:18');
+INSERT INTO `sys_logininfor` VALUES (43, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-20 10:20:25');
+INSERT INTO `sys_logininfor` VALUES (44, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-20 13:03:28');
+INSERT INTO `sys_logininfor` VALUES (45, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-05-20 13:40:38');
+INSERT INTO `sys_logininfor` VALUES (46, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-20 13:40:42');
+INSERT INTO `sys_logininfor` VALUES (47, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-05-20 17:50:17');
+INSERT INTO `sys_logininfor` VALUES (48, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-20 17:50:21');
+INSERT INTO `sys_logininfor` VALUES (49, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-22 09:37:56');
+INSERT INTO `sys_logininfor` VALUES (50, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-22 13:12:44');
+INSERT INTO `sys_logininfor` VALUES (51, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-22 13:12:50');
+INSERT INTO `sys_logininfor` VALUES (52, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-22 13:12:54');
+INSERT INTO `sys_logininfor` VALUES (53, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-23 09:40:32');
+INSERT INTO `sys_logininfor` VALUES (54, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-23 10:33:47');
+INSERT INTO `sys_logininfor` VALUES (55, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-23 13:07:08');
+INSERT INTO `sys_logininfor` VALUES (56, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-23 14:20:09');
+INSERT INTO `sys_logininfor` VALUES (57, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-24 11:05:38');
+INSERT INTO `sys_logininfor` VALUES (58, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-05-24 13:08:02');
 
 -- ----------------------------
 -- Table structure for sys_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menu`;
 CREATE TABLE `sys_menu`  (
-  `menu_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
+  `menu_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
   `menu_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '菜单名称',
-  `parent_id` bigint(20) NULL DEFAULT 0 COMMENT '父菜单ID',
-  `order_num` int(11) NULL DEFAULT 0 COMMENT '显示顺序',
+  `parent_id` bigint(0) NULL DEFAULT 0 COMMENT '父菜单ID',
+  `order_num` int(0) NULL DEFAULT 0 COMMENT '显示顺序',
   `path` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '路由地址',
   `component` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '组件路径',
   `query` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '路由参数',
-  `is_frame` int(11) NULL DEFAULT 1 COMMENT '是否为外链（0是 1否）',
-  `is_cache` int(11) NULL DEFAULT 0 COMMENT '是否缓存（0缓存 1不缓存）',
+  `is_frame` int(0) NULL DEFAULT 1 COMMENT '是否为外链（0是 1否）',
+  `is_cache` int(0) NULL DEFAULT 0 COMMENT '是否缓存（0缓存 1不缓存）',
   `menu_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '菜单类型（M目录 C菜单 F按钮）',
   `visible` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '菜单状态（0显示 1隐藏）',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '菜单状态（0正常 1停用）',
@@ -2111,7 +2502,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1110 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1255 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -2232,31 +2623,134 @@ INSERT INTO `sys_menu` VALUES (1088, '商品分类修改', 1104, 3, '#', '', NUL
 INSERT INTO `sys_menu` VALUES (1089, '商品分类新增', 1104, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:shop_category:add', '#', 'admin', '2023-05-10 16:53:49', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1090, '商品分类查询', 1104, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:shop_category:query', '#', 'admin', '2023-05-10 16:53:49', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1091, '商品分类', 1069, 1, 'shop_category', 'front/shop_category/index', NULL, 1, 0, 'C', '0', '0', 'front:shop_category:list', 'list', 'admin', '2023-05-10 16:53:49', 'admin', '2023-05-10 17:25:25', '商品分类菜单');
-INSERT INTO `sys_menu` VALUES (1092, '商品', 1069, 1, 'shop_goods', 'front/shop_goods/index', NULL, 1, 0, 'C', '0', '0', 'front:shop_goods:list', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '商品菜单');
+INSERT INTO `sys_menu` VALUES (1092, '商品', 1069, 1, 'shop_goods', 'front/shop_goods/index', NULL, 1, 0, 'C', '0', '0', 'front:shop_goods:list', 'list', 'admin', '2023-05-13 10:46:31', 'admin', '2023-05-22 10:41:07', '商品菜单');
 INSERT INTO `sys_menu` VALUES (1093, '商品查询', 1092, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:shop_goods:query', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1094, '商品新增', 1092, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:shop_goods:add', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1095, '商品修改', 1092, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:shop_goods:edit', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1096, '商品删除', 1092, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:shop_goods:remove', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1097, '商品导出', 1092, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:shop_goods:export', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (1098, '食物', 1071, 1, 'food', 'front/food/index', NULL, 1, 0, 'C', '0', '0', 'front:food:list', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '食物菜单');
-INSERT INTO `sys_menu` VALUES (1099, '食物查询', 1098, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:food:query', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (1100, '食物新增', 1098, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:food:add', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (1101, '食物修改', 1098, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:food:edit', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (1102, '食物删除', 1098, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:food:remove', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (1103, '食物导出', 1098, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:food:export', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1104, '等级', 1071, 1, 'level', 'front/level/index', NULL, 1, 0, 'C', '0', '0', 'front:level:list', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '等级菜单');
 INSERT INTO `sys_menu` VALUES (1105, '等级查询', 1104, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:level:query', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1106, '等级新增', 1104, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:level:add', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1107, '等级修改', 1104, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:level:edit', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1108, '等级删除', 1104, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:level:remove', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1109, '等级导出', 1104, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:level:export', '#', 'admin', '2023-05-13 10:46:31', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1122, '食物农资配置', 1071, 1, 'service_base', 'front/service_base/index', NULL, 1, 0, 'C', '0', '0', 'front:service_base:list', '#', 'admin', '2023-05-20 13:46:05', '', NULL, '食物农资配置菜单');
+INSERT INTO `sys_menu` VALUES (1123, '食物农资配置查询', 1122, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:service_base:query', '#', 'admin', '2023-05-20 13:46:05', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1124, '食物农资配置新增', 1122, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:service_base:add', '#', 'admin', '2023-05-20 13:46:05', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1125, '食物农资配置修改', 1122, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:service_base:edit', '#', 'admin', '2023-05-20 13:46:05', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1126, '食物农资配置删除', 1122, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:service_base:remove', '#', 'admin', '2023-05-20 13:46:05', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1127, '食物农资配置导出', 1122, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:service_base:export', '#', 'admin', '2023-05-20 13:46:05', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1128, '商店订单', 1069, 1, 'goods_order', 'front/shop_order/index', NULL, 1, 0, 'C', '0', '0', 'front:goods_order:list', 'list', 'admin', '2023-05-22 11:06:35', 'admin', '2023-05-22 11:07:18', '商店订单菜单');
+INSERT INTO `sys_menu` VALUES (1129, '商店订单查询', 1128, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:goods_order:query', '#', 'admin', '2023-05-22 11:06:35', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1130, '商店订单新增', 1128, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:goods_order:add', '#', 'admin', '2023-05-22 11:06:35', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1131, '商店订单修改', 1128, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:goods_order:edit', '#', 'admin', '2023-05-22 11:06:35', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1132, '商店订单删除', 1128, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:goods_order:remove', '#', 'admin', '2023-05-22 11:06:35', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1133, '商店订单导出', 1128, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:goods_order:export', '#', 'admin', '2023-05-22 11:06:35', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1140, '兑换配置', 1071, 1, 'redeem_config', 'front/redeem_config/index', NULL, 1, 0, 'C', '0', '0', 'front:redeem_config:list', '#', 'admin', '2023-05-22 11:28:07', '', NULL, '兑换配置菜单');
+INSERT INTO `sys_menu` VALUES (1141, '兑换配置查询', 1140, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:redeem_config:query', '#', 'admin', '2023-05-22 11:28:07', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1142, '兑换配置新增', 1140, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:redeem_config:add', '#', 'admin', '2023-05-22 11:28:07', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1143, '兑换配置修改', 1140, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:redeem_config:edit', '#', 'admin', '2023-05-22 11:28:07', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1144, '兑换配置删除', 1140, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:redeem_config:remove', '#', 'admin', '2023-05-22 11:28:07', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1145, '兑换配置导出', 1140, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:redeem_config:export', '#', 'admin', '2023-05-22 11:28:07', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1146, '时间配置', 1071, 1, 'time_config', 'front/time_config/index', NULL, 1, 0, 'C', '0', '0', 'front:time_config:list', '#', 'admin', '2023-05-22 15:13:26', '', NULL, '时间配置菜单');
+INSERT INTO `sys_menu` VALUES (1147, '时间配置查询', 1146, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:time_config:query', '#', 'admin', '2023-05-22 15:13:26', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1148, '时间配置新增', 1146, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:time_config:add', '#', 'admin', '2023-05-22 15:13:26', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1149, '时间配置修改', 1146, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:time_config:edit', '#', 'admin', '2023-05-22 15:13:26', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1150, '时间配置删除', 1146, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:time_config:remove', '#', 'admin', '2023-05-22 15:13:26', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1151, '时间配置导出', 1146, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:time_config:export', '#', 'admin', '2023-05-22 15:13:26', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1158, '碎片配置', 1071, 1, 'pack_config', 'front/pack_config/index', NULL, 1, 0, 'C', '0', '0', 'front:pack_config:list', '#', 'admin', '2023-05-22 15:45:43', '', NULL, '碎片配置菜单');
+INSERT INTO `sys_menu` VALUES (1159, '碎片配置查询', 1158, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:pack_config:query', '#', 'admin', '2023-05-22 15:45:43', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1160, '碎片配置新增', 1158, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:pack_config:add', '#', 'admin', '2023-05-22 15:45:43', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1161, '碎片配置修改', 1158, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:pack_config:edit', '#', 'admin', '2023-05-22 15:45:43', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1162, '碎片配置删除', 1158, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:pack_config:remove', '#', 'admin', '2023-05-22 15:45:43', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1163, '碎片配置导出', 1158, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:pack_config:export', '#', 'admin', '2023-05-22 15:45:43', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1164, '猪部位配置', 1071, 1, 'pig_part_config', 'front/pig_part_config/index', NULL, 1, 0, 'C', '0', '0', 'front:pig_part_config:list', '#', 'admin', '2023-05-22 17:03:45', '', NULL, '猪部位配置菜单');
+INSERT INTO `sys_menu` VALUES (1165, '猪部位配置查询', 1164, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:pig_part_config:query', '#', 'admin', '2023-05-22 17:03:45', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1166, '猪部位配置新增', 1164, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:pig_part_config:add', '#', 'admin', '2023-05-22 17:03:45', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1167, '猪部位配置修改', 1164, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:pig_part_config:edit', '#', 'admin', '2023-05-22 17:03:45', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1168, '猪部位配置删除', 1164, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:pig_part_config:remove', '#', 'admin', '2023-05-22 17:03:45', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1169, '猪部位配置导出', 1164, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:pig_part_config:export', '#', 'admin', '2023-05-22 17:03:45', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1170, '加工配置', 1071, 1, 'process_config', 'front/process_config/index', NULL, 1, 0, 'C', '0', '0', 'front:process_config:list', '#', 'admin', '2023-05-22 17:03:51', '', NULL, '加工配置菜单');
+INSERT INTO `sys_menu` VALUES (1171, '加工配置查询', 1170, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:process_config:query', '#', 'admin', '2023-05-22 17:03:51', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1172, '加工配置新增', 1170, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:process_config:add', '#', 'admin', '2023-05-22 17:03:51', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1173, '加工配置修改', 1170, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:process_config:edit', '#', 'admin', '2023-05-22 17:03:51', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1174, '加工配置删除', 1170, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:process_config:remove', '#', 'admin', '2023-05-22 17:03:51', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1175, '加工配置导出', 1170, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:process_config:export', '#', 'admin', '2023-05-22 17:03:51', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1176, '预约单配置', 1071, 1, 'appointment_config', 'front/appointment_config/index', NULL, 1, 0, 'C', '0', '0', 'front:appointment_config:list', '#', 'admin', '2023-05-22 17:44:18', '', NULL, '预约单配置菜单');
+INSERT INTO `sys_menu` VALUES (1177, '预约单配置查询', 1176, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:appointment_config:query', '#', 'admin', '2023-05-22 17:44:18', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1178, '预约单配置新增', 1176, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:appointment_config:add', '#', 'admin', '2023-05-22 17:44:18', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1179, '预约单配置修改', 1176, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:appointment_config:edit', '#', 'admin', '2023-05-22 17:44:18', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1180, '预约单配置删除', 1176, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:appointment_config:remove', '#', 'admin', '2023-05-22 17:44:19', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1181, '预约单配置导出', 1176, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:appointment_config:export', '#', 'admin', '2023-05-22 17:44:19', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1194, '邀请奖励配置', 1071, 1, 'invite_config', 'front/invite_config/index', NULL, 1, 0, 'C', '0', '0', 'front:invite_config:list', '#', 'admin', '2023-05-22 18:11:32', '', NULL, '邀请奖励配置菜单');
+INSERT INTO `sys_menu` VALUES (1195, '邀请奖励配置查询', 1194, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:invite_config:query', '#', 'admin', '2023-05-22 18:11:32', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1196, '邀请奖励配置新增', 1194, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:invite_config:add', '#', 'admin', '2023-05-22 18:11:32', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1197, '邀请奖励配置修改', 1194, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:invite_config:edit', '#', 'admin', '2023-05-22 18:11:32', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1198, '邀请奖励配置删除', 1194, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:invite_config:remove', '#', 'admin', '2023-05-22 18:11:33', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1199, '邀请奖励配置导出', 1194, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:invite_config:export', '#', 'admin', '2023-05-22 18:11:33', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1200, '配置', 1071, 1, 'config', 'front/config/index', NULL, 1, 0, 'C', '0', '0', 'front:config:list', '#', 'admin', '2023-05-22 18:12:10', '', NULL, '配置菜单');
+INSERT INTO `sys_menu` VALUES (1201, '配置查询', 1200, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:config:query', '#', 'admin', '2023-05-22 18:12:10', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1202, '配置新增', 1200, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:config:add', '#', 'admin', '2023-05-22 18:12:10', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1203, '配置修改', 1200, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:config:edit', '#', 'admin', '2023-05-22 18:12:10', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1204, '配置删除', 1200, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:config:remove', '#', 'admin', '2023-05-22 18:12:10', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1205, '配置导出', 1200, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:config:export', '#', 'admin', '2023-05-22 18:12:10', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1206, '订单管理', 0, 12, 'order', NULL, NULL, 1, 0, 'M', '0', '0', '', 'documentation', 'admin', '2023-05-23 09:44:06', 'admin', '2023-05-23 09:44:28', '');
+INSERT INTO `sys_menu` VALUES (1207, '预约单', 1206, 1, 'appointment_order', 'front/appointment_order/index', NULL, 1, 0, 'C', '0', '0', 'front:appointment_order:list', '#', 'admin', '2023-05-23 11:07:40', '', NULL, '预约单菜单');
+INSERT INTO `sys_menu` VALUES (1208, '预约单查询', 1207, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:appointment_order:query', '#', 'admin', '2023-05-23 11:07:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1209, '预约单新增', 1207, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:appointment_order:add', '#', 'admin', '2023-05-23 11:07:41', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1210, '预约单修改', 1207, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:appointment_order:edit', '#', 'admin', '2023-05-23 11:07:41', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1211, '预约单删除', 1207, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:appointment_order:remove', '#', 'admin', '2023-05-23 11:07:41', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1212, '预约单导出', 1207, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:appointment_order:export', '#', 'admin', '2023-05-23 11:07:41', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1213, '市场订单', 1068, 1, 'market_order', 'front/market_order/index', NULL, 1, 0, 'C', '0', '0', 'front:market_order:list', '#', 'admin', '2023-05-23 16:46:14', '', NULL, '市场订单菜单');
+INSERT INTO `sys_menu` VALUES (1214, '市场订单查询', 1213, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:market_order:query', '#', 'admin', '2023-05-23 16:46:14', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1215, '市场订单新增', 1213, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:market_order:add', '#', 'admin', '2023-05-23 16:46:14', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1216, '市场订单修改', 1213, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:market_order:edit', '#', 'admin', '2023-05-23 16:46:14', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1217, '市场订单删除', 1213, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:market_order:remove', '#', 'admin', '2023-05-23 16:46:14', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1218, '市场订单导出', 1213, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:market_order:export', '#', 'admin', '2023-05-23 16:46:14', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1219, '用户信息', 1061, 1, 'user', 'front/user/index', NULL, 1, 0, 'C', '0', '0', 'front:user:list', '#', 'admin', '2023-05-23 18:04:24', '', NULL, '用户信息菜单');
+INSERT INTO `sys_menu` VALUES (1220, '用户信息查询', 1219, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user:query', '#', 'admin', '2023-05-23 18:04:24', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1221, '用户信息新增', 1219, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user:add', '#', 'admin', '2023-05-23 18:04:24', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1222, '用户信息修改', 1219, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user:edit', '#', 'admin', '2023-05-23 18:04:24', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1223, '用户信息删除', 1219, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user:remove', '#', 'admin', '2023-05-23 18:04:24', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1224, '用户信息导出', 1219, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user:export', '#', 'admin', '2023-05-23 18:04:24', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1225, '用户仓库', 1067, 1, 'user_warehouse', 'front/user_warehouse/index', NULL, 1, 0, 'C', '0', '0', 'front:user_warehouse:list', '#', 'admin', '2023-05-23 18:04:34', '', NULL, '用户仓库菜单');
+INSERT INTO `sys_menu` VALUES (1226, '用户仓库查询', 1225, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_warehouse:query', '#', 'admin', '2023-05-23 18:04:34', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1227, '用户仓库新增', 1225, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_warehouse:add', '#', 'admin', '2023-05-23 18:04:34', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1228, '用户仓库修改', 1225, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_warehouse:edit', '#', 'admin', '2023-05-23 18:04:34', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1229, '用户仓库删除', 1225, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_warehouse:remove', '#', 'admin', '2023-05-23 18:04:34', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1230, '用户仓库导出', 1225, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_warehouse:export', '#', 'admin', '2023-05-23 18:04:34', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1231, '用户小猪', 1067, 1, 'user_pig', 'front/user_pig/index', NULL, 1, 0, 'C', '0', '0', 'front:user_pig:list', '#', 'admin', '2023-05-23 18:04:40', '', NULL, '用户小猪菜单');
+INSERT INTO `sys_menu` VALUES (1232, '用户小猪查询', 1231, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_pig:query', '#', 'admin', '2023-05-23 18:04:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1233, '用户小猪新增', 1231, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_pig:add', '#', 'admin', '2023-05-23 18:04:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1234, '用户小猪修改', 1231, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_pig:edit', '#', 'admin', '2023-05-23 18:04:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1235, '用户小猪删除', 1231, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_pig:remove', '#', 'admin', '2023-05-23 18:04:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1236, '用户小猪导出', 1231, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_pig:export', '#', 'admin', '2023-05-23 18:04:40', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1237, '用户果树', 1067, 1, 'user_fruiter', 'front/user_fruiter/index', NULL, 1, 0, 'C', '0', '0', 'front:user_fruiter:list', '#', 'admin', '2023-05-23 18:04:46', '', NULL, '用户果树菜单');
+INSERT INTO `sys_menu` VALUES (1238, '用户果树查询', 1237, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_fruiter:query', '#', 'admin', '2023-05-23 18:04:46', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1239, '用户果树新增', 1237, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_fruiter:add', '#', 'admin', '2023-05-23 18:04:46', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1240, '用户果树修改', 1237, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_fruiter:edit', '#', 'admin', '2023-05-23 18:04:46', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1241, '用户果树删除', 1237, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_fruiter:remove', '#', 'admin', '2023-05-23 18:04:46', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1242, '用户果树导出', 1237, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_fruiter:export', '#', 'admin', '2023-05-23 18:04:46', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1243, '好友', 1067, 1, 'user_friend', 'front/user_friend/index', NULL, 1, 0, 'C', '0', '0', 'front:user_friend:list', '#', 'admin', '2023-05-23 18:04:51', '', NULL, '好友菜单');
+INSERT INTO `sys_menu` VALUES (1244, '好友查询', 1243, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_friend:query', '#', 'admin', '2023-05-23 18:04:51', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1245, '好友新增', 1243, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_friend:add', '#', 'admin', '2023-05-23 18:04:51', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1246, '好友修改', 1243, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_friend:edit', '#', 'admin', '2023-05-23 18:04:51', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1247, '好友删除', 1243, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_friend:remove', '#', 'admin', '2023-05-23 18:04:51', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1248, '好友导出', 1243, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:user_friend:export', '#', 'admin', '2023-05-23 18:04:51', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1249, '疫苗', 1067, 1, 'vaccin', 'front/vaccin/index', NULL, 1, 0, 'C', '0', '0', 'front:vaccin:list', '#', 'admin', '2023-05-24 11:17:29', '', NULL, '疫苗菜单');
+INSERT INTO `sys_menu` VALUES (1250, '疫苗查询', 1249, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:vaccin:query', '#', 'admin', '2023-05-24 11:17:29', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1251, '疫苗新增', 1249, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:vaccin:add', '#', 'admin', '2023-05-24 11:17:29', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1252, '疫苗修改', 1249, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:vaccin:edit', '#', 'admin', '2023-05-24 11:17:29', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1253, '疫苗删除', 1249, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:vaccin:remove', '#', 'admin', '2023-05-24 11:17:29', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1254, '疫苗导出', 1249, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'front:vaccin:export', '#', 'admin', '2023-05-24 11:17:29', '', NULL, '');
 
 -- ----------------------------
 -- Table structure for sys_notice
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_notice`;
 CREATE TABLE `sys_notice`  (
-  `notice_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '公告ID',
+  `notice_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '公告ID',
   `notice_title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公告标题',
   `notice_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公告类型（1通知 2公告）',
   `notice_content` longblob NULL COMMENT '公告内容',
@@ -2280,12 +2774,12 @@ INSERT INTO `sys_notice` VALUES (2, '维护通知：2018-07-01 若依系统凌�
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_oper_log`;
 CREATE TABLE `sys_oper_log`  (
-  `oper_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '日志主键',
+  `oper_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '日志主键',
   `title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '模块标题',
-  `business_type` int(11) NULL DEFAULT 0 COMMENT '业务类型（0其它 1新增 2修改 3删除）',
+  `business_type` int(0) NULL DEFAULT 0 COMMENT '业务类型（0其它 1新增 2修改 3删除）',
   `method` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '方法名称',
   `request_method` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '请求方式',
-  `operator_type` int(11) NULL DEFAULT 0 COMMENT '操作类别（0其它 1后台用户 2手机端用户）',
+  `operator_type` int(0) NULL DEFAULT 0 COMMENT '操作类别（0其它 1后台用户 2手机端用户）',
   `oper_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '操作人员',
   `dept_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '部门名称',
   `oper_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '请求URL',
@@ -2293,119 +2787,29 @@ CREATE TABLE `sys_oper_log`  (
   `oper_location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '操作地点',
   `oper_param` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '请求参数',
   `json_result` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '返回参数',
-  `status` int(11) NULL DEFAULT 0 COMMENT '操作状态（0正常 1异常）',
+  `status` int(0) NULL DEFAULT 0 COMMENT '操作状态（0正常 1异常）',
   `error_msg` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '错误消息',
   `oper_time` datetime(0) NULL DEFAULT NULL COMMENT '操作时间',
-  `cost_time` bigint(20) NULL DEFAULT 0 COMMENT '消耗时间',
+  `cost_time` bigint(0) NULL DEFAULT 0 COMMENT '消耗时间',
   PRIMARY KEY (`oper_id`) USING BTREE,
   INDEX `idx_sys_oper_log_bt`(`business_type`) USING BTREE,
   INDEX `idx_sys_oper_log_s`(`status`) USING BTREE,
   INDEX `idx_sys_oper_log_ot`(`oper_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 91 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 818 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_oper_log
 -- ----------------------------
-INSERT INTO `sys_oper_log` VALUES (1, '角色管理', 2, 'com.sync.ranch.web.controller.system.SysRoleController.changeStatus()', 'PUT', 1, 'admin', NULL, '/system/role/changeStatus', '127.0.0.1', '内网IP', '{\"admin\":false,\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"status\":\"1\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-22 14:41:18', 15);
-INSERT INTO `sys_oper_log` VALUES (2, '角色管理', 2, 'com.sync.ranch.web.controller.system.SysRoleController.changeStatus()', 'PUT', 1, 'admin', NULL, '/system/role/changeStatus', '127.0.0.1', '内网IP', '{\"admin\":false,\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-22 14:41:20', 41);
-INSERT INTO `sys_oper_log` VALUES (3, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-04-20 16:47:51\",\"icon\":\"guide\",\"isCache\":\"0\",\"isFrame\":\"0\",\"menuId\":4,\"menuName\":\"农场官网\",\"menuType\":\"M\",\"orderNum\":4,\"params\":{},\"parentId\":0,\"path\":\"http://www.sync88.com\",\"perms\":\"\",\"query\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-26 16:33:56', 19);
-INSERT INTO `sys_oper_log` VALUES (4, '代码生成', 6, 'com.sync.ranch.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', NULL, '/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":\"rc_user\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 11:15:52', 94);
-INSERT INTO `sys_oper_log` VALUES (5, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.synchDb()', 'GET', 1, 'admin', NULL, '/tool/gen/synchDb/rc_user', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 11:15:57', 85);
-INSERT INTO `sys_oper_log` VALUES (6, '字典类型', 1, 'com.sync.ranch.web.controller.system.SysDictTypeController.add()', 'POST', 1, 'admin', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"dictName\":\"用户性别\",\"dictType\":\"rc_user_sex\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 11:21:07', 10);
-INSERT INTO `sys_oper_log` VALUES (7, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"男\",\"dictSort\":1,\"dictType\":\"rc_user_sex\",\"dictValue\":\"0\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 11:41:34', 15);
-INSERT INTO `sys_oper_log` VALUES (8, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"女\",\"dictSort\":2,\"dictType\":\"rc_user_sex\",\"dictValue\":\"1\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 11:41:59', 39);
-INSERT INTO `sys_oper_log` VALUES (9, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"未知\",\"dictSort\":3,\"dictType\":\"rc_user_sex\",\"dictValue\":\"2\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 11:42:27', 36);
-INSERT INTO `sys_oper_log` VALUES (10, '字典类型', 1, 'com.sync.ranch.web.controller.system.SysDictTypeController.add()', 'POST', 1, 'admin', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"dictName\":\"用户状态\",\"dictType\":\"rc_user_status\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 11:58:14', 11);
-INSERT INTO `sys_oper_log` VALUES (11, '参数管理', 1, 'com.sync.ranch.web.controller.system.SysConfigController.add()', 'POST', 1, 'admin', NULL, '/system/config', '127.0.0.1', '内网IP', '{\"configKey\":\"ranch.user.sms\",\"configName\":\"用户端-短信验证码开关\",\"configType\":\"Y\",\"configValue\":\"true\",\"createBy\":\"admin\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:09:33', 19);
-INSERT INTO `sys_oper_log` VALUES (12, '参数管理', 2, 'com.sync.ranch.web.controller.system.SysConfigController.edit()', 'PUT', 1, 'admin', NULL, '/system/config', '127.0.0.1', '内网IP', '{\"configId\":7,\"configKey\":\"ranch.user.sms\",\"configName\":\"用户端-短信验证码开关\",\"configType\":\"Y\",\"configValue\":\"true\",\"createBy\":\"admin\",\"createTime\":\"2023-04-28 13:09:32\",\"params\":{},\"remark\":\"是否短信验证码功能（true false）\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:11:17', 9);
-INSERT INTO `sys_oper_log` VALUES (13, '参数管理', 1, 'com.sync.ranch.web.controller.system.SysConfigController.add()', 'POST', 1, 'admin', NULL, '/system/config', '127.0.0.1', '内网IP', '{\"configKey\":\"ranch.user.wxapp\",\"configName\":\"用户端-微信app授权登录开关\",\"configType\":\"Y\",\"configValue\":\"true\",\"createBy\":\"admin\",\"params\":{},\"remark\":\"是否允许微信app授权开关（true false）\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:13:18', 42);
-INSERT INTO `sys_oper_log` VALUES (14, '参数管理', 1, 'com.sync.ranch.web.controller.system.SysConfigController.add()', 'POST', 1, 'admin', NULL, '/system/config', '127.0.0.1', '内网IP', '{\"configKey\":\"ranch.user.wxmini\",\"configName\":\"用户端-微信小程序授权登录开关\",\"configType\":\"Y\",\"configValue\":\"true\",\"createBy\":\"admin\",\"params\":{},\"remark\":\"是否开启微信小程序授权登录（true false）\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:14:33', 10);
-INSERT INTO `sys_oper_log` VALUES (15, '字典类型', 2, 'com.sync.ranch.web.controller.system.SysDictTypeController.edit()', 'PUT', 1, 'admin', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2023-04-28 11:21:07\",\"dictId\":11,\"dictName\":\"用户性别\",\"dictType\":\"ranch_user_sex\",\"params\":{},\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:16:35', 35);
-INSERT INTO `sys_oper_log` VALUES (16, '字典类型', 2, 'com.sync.ranch.web.controller.system.SysDictTypeController.edit()', 'PUT', 1, 'admin', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2023-04-28 11:58:14\",\"dictId\":12,\"dictName\":\"用户状态\",\"dictType\":\"ranch_user_status\",\"params\":{},\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:16:42', 34);
-INSERT INTO `sys_oper_log` VALUES (17, '字典类型', 1, 'com.sync.ranch.web.controller.system.SysDictTypeController.add()', 'POST', 1, 'admin', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"dictName\":\"删除标志\",\"dictType\":\"ranch_del_flag\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:17:36', 8);
-INSERT INTO `sys_oper_log` VALUES (18, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"正常\",\"dictSort\":1,\"dictType\":\"ranch_user_status\",\"dictValue\":\"0\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:18:53', 39);
-INSERT INTO `sys_oper_log` VALUES (19, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"禁用\",\"dictSort\":2,\"dictType\":\"ranch_user_status\",\"dictValue\":\"1\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:19:40', 35);
-INSERT INTO `sys_oper_log` VALUES (20, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"注销\",\"dictSort\":3,\"dictType\":\"ranch_user_status\",\"dictValue\":\"2\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:19:52', 38);
-INSERT INTO `sys_oper_log` VALUES (21, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"存在\",\"dictSort\":0,\"dictType\":\"ranch_del_flag\",\"dictValue\":\"0\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:21:34', 34);
-INSERT INTO `sys_oper_log` VALUES (22, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"删除\",\"dictSort\":2,\"dictType\":\"ranch_del_flag\",\"dictValue\":\"2\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:21:45', 38);
-INSERT INTO `sys_oper_log` VALUES (23, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"user\",\"className\":\"RcUser\",\"columns\":[{\"capJavaField\":\"UserId\",\"columnComment\":\"用户ID\",\"columnId\":1,\"columnName\":\"user_id\",\"columnType\":\"bigint(20)\",\"createBy\":\"admin\",\"createTime\":\"2023-04-28 11:15:52\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"userId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":1,\"updateBy\":\"\",\"updateTime\":\"2023-04-28 11:15:57\",\"usableColumn\":false},{\"capJavaField\":\"UserNo\",\"columnComment\":\"用户编号\",\"columnId\":2,\"columnName\":\"user_no\",\"columnType\":\"varchar(20)\",\"createBy\":\"admin\",\"createTime\":\"2023-04-28 11:15:52\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"javaField\":\"userNo\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":false,\"sort\":2,\"superColumn\":false,\"tableId\":1,\"updateBy\":\"\",\"updateTime\":\"2023-04-28 11:15:57\",\"usableColumn\":false},{\"capJavaField\":\"WxOpenid\",\"columnComment\":\"用户微信openid\",\"columnId\":3,\"columnName\":\"wx_openid\",\"columnType\":\"varchar(50)\",\"createBy\":\"admin\",\"createTime\":\"2023-04-28 11:15:52\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"javaField\":\"wxOpenid\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":false,\"sort\":3,\"superColumn\":false,\"tableId\":1,\"updateBy\":\"\",\"updateTime\":\"2023-04-28 11:15:57\",\"usableColumn\":false},{\"capJavaField\":\"MiniOpenid\",\"columnComment\":\"小程序用户openid\",\"columnId\":4,\"columnName\":\"mini_openid\",\"columnType\":\"varchar(50)\",\"createBy\":\"admin\",\"createTime\":\"2023-04-28 11:15:52\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isI', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 13:25:09', 50);
-INSERT INTO `sys_oper_log` VALUES (24, '代码生成', 8, 'com.sync.ranch.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"rc_user\"}', NULL, 0, NULL, '2023-04-28 13:25:14', 222);
-INSERT INTO `sys_oper_log` VALUES (25, '菜单管理', 1, 'com.sync.ranch.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"icon\":\"server\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"牧场管理\",\"menuType\":\"M\",\"orderNum\":4,\"params\":{},\"parentId\":0,\"path\":\"front\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 14:04:19', 53);
-INSERT INTO `sys_oper_log` VALUES (26, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-04-20 16:47:51\",\"icon\":\"guide\",\"isCache\":\"0\",\"isFrame\":\"0\",\"menuId\":4,\"menuName\":\"农场官网\",\"menuType\":\"M\",\"orderNum\":5,\"params\":{},\"parentId\":0,\"path\":\"http://www.sync88.com\",\"perms\":\"\",\"query\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 14:04:30', 43);
-INSERT INTO `sys_oper_log` VALUES (27, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"front/user/index\",\"createTime\":\"2023-04-28 13:54:46\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1061,\"menuName\":\"用户信息\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":1067,\"path\":\"user\",\"perms\":\"front:user:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 14:08:31', 51);
-INSERT INTO `sys_oper_log` VALUES (28, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"front/user/index\",\"createTime\":\"2023-04-28 13:54:46\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1061,\"menuName\":\"用户信息\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":1067,\"path\":\"user\",\"perms\":\"front:user:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 14:08:41', 8);
-INSERT INTO `sys_oper_log` VALUES (29, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"front/user/index\",\"createTime\":\"2023-04-28 13:54:46\",\"icon\":\"user\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1061,\"menuName\":\"用户信息\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":1067,\"path\":\"user\",\"perms\":\"front:user:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-04-28 14:08:57', 48);
-INSERT INTO `sys_oper_log` VALUES (30, '菜单管理', 1, 'com.sync.ranch.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"icon\":\"shopping\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"市场管理\",\"menuType\":\"M\",\"orderNum\":5,\"params\":{},\"parentId\":0,\"path\":\"market\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:27:28', 20);
-INSERT INTO `sys_oper_log` VALUES (31, '菜单管理', 1, 'com.sync.ranch.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"icon\":\"money\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"商店管理\",\"menuType\":\"M\",\"orderNum\":6,\"params\":{},\"parentId\":0,\"path\":\"store\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:28:40', 48);
-INSERT INTO `sys_oper_log` VALUES (32, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-04-20 16:47:51\",\"icon\":\"guide\",\"isCache\":\"0\",\"isFrame\":\"0\",\"menuId\":4,\"menuName\":\"农场官网\",\"menuType\":\"M\",\"orderNum\":7,\"params\":{},\"parentId\":0,\"path\":\"http://www.sync88.com\",\"perms\":\"\",\"query\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:28:45', 28);
-INSERT INTO `sys_oper_log` VALUES (33, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-04-28 14:04:19\",\"icon\":\"server\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1067,\"menuName\":\"用户管理\",\"menuType\":\"M\",\"orderNum\":4,\"params\":{},\"parentId\":0,\"path\":\"front\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:32:59', 36);
-INSERT INTO `sys_oper_log` VALUES (34, '菜单管理', 1, 'com.sync.ranch.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"icon\":\"international\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"农户管理\",\"menuType\":\"M\",\"orderNum\":5,\"params\":{},\"parentId\":0,\"path\":\"farmer\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:33:51', 47);
-INSERT INTO `sys_oper_log` VALUES (35, '菜单管理', 1, 'com.sync.ranch.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"icon\":\"swagger\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"配置管理\",\"menuType\":\"M\",\"orderNum\":5,\"params\":{},\"parentId\":0,\"path\":\"config\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:34:41', 10);
-INSERT INTO `sys_oper_log` VALUES (36, '菜单管理', 1, 'com.sync.ranch.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"icon\":\"message\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"消息管理\",\"menuType\":\"M\",\"orderNum\":5,\"params\":{},\"parentId\":0,\"path\":\"message\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:35:22', 34);
-INSERT INTO `sys_oper_log` VALUES (37, '菜单管理', 1, 'com.sync.ranch.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"icon\":\"international\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"兑换管理\",\"menuType\":\"M\",\"orderNum\":5,\"params\":{},\"parentId\":0,\"path\":\"exchange\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:38:53', 38);
-INSERT INTO `sys_oper_log` VALUES (38, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-04-20 16:47:51\",\"icon\":\"guide\",\"isCache\":\"0\",\"isFrame\":\"0\",\"menuId\":4,\"menuName\":\"农场官网\",\"menuType\":\"M\",\"orderNum\":11,\"params\":{},\"parentId\":0,\"path\":\"http://www.sync88.com\",\"perms\":\"\",\"query\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:40:12', 39);
-INSERT INTO `sys_oper_log` VALUES (39, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-05-05 14:33:51\",\"icon\":\"international\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1070,\"menuName\":\"农户管理\",\"menuType\":\"M\",\"orderNum\":7,\"params\":{},\"parentId\":0,\"path\":\"farmer\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:40:47', 41);
-INSERT INTO `sys_oper_log` VALUES (40, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-04-28 14:04:19\",\"icon\":\"server\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1067,\"menuName\":\"用户管理\",\"menuType\":\"M\",\"orderNum\":8,\"params\":{},\"parentId\":0,\"path\":\"front\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:41:10', 43);
-INSERT INTO `sys_oper_log` VALUES (41, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-04-20 16:47:51\",\"icon\":\"guide\",\"isCache\":\"0\",\"isFrame\":\"0\",\"menuId\":4,\"menuName\":\"农场官网\",\"menuType\":\"M\",\"orderNum\":4,\"params\":{},\"parentId\":0,\"path\":\"http://www.sync88.com\",\"perms\":\"\",\"query\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:41:19', 7);
-INSERT INTO `sys_oper_log` VALUES (42, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-05-05 14:34:41\",\"icon\":\"swagger\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1071,\"menuName\":\"配置管理\",\"menuType\":\"M\",\"orderNum\":9,\"params\":{},\"parentId\":0,\"path\":\"config\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:41:40', 41);
-INSERT INTO `sys_oper_log` VALUES (43, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-05-05 14:35:22\",\"icon\":\"message\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1072,\"menuName\":\"消息管理\",\"menuType\":\"M\",\"orderNum\":10,\"params\":{},\"parentId\":0,\"path\":\"message\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:41:51', 41);
-INSERT INTO `sys_oper_log` VALUES (44, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-05-05 14:38:53\",\"icon\":\"international\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1073,\"menuName\":\"兑换管理\",\"menuType\":\"M\",\"orderNum\":11,\"params\":{},\"parentId\":0,\"path\":\"exchange\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:42:02', 7);
-INSERT INTO `sys_oper_log` VALUES (45, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-04-20 16:47:51\",\"icon\":\"guide\",\"isCache\":\"0\",\"isFrame\":\"0\",\"menuId\":4,\"menuName\":\"门户网站\",\"menuType\":\"M\",\"orderNum\":4,\"params\":{},\"parentId\":0,\"path\":\"http://www.sync88.com\",\"perms\":\"\",\"query\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:42:53', 10);
-INSERT INTO `sys_oper_log` VALUES (46, '代码生成', 6, 'com.sync.ranch.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', NULL, '/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":\"rc_category\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:43:56', 84);
-INSERT INTO `sys_oper_log` VALUES (47, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.synchDb()', 'GET', 1, 'admin', NULL, '/tool/gen/synchDb/rc_category', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:46:17', 31);
-INSERT INTO `sys_oper_log` VALUES (48, '字典类型', 1, 'com.sync.ranch.web.controller.system.SysDictTypeController.add()', 'POST', 1, 'admin', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"dictName\":\"市场类别\",\"dictType\":\"ranch_market_category\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:48:06', 46);
-INSERT INTO `sys_oper_log` VALUES (49, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"猪\",\"dictSort\":0,\"dictType\":\"ranch_market_category\",\"dictValue\":\"1\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:48:49', 9);
-INSERT INTO `sys_oper_log` VALUES (50, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"树\",\"dictSort\":1,\"dictType\":\"ranch_market_category\",\"dictValue\":\"2\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:49:00', 44);
-INSERT INTO `sys_oper_log` VALUES (51, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"category\",\"className\":\"RcCategory\",\"columns\":[{\"capJavaField\":\"CategoryId\",\"columnComment\":\"类别id\",\"columnId\":31,\"columnName\":\"category_id\",\"columnType\":\"int(11)\",\"createBy\":\"\",\"createTime\":\"2023-05-05 14:46:17\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"categoryId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":2,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"Type\",\"columnComment\":\"类别：\",\"columnId\":32,\"columnName\":\"type\",\"columnType\":\"char(1)\",\"createBy\":\"\",\"createTime\":\"2023-05-05 14:46:17\",\"dictType\":\"ranch_market_category\",\"edit\":true,\"htmlType\":\"select\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"javaField\":\"type\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":false,\"sort\":2,\"superColumn\":false,\"tableId\":2,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"Name\",\"columnComment\":\"品类名称\",\"columnId\":33,\"columnName\":\"name\",\"columnType\":\"varchar(50)\",\"createBy\":\"\",\"createTime\":\"2023-05-05 14:46:17\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"javaField\":\"name\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":false,\"sort\":3,\"superColumn\":false,\"tableId\":2,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"Video\",\"columnComment\":\"监控链接\",\"columnId\":34,\"columnName\":\"video\",\"columnType\":\"varchar(500)\",\"createBy\":\"\",\"createTime\":\"2023-05-05 14:46:17\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"textarea\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"javaField\":\"video\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 14:49:47', 24);
-INSERT INTO `sys_oper_log` VALUES (52, '代码生成', 8, 'com.sync.ranch.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"rc_category\"}', NULL, 0, NULL, '2023-05-05 14:49:51', 94);
-INSERT INTO `sys_oper_log` VALUES (53, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"front/category/index\",\"createTime\":\"2023-05-05 14:54:14\",\"icon\":\"list\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1074,\"menuName\":\"类别\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":1068,\"path\":\"category\",\"perms\":\"front:category:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 15:03:32', 20);
-INSERT INTO `sys_oper_log` VALUES (54, '类别', 1, 'com.sync.ranch.front.controller.RcCategoryController.add()', 'POST', 1, 'admin', NULL, '/front/category', '127.0.0.1', '内网IP', '{\"categoryId\":1,\"createTime\":\"2023-05-05 15:08:48\",\"name\":\"土猪\",\"params\":{},\"type\":\"1\",\"video\":\"https://cloud.liveqing.com:1443/flv/hls/LiveGBS0013402000000132000026434020000001320000264.flv?k=LiveGBS0013402000000132000026434020000001320000264.097ca17371cb587acc\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 15:08:48', 59);
-INSERT INTO `sys_oper_log` VALUES (55, '类别', 1, 'com.sync.ranch.front.controller.RcCategoryController.add()', 'POST', 1, 'admin', NULL, '/front/category', '127.0.0.1', '内网IP', '{\"categoryId\":2,\"createTime\":\"2023-05-05 15:09:25\",\"name\":\"脐橙树\",\"params\":{},\"type\":\"2\",\"video\":\"https://cloud.liveqing.com:1443/flv/hls/LiveGBS0013402000000132000026434020000001320000264.flv?k=LiveGBS0013402000000132000026434020000001320000264.097ca17371cb587acc\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 15:09:25', 49);
-INSERT INTO `sys_oper_log` VALUES (56, '类别', 1, 'com.sync.ranch.front.controller.RcCategoryController.add()', 'POST', 1, 'admin', NULL, '/front/category', '127.0.0.1', '内网IP', '{\"categoryId\":3,\"createTime\":\"2023-05-05 15:09:35\",\"name\":\"苹果树\",\"params\":{},\"type\":\"2\",\"video\":\"https://cloud.liveqing.com:1443/flv/hls/LiveGBS0013402000000132000026434020000001320000264.flv?k=LiveGBS0013402000000132000026434020000001320000264.097ca17371cb587acc\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 15:09:35', 47);
-INSERT INTO `sys_oper_log` VALUES (57, '类别', 1, 'com.sync.ranch.front.controller.RcCategoryController.add()', 'POST', 1, 'admin', NULL, '/front/category', '127.0.0.1', '内网IP', '{\"categoryId\":4,\"createTime\":\"2023-05-05 15:09:48\",\"name\":\"黑猪\",\"params\":{},\"type\":\"1\",\"video\":\"https://cloud.liveqing.com:1443/flv/hls/LiveGBS0013402000000132000026434020000001320000264.flv?k=LiveGBS0013402000000132000026434020000001320000264.097ca17371cb587acc\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 15:09:48', 5);
-INSERT INTO `sys_oper_log` VALUES (58, '类别', 5, 'com.sync.ranch.front.controller.RcCategoryController.export()', 'POST', 1, 'admin', NULL, '/front/category/export', '127.0.0.1', '内网IP', '{\"pageSize\":\"10\",\"pageNum\":\"1\"}', NULL, 0, NULL, '2023-05-05 15:10:41', 539);
-INSERT INTO `sys_oper_log` VALUES (59, '字典数据', 2, 'com.sync.ranch.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2023-05-05 14:48:49\",\"default\":false,\"dictCode\":38,\"dictLabel\":\"猪\",\"dictSort\":0,\"dictType\":\"ranch_market_category\",\"dictValue\":\"1\",\"isDefault\":\"N\",\"listClass\":\"primary\",\"params\":{},\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 17:33:43', 9);
-INSERT INTO `sys_oper_log` VALUES (60, '字典数据', 2, 'com.sync.ranch.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2023-05-05 14:49:00\",\"default\":false,\"dictCode\":39,\"dictLabel\":\"树\",\"dictSort\":1,\"dictType\":\"ranch_market_category\",\"dictValue\":\"2\",\"isDefault\":\"N\",\"listClass\":\"info\",\"params\":{},\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 17:33:49', 33);
-INSERT INTO `sys_oper_log` VALUES (61, '字典数据', 2, 'com.sync.ranch.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2023-05-05 14:49:00\",\"default\":false,\"dictCode\":39,\"dictLabel\":\"树\",\"dictSort\":1,\"dictType\":\"ranch_market_category\",\"dictValue\":\"2\",\"isDefault\":\"N\",\"listClass\":\"warning\",\"params\":{},\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 17:33:55', 35);
-INSERT INTO `sys_oper_log` VALUES (62, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"front/category/index\",\"createTime\":\"2023-05-05 14:54:14\",\"icon\":\"list\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1074,\"menuName\":\"市场类别\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":1068,\"path\":\"category\",\"perms\":\"front:category:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-05 17:40:31', 52);
-INSERT INTO `sys_oper_log` VALUES (63, '类别', 2, 'com.sync.ranch.front.controller.RcCategoryController.edit()', 'PUT', 1, 'admin', NULL, '/front/category', '127.0.0.1', '内网IP', '{\"categoryId\":1,\"createTime\":\"2023-05-05 15:08:49\",\"name\":\"土猪\",\"params\":{},\"type\":\"1\",\"updateBy\":\"\",\"updateTime\":\"2023-05-08 11:18:09\",\"video\":\"https://open.ys7.com/v3/openlive/33011084992697671626:33011075991117016182_1_1.m3u8?expire=1714619876&id=575642538479915008&t=3ceb864808644df53892b5f5f8ff7fe9012df9cda44b6549df7b70aada06fd61&ev=100&devProto=gb28181\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-08 11:18:09', 37);
-INSERT INTO `sys_oper_log` VALUES (64, '类别', 2, 'com.sync.ranch.front.controller.RcCategoryController.edit()', 'PUT', 1, 'admin', NULL, '/front/category', '127.0.0.1', '内网IP', '{\"categoryId\":2,\"createTime\":\"2023-05-05 15:09:26\",\"name\":\"脐橙树\",\"params\":{},\"type\":\"2\",\"updateBy\":\"\",\"updateTime\":\"2023-05-08 11:18:15\",\"video\":\"https://open.ys7.com/v3/openlive/33011084992697671626:33011075991117016182_1_1.m3u8?expire=1714619876&id=575642538479915008&t=3ceb864808644df53892b5f5f8ff7fe9012df9cda44b6549df7b70aada06fd61&ev=100&devProto=gb28181\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-08 11:18:15', 6);
-INSERT INTO `sys_oper_log` VALUES (65, '类别', 2, 'com.sync.ranch.front.controller.RcCategoryController.edit()', 'PUT', 1, 'admin', NULL, '/front/category', '127.0.0.1', '内网IP', '{\"categoryId\":3,\"createTime\":\"2023-05-05 15:09:36\",\"name\":\"苹果树\",\"params\":{},\"type\":\"2\",\"updateBy\":\"\",\"updateTime\":\"2023-05-08 11:18:21\",\"video\":\"https://open.ys7.com/v3/openlive/33011084992697671626:33011075991117016182_1_1.m3u8?expire=1714619876&id=575642538479915008&t=3ceb864808644df53892b5f5f8ff7fe9012df9cda44b6549df7b70aada06fd61&ev=100&devProto=gb28181\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-08 11:18:21', 32);
-INSERT INTO `sys_oper_log` VALUES (66, '类别', 2, 'com.sync.ranch.front.controller.RcCategoryController.edit()', 'PUT', 1, 'admin', NULL, '/front/category', '127.0.0.1', '内网IP', '{\"categoryId\":4,\"createTime\":\"2023-05-05 15:09:48\",\"name\":\"黑猪\",\"params\":{},\"type\":\"1\",\"updateBy\":\"\",\"updateTime\":\"2023-05-08 11:18:26\",\"video\":\"https://open.ys7.com/v3/openlive/33011084992697671626:33011075991117016182_1_1.m3u8?expire=1714619876&id=575642538479915008&t=3ceb864808644df53892b5f5f8ff7fe9012df9cda44b6549df7b70aada06fd61&ev=100&devProto=gb28181\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-08 11:18:26', 4);
-INSERT INTO `sys_oper_log` VALUES (67, '类别', 1, 'com.sync.ranch.front.controller.RcCategoryController.add()', 'POST', 1, 'admin', NULL, '/front/category', '127.0.0.1', '内网IP', '{\"categoryId\":5,\"createTime\":\"2023-05-08 14:11:58\",\"name\":\"白猪\",\"params\":{},\"type\":\"1\",\"video\":\"https://open.ys7.com/v3/openlive/33011084992697671626:33011075991117016182_1_1.m3u8?expire=1714619876&id=575642538479915008&t=3ceb864808644df53892b5f5f8ff7fe9012df9cda44b6549df7b70aada06fd61&ev=100&devProto=gb28181\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-08 14:11:58', 64);
-INSERT INTO `sys_oper_log` VALUES (68, '代码生成', 6, 'com.sync.ranch.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', NULL, '/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":\"rc_market\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-08 14:12:12', 136);
-INSERT INTO `sys_oper_log` VALUES (69, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"market\",\"className\":\"RcMarket\",\"columns\":[{\"capJavaField\":\"MarketId\",\"columnComment\":\"市场产品id\",\"columnId\":35,\"columnName\":\"market_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-08 14:12:12\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"marketId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":3,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"Type\",\"columnComment\":\"类别：\",\"columnId\":36,\"columnName\":\"type\",\"columnType\":\"char(1)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-08 14:12:12\",\"dictType\":\"ranch_market_category\",\"edit\":true,\"htmlType\":\"select\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"type\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":3,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"CategoryId\",\"columnComment\":\"类别id\",\"columnId\":37,\"columnName\":\"category_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-08 14:12:12\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"select\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"categoryId\",\"javaType\":\"Long\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":3,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"Img\",\"columnComment\":\"图片\",\"columnId\":38,\"columnName\":\"img\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-08 14:12:12\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"javaField\":\"img\",\"javaType\":', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-08 14:14:09', 52);
-INSERT INTO `sys_oper_log` VALUES (70, '代码生成', 8, 'com.sync.ranch.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"rc_market\"}', NULL, 0, NULL, '2023-05-08 14:14:49', 207);
-INSERT INTO `sys_oper_log` VALUES (71, '菜单管理', 2, 'com.sync.ranch.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"front/market/index\",\"createTime\":\"2023-05-08 14:17:19\",\"icon\":\"form\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":1080,\"menuName\":\"市场列表\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":1068,\"path\":\"market\",\"perms\":\"front:market:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-11 16:06:27', 20);
-INSERT INTO `sys_oper_log` VALUES (72, '代码生成', 8, 'com.sync.ranch.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"rc_market\"}', NULL, 0, NULL, '2023-05-11 16:08:13', 238);
-INSERT INTO `sys_oper_log` VALUES (73, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"market\",\"className\":\"RcMarket\",\"columns\":[{\"capJavaField\":\"MarketId\",\"columnComment\":\"市场产品id\",\"columnId\":35,\"columnName\":\"market_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-08 14:12:12\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"marketId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":3,\"updateBy\":\"\",\"updateTime\":\"2023-05-08 14:14:09\",\"usableColumn\":false},{\"capJavaField\":\"Type\",\"columnComment\":\"类别：\",\"columnId\":36,\"columnName\":\"type\",\"columnType\":\"char(1)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-08 14:12:12\",\"dictType\":\"ranch_market_category\",\"edit\":true,\"htmlType\":\"select\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"type\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":3,\"updateBy\":\"\",\"updateTime\":\"2023-05-08 14:14:09\",\"usableColumn\":false},{\"capJavaField\":\"CategoryId\",\"columnComment\":\"类别id\",\"columnId\":37,\"columnName\":\"category_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-08 14:12:12\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"select\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"categoryId\",\"javaType\":\"Long\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":3,\"updateBy\":\"\",\"updateTime\":\"2023-05-08 14:14:09\",\"usableColumn\":false},{\"capJavaField\":\"Img\",\"columnComment\":\"图片\",\"columnId\":38,\"columnName\":\"img\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-08 14:12:12\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"imageUpload\",\"increment\":false,\"insert\":true,\"i', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-11 16:21:21', 83);
-INSERT INTO `sys_oper_log` VALUES (74, '字典类型', 1, 'com.sync.ranch.web.controller.system.SysDictTypeController.add()', 'POST', 1, 'admin', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"dictName\":\"市场折扣\",\"dictType\":\"ranch_market_discount\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:32:40', 18);
-INSERT INTO `sys_oper_log` VALUES (75, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"是\",\"dictSort\":0,\"dictType\":\"ranch_market_discount\",\"dictValue\":\"1\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:32:56', 18);
-INSERT INTO `sys_oper_log` VALUES (76, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"否\",\"dictSort\":1,\"dictType\":\"ranch_market_discount\",\"dictValue\":\"2\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:33:09', 10);
-INSERT INTO `sys_oper_log` VALUES (77, '字典类型', 1, 'com.sync.ranch.web.controller.system.SysDictTypeController.add()', 'POST', 1, 'admin', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"dictName\":\"市场套餐\",\"dictType\":\"ranch_market_package\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:35:40', 36);
-INSERT INTO `sys_oper_log` VALUES (78, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"是\",\"dictSort\":0,\"dictType\":\"ranch_market_package\",\"dictValue\":\"1\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:35:54', 36);
-INSERT INTO `sys_oper_log` VALUES (79, '字典数据', 1, 'com.sync.ranch.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"否\",\"dictSort\":1,\"dictType\":\"ranch_market_package\",\"dictValue\":\"2\",\"listClass\":\"default\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:36:02', 37);
-INSERT INTO `sys_oper_log` VALUES (80, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.synchDb()', 'GET', 1, 'admin', NULL, '/tool/gen/synchDb/rc_market', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:43:00', 110);
-INSERT INTO `sys_oper_log` VALUES (81, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.synchDb()', 'GET', 1, 'admin', NULL, '/tool/gen/synchDb/rc_market', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:43:51', 62);
-INSERT INTO `sys_oper_log` VALUES (82, '代码生成', 3, 'com.sync.ranch.generator.controller.GenController.remove()', 'DELETE', 1, 'admin', NULL, '/tool/gen/3', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:44:11', 9);
-INSERT INTO `sys_oper_log` VALUES (83, '代码生成', 6, 'com.sync.ranch.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', NULL, '/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":\"rc_market\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:44:18', 56);
-INSERT INTO `sys_oper_log` VALUES (84, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"market\",\"className\":\"RcMarket\",\"columns\":[{\"capJavaField\":\"MarketId\",\"columnComment\":\"市场产品id\",\"columnId\":57,\"columnName\":\"market_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"marketId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"Type\",\"columnComment\":\"类别\",\"columnId\":58,\"columnName\":\"type\",\"columnType\":\"char(1)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"ranch_market_category\",\"edit\":true,\"htmlType\":\"select\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"type\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"CategoryId\",\"columnComment\":\"类别id\",\"columnId\":59,\"columnName\":\"category_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"categoryId\",\"javaType\":\"Long\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"Img\",\"columnComment\":\"图片\",\"columnId\":60,\"columnName\":\"img\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"javaField\":\"img\",\"javaType\":\"S', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:46:54', 41);
-INSERT INTO `sys_oper_log` VALUES (85, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.synchDb()', 'GET', 1, 'admin', NULL, '/tool/gen/synchDb/rc_market', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:56:31', 74);
-INSERT INTO `sys_oper_log` VALUES (86, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"market\",\"className\":\"RcMarket\",\"columns\":[{\"capJavaField\":\"MarketId\",\"columnComment\":\"产品id\",\"columnId\":57,\"columnName\":\"market_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"marketId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 15:56:31\",\"usableColumn\":false},{\"capJavaField\":\"Type\",\"columnComment\":\"类别\",\"columnId\":58,\"columnName\":\"type\",\"columnType\":\"char(1)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"ranch_market_category\",\"edit\":true,\"htmlType\":\"select\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"type\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 15:56:31\",\"usableColumn\":false},{\"capJavaField\":\"CategoryId\",\"columnComment\":\"类别id\",\"columnId\":59,\"columnName\":\"category_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"0\",\"isPk\":\"0\",\"isQuery\":\"0\",\"isRequired\":\"1\",\"javaField\":\"categoryId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":false,\"query\":false,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 15:56:31\",\"usableColumn\":false},{\"capJavaField\":\"CategoryName\",\"columnComment\":\"品类名称\",\"columnId\":77,\"columnName\":\"category_name\",\"columnType\":\"varchar(50)\",\"createBy\":\"\",\"createTime\":\"2023-05-12 15:56:31\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 15:58:42', 84);
-INSERT INTO `sys_oper_log` VALUES (87, '代码生成', 8, 'com.sync.ranch.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"rc_market\"}', NULL, 0, NULL, '2023-05-12 15:58:45', 128);
-INSERT INTO `sys_oper_log` VALUES (88, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"market\",\"className\":\"RcMarket\",\"columns\":[{\"capJavaField\":\"MarketId\",\"columnComment\":\"产品id\",\"columnId\":57,\"columnName\":\"market_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"marketId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 15:58:42\",\"usableColumn\":false},{\"capJavaField\":\"Type\",\"columnComment\":\"类别\",\"columnId\":58,\"columnName\":\"type\",\"columnType\":\"char(1)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"ranch_market_category\",\"edit\":true,\"htmlType\":\"select\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"type\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 15:58:42\",\"usableColumn\":false},{\"capJavaField\":\"CategoryId\",\"columnComment\":\"类别id\",\"columnId\":59,\"columnName\":\"category_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"0\",\"isPk\":\"0\",\"isQuery\":\"0\",\"isRequired\":\"1\",\"javaField\":\"categoryId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":false,\"query\":false,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 15:58:42\",\"usableColumn\":false},{\"capJavaField\":\"CategoryName\",\"columnComment\":\"品类名称\",\"columnId\":77,\"columnName\":\"category_name\",\"columnType\":\"varchar(50)\",\"createBy\":\"\",\"createTime\":\"2023-05-12 15:56:31\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 16:09:00', 113);
-INSERT INTO `sys_oper_log` VALUES (89, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"market\",\"className\":\"RcMarket\",\"columns\":[{\"capJavaField\":\"MarketId\",\"columnComment\":\"产品id\",\"columnId\":57,\"columnName\":\"market_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"marketId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 16:09:00\",\"usableColumn\":false},{\"capJavaField\":\"Type\",\"columnComment\":\"类别\",\"columnId\":58,\"columnName\":\"type\",\"columnType\":\"char(1)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"ranch_market_category\",\"edit\":true,\"htmlType\":\"select\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"type\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 16:09:00\",\"usableColumn\":false},{\"capJavaField\":\"CategoryId\",\"columnComment\":\"类别id\",\"columnId\":59,\"columnName\":\"category_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"0\",\"isPk\":\"0\",\"isQuery\":\"0\",\"isRequired\":\"1\",\"javaField\":\"categoryId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":false,\"query\":false,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 16:09:00\",\"usableColumn\":false},{\"capJavaField\":\"CategoryName\",\"columnComment\":\"品类名称\",\"columnId\":77,\"columnName\":\"category_name\",\"columnType\":\"varchar(50)\",\"createBy\":\"\",\"createTime\":\"2023-05-12 15:56:31\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 16:09:30', 74);
-INSERT INTO `sys_oper_log` VALUES (90, '代码生成', 2, 'com.sync.ranch.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"market\",\"className\":\"RcMarket\",\"columns\":[{\"capJavaField\":\"MarketId\",\"columnComment\":\"产品id\",\"columnId\":57,\"columnName\":\"market_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"marketId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 16:09:30\",\"usableColumn\":false},{\"capJavaField\":\"Type\",\"columnComment\":\"类别\",\"columnId\":58,\"columnName\":\"type\",\"columnType\":\"char(1)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"ranch_market_category\",\"edit\":true,\"htmlType\":\"select\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"type\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 16:09:30\",\"usableColumn\":false},{\"capJavaField\":\"CategoryId\",\"columnComment\":\"类别id\",\"columnId\":59,\"columnName\":\"category_id\",\"columnType\":\"int(11)\",\"createBy\":\"admin\",\"createTime\":\"2023-05-12 15:44:18\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"0\",\"isPk\":\"0\",\"isQuery\":\"0\",\"isRequired\":\"1\",\"javaField\":\"categoryId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":false,\"query\":false,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":4,\"updateBy\":\"\",\"updateTime\":\"2023-05-12 16:09:30\",\"usableColumn\":false},{\"capJavaField\":\"CategoryName\",\"columnComment\":\"品类名称\",\"columnId\":77,\"columnName\":\"category_name\",\"columnType\":\"varchar(50)\",\"createBy\":\"\",\"createTime\":\"2023-05-12 15:56:31\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-05-12 16:10:38', 78);
 
 -- ----------------------------
 -- Table structure for sys_post
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_post`;
 CREATE TABLE `sys_post`  (
-  `post_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
+  `post_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
   `post_code` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '岗位编码',
   `post_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '岗位名称',
-  `post_sort` int(11) NOT NULL COMMENT '显示顺序',
+  `post_sort` int(0) NOT NULL COMMENT '显示顺序',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '状态（0正常 1停用）',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
@@ -2428,10 +2832,10 @@ INSERT INTO `sys_post` VALUES (4, 'user', '普通员工', 4, '0', 'admin', '2023
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role`  (
-  `role_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
+  `role_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
   `role_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色名称',
   `role_key` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色权限字符串',
-  `role_sort` int(11) NOT NULL COMMENT '显示顺序',
+  `role_sort` int(0) NOT NULL COMMENT '显示顺序',
   `data_scope` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）',
   `menu_check_strictly` tinyint(1) NULL DEFAULT 1 COMMENT '菜单树选择项是否关联显示',
   `dept_check_strictly` tinyint(1) NULL DEFAULT 1 COMMENT '部门树选择项是否关联显示',
@@ -2456,8 +2860,8 @@ INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', 0, 0, '0', '
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_dept`;
 CREATE TABLE `sys_role_dept`  (
-  `role_id` bigint(20) NOT NULL COMMENT '角色ID',
-  `dept_id` bigint(20) NOT NULL COMMENT '部门ID',
+  `role_id` bigint(0) NOT NULL COMMENT '角色ID',
+  `dept_id` bigint(0) NOT NULL COMMENT '部门ID',
   PRIMARY KEY (`role_id`, `dept_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色和部门关联表' ROW_FORMAT = Dynamic;
 
@@ -2473,8 +2877,8 @@ INSERT INTO `sys_role_dept` VALUES (2, 105);
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_menu`;
 CREATE TABLE `sys_role_menu`  (
-  `role_id` bigint(20) NOT NULL COMMENT '角色ID',
-  `menu_id` bigint(20) NOT NULL COMMENT '菜单ID',
+  `role_id` bigint(0) NOT NULL COMMENT '角色ID',
+  `menu_id` bigint(0) NOT NULL COMMENT '菜单ID',
   PRIMARY KEY (`role_id`, `menu_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色和菜单关联表' ROW_FORMAT = Dynamic;
 
@@ -2572,8 +2976,8 @@ INSERT INTO `sys_role_menu` VALUES (2, 1060);
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user`  (
-  `user_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `dept_id` bigint(20) NULL DEFAULT NULL COMMENT '部门ID',
+  `user_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `dept_id` bigint(0) NULL DEFAULT NULL COMMENT '部门ID',
   `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户账号',
   `nick_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户昵称',
   `user_type` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '00' COMMENT '用户类型（00系统用户）',
@@ -2597,7 +3001,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '小优', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-05-18 18:09:17', 'admin', '2023-04-20 16:47:50', '', '2023-05-18 18:09:16', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '小优', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-05-24 13:08:03', 'admin', '2023-04-20 16:47:50', '', '2023-05-24 13:08:02', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ranch', '小优', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-04-20 16:47:50', 'admin', '2023-04-20 16:47:50', '', NULL, '测试员');
 
 -- ----------------------------
@@ -2605,8 +3009,8 @@ INSERT INTO `sys_user` VALUES (2, 105, 'ranch', '小优', '00', 'ry@qq.com', '15
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_post`;
 CREATE TABLE `sys_user_post`  (
-  `user_id` bigint(20) NOT NULL COMMENT '用户ID',
-  `post_id` bigint(20) NOT NULL COMMENT '岗位ID',
+  `user_id` bigint(0) NOT NULL COMMENT '用户ID',
+  `post_id` bigint(0) NOT NULL COMMENT '岗位ID',
   PRIMARY KEY (`user_id`, `post_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户与岗位关联表' ROW_FORMAT = Dynamic;
 
@@ -2621,8 +3025,8 @@ INSERT INTO `sys_user_post` VALUES (2, 2);
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role`  (
-  `user_id` bigint(20) NOT NULL COMMENT '用户ID',
-  `role_id` bigint(20) NOT NULL COMMENT '角色ID',
+  `user_id` bigint(0) NOT NULL COMMENT '用户ID',
+  `role_id` bigint(0) NOT NULL COMMENT '角色ID',
   PRIMARY KEY (`user_id`, `role_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户和角色关联表' ROW_FORMAT = Dynamic;
 

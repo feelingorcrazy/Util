@@ -62,12 +62,15 @@ public class ImportDict {
 		strs.remove(0);
 		strs.remove(0);
 		strs.forEach(item -> {
+			System.out.println(item);
 			DictData d = new DictData();
-			String prefix = item.trim().substring(0, item.indexOf("="));
-			String suffix = item.trim().substring(item.indexOf("=") + 1);
-			d.setName(suffix.trim());
-			d.setValue(Integer.parseInt(prefix.trim()));
-			dt.getDictDatas().add(d);
+			if(item.contains("=")){
+				String prefix = item.trim().substring(0, item.indexOf("="));
+				String suffix = item.trim().substring(item.indexOf("=") + 1);
+				d.setName(suffix.trim());
+				d.setValue(Integer.parseInt(prefix.trim()));
+				dt.getDictDatas().add(d);
+			}
 		});
 		dictTypes.add(dt);
 	}

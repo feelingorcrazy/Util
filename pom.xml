@@ -10,6 +10,7 @@
     <version>1.0</version>
     <modules>
         <module>DB</module>
+        <module>WatchFile</module>
     </modules>
 
     <properties>

@@ -55,6 +55,15 @@ public class DBTool {
 		return data;
 	}
 
+	public static void execute(String sql) {
+		try {
+			Statement statement = conn.createStatement();
+			statement.execute(sql);
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+	}
+
 	public static void insert(String sql) {
 		try {
 			Statement statement = conn.createStatement();
