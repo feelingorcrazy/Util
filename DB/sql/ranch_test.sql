@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50738
  Source Host           : 192.168.0.49:3306
- Source Schema         : ranch
+ Source Schema         : ranch_test
 
  Target Server Type    : MySQL
  Target Server Version : 50738
  File Encoding         : 65001
 
- Date: 01/09/2023 18:19:26
+ Date: 19/09/2023 11:16:02
 */
 
 SET NAMES utf8mb4;
@@ -73,7 +73,7 @@ CREATE TABLE `gen_table_column`  (
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`column_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2511 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2499 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for qrtz_blob_triggers
@@ -254,6 +254,7 @@ CREATE TABLE `qrtz_triggers`  (
 DROP TABLE IF EXISTS `rc_app_version`;
 CREATE TABLE `rc_app_version`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '版本唯一码',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '[类型,rc_app_type,1=客户端,2=农户端]',
   `version` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '版本号',
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '下载地址',
@@ -264,7 +265,7 @@ CREATE TABLE `rc_app_version`  (
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'app版本列表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'app版本列表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_appointment_config
@@ -353,7 +354,7 @@ CREATE TABLE `rc_camera_living`  (
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`living_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '摄像头直播信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '摄像头直播信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_category
@@ -387,7 +388,7 @@ CREATE TABLE `rc_cloud_warehouse`  (
   `ending_time` datetime(0) NOT NULL COMMENT '托管到期时间',
   `send_user_id` bigint(20) NULL DEFAULT NULL COMMENT '赠送用户id',
   `user_id` bigint(20) NOT NULL COMMENT '用户id',
-  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[云仓配送状态,rc_cloud_status,1=未邮寄,2=部分邮寄,3=已邮寄,4=超时,5=加工中.6=已加工]\r\n\r\n\r\n',
+  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[云仓配送状态,rc_cloud_status,1=未邮寄,2=部分邮寄,3=已邮寄,4=超时,5=加工中,6=已加工]\r\n\r\n\r\n',
   `total_weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '总重量',
   `use_weight` decimal(10, 2) NULL DEFAULT NULL COMMENT '可邮寄重量',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[市场类别,ranch_market_category,1=猪,2=树]',
@@ -417,7 +418,7 @@ CREATE TABLE `rc_coins_log`  (
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人\r\n',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 114 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '金币记录表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 281 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '金币记录表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_college
@@ -436,7 +437,7 @@ CREATE TABLE `rc_college`  (
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `sort` int(11) NULL DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`college_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '学院表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '学院表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_comment
@@ -456,7 +457,7 @@ CREATE TABLE `rc_comment`  (
   `pid` bigint(20) NULL DEFAULT NULL COMMENT '回复评论id',
   `root_id` bigint(20) NULL DEFAULT NULL COMMENT '根id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '宠物评论表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '宠物评论表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_config
@@ -473,7 +474,7 @@ CREATE TABLE `rc_config`  (
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '配置表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 116 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '配置表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_dog
@@ -596,7 +597,7 @@ CREATE TABLE `rc_farmer`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `jpush_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '极光id',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '农户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '农户信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_farmer_amount_log
@@ -633,7 +634,7 @@ CREATE TABLE `rc_farmer_role`  (
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户和角色关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户和角色关联表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_farmer_service
@@ -827,7 +828,7 @@ CREATE TABLE `rc_market_order`  (
   `is_redeem` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[是否兑换订单,is_redeem,1=是,2=否]',
   `redeem_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '兑换码',
   PRIMARY KEY (`market_order_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '市场订单' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '市场订单' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_materia
@@ -870,7 +871,7 @@ DROP TABLE IF EXISTS `rc_msg_log`;
 CREATE TABLE `rc_msg_log`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[消息类型,rc_msg_type,1=喂养消息,2=耕作消息,3=系统消息,4=服务消息]',
-  `op` char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[消息标识,rc_msg_op,1=赠送小猪,2=合养小猪,3=添加好友,4=赠送礼券,5=备用金,6=合养果树,7=赠送果树,8=赠送物品]',
+  `op` char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[消息标识,rc_msg_op,1=赠送小猪,2=合养小猪,3=添加好友,4=赠送果树,5=备用金,6=合养果树,7=赠送物品]',
   `send_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '[消息发送类型,rc_send_type,1=用户,2=农场主]',
   `receive_id` bigint(20) NULL DEFAULT NULL COMMENT '接收人',
   `send_uid` bigint(20) NULL DEFAULT 0 COMMENT '发送人',
@@ -884,7 +885,7 @@ CREATE TABLE `rc_msg_log`  (
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `ref_info` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '携带数据信息',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 45 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '信息日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 268 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '信息日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_notice
@@ -904,6 +905,24 @@ CREATE TABLE `rc_notice`  (
   `is_top` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '2' COMMENT '[置顶显示在app,rc_notice_top,1=是,2=否]',
   PRIMARY KEY (`notice_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知公告表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for rc_notice_log
+-- ----------------------------
+DROP TABLE IF EXISTS `rc_notice_log`;
+CREATE TABLE `rc_notice_log`  (
+  `log_id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '公告ID',
+  `notice_id` bigint(11) NOT NULL COMMENT '公告标题',
+  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `is_read` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[已读,rc_msg_read,1=是,2=否]',
+  `ref_id` bigint(11) NOT NULL COMMENT '用户/小猪/果树ID',
+  `ref_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '[通知日志类型,rc_notice_ref_type,1=猪,2=树,3=用户]',
+  PRIMARY KEY (`log_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知公告日志表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_notice_user_market
@@ -941,7 +960,7 @@ CREATE TABLE `rc_pack_config`  (
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[碎片类型,rc_pack_type,1=合成,2=掉落]',
   `category_num` int(11) NULL DEFAULT NULL COMMENT '随机掉落类型数量',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 81 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '碎片配置' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 85 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '碎片配置' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_pig_part_config
@@ -1105,7 +1124,7 @@ CREATE TABLE `rc_recharge_log`  (
   `coin` int(11) NULL DEFAULT NULL COMMENT '金币',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `un_order_index`(`order_no`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '充值记录表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 74 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '充值记录表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_recharge_plans
@@ -1123,7 +1142,7 @@ CREATE TABLE `rc_recharge_plans`  (
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '充值方案表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '充值方案表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_redeem_code
@@ -1247,13 +1266,13 @@ CREATE TABLE `rc_shop_goods`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `service_base_id` bigint(20) NULL DEFAULT NULL COMMENT '基础服务id',
-  `rc_self_support` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[是否自营,rc_self_support,1=是,2=否]',
+  `rc_self_support` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[是否自营,rc_self_support,1=否,2=是]',
   `unit` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '单位',
   `recovery_discount` double(4, 2) NULL DEFAULT 0.90 COMMENT '回收折扣',
   `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`goods_id`) USING BTREE,
   INDEX `rc_level_id_index`(`level_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商店商品表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 98 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商店商品表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_shop_order
@@ -1284,7 +1303,7 @@ CREATE TABLE `rc_shop_order`  (
   `redeem_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '兑换码',
   `is_compose` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '2' COMMENT '[是否合成订单,is_compose,1=是,2=否]',
   PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 95 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商店订单表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 238 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商店订单表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_sms_code
@@ -1357,8 +1376,8 @@ CREATE TABLE `rc_user`  (
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '用户邮箱',
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '手机号码',
   `sex` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '[用户性别,rc_sex,0=男,1=女,2=未知]',
-  `avatar` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '头像地址',
-  `is_auth` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[是否实名认证,1=是,2=否]',
+  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '头像地址',
+  `is_auth` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[是否实名认证,rc_auth,1=是,2=否]',
   `real_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '真实姓名',
   `id_number` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证ID',
   `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '密码',
@@ -1375,7 +1394,7 @@ CREATE TABLE `rc_user`  (
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`user_id`) USING BTREE,
   UNIQUE INDEX `invitecode`(`invite_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_user_addresses
@@ -1414,7 +1433,7 @@ CREATE TABLE `rc_user_friend`  (
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 55 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '好友' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '好友' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_user_fruiter
@@ -1458,7 +1477,7 @@ CREATE TABLE `rc_user_fruiter`  (
   `invite_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邀请码',
   `is_first_name` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '2' COMMENT '[第一次改名,rc_first_name,1=否,2=是]',
   PRIMARY KEY (`fruiter_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户果树表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户果树表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_user_pack_log
@@ -1479,8 +1498,9 @@ CREATE TABLE `rc_user_pack_log`  (
   `income_user_id` int(11) NULL DEFAULT NULL COMMENT '收入用户id',
   `pack_num` int(11) NULL DEFAULT NULL COMMENT '碎片数量',
   `pack_category` char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '碎片分类1玉米糊',
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 319 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '碎片日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 315 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '碎片日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_user_pig
@@ -1531,7 +1551,7 @@ CREATE TABLE `rc_user_pig`  (
   PRIMARY KEY (`pig_id`) USING BTREE,
   INDEX `rc_level_index`(`level`) USING BTREE,
   INDEX `rc_user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户小猪表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户小猪表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_user_send_log
@@ -1591,7 +1611,7 @@ CREATE TABLE `rc_user_service_log`  (
   `resolution` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '视频分辨率',
   `video_status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '[视频状态,rc_video_status,0=停用,1=正常,2=删除]',
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '农/用户操作记录日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 181 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '农/用户操作记录日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_user_warehouse
@@ -1626,7 +1646,7 @@ CREATE TABLE `rc_user_warehouse`  (
   `recovery_discount` double(4, 2) NULL DEFAULT NULL COMMENT '回收折扣',
   `recovery_price` int(11) NULL DEFAULT NULL COMMENT '回收价格',
   PRIMARY KEY (`warehouse_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 229 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户仓库' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 794 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户仓库' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for rc_vaccin
@@ -1634,10 +1654,10 @@ CREATE TABLE `rc_user_warehouse`  (
 DROP TABLE IF EXISTS `rc_vaccin`;
 CREATE TABLE `rc_vaccin`  (
   `vaccin_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` tinyint(4) NULL DEFAULT 1 COMMENT '疫苗名称',
+  `name` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '疫苗名称',
   `coin` int(11) NULL DEFAULT NULL COMMENT '需要金币',
   `detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容',
-  `status` tinyint(4) NULL DEFAULT 4 COMMENT '[疫苗状态,rc_vaccin_status,1=上架,2=下架]',
+  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '4' COMMENT '[疫苗状态,rc_vaccin_status,1=上架,2=下架]',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新时间',
   `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '修改时间',
@@ -1732,7 +1752,29 @@ CREATE TABLE `sys_dict_data`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 585 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 637 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sys_dict_data_bak
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_dict_data_bak`;
+CREATE TABLE `sys_dict_data_bak`  (
+  `dict_code` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典编码',
+  `dict_sort` int(11) NULL DEFAULT 0 COMMENT '字典排序',
+  `dict_label` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典标签',
+  `dict_value` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典键值',
+  `dict_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典类型',
+  `css_class` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '样式属性（其他样式扩展）',
+  `list_class` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '表格回显样式',
+  `is_default` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'N' COMMENT '是否默认（Y是 N否）',
+  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '状态（0正常 1停用）',
+  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`dict_code`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 895 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_dict_type
@@ -1750,7 +1792,25 @@ CREATE TABLE `sys_dict_type`  (
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_id`) USING BTREE,
   UNIQUE INDEX `dict_type`(`dict_type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 218 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 234 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sys_dict_type_bak
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_dict_type_bak`;
+CREATE TABLE `sys_dict_type_bak`  (
+  `dict_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典主键',
+  `dict_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典名称',
+  `dict_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典类型',
+  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '状态（0正常 1停用）',
+  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`dict_id`) USING BTREE,
+  UNIQUE INDEX `dict_type`(`dict_type`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 331 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_job
@@ -1771,7 +1831,7 @@ CREATE TABLE `sys_job`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注信息',
   PRIMARY KEY (`job_id`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_job_log
@@ -1787,7 +1847,7 @@ CREATE TABLE `sys_job_log`  (
   `exception_info` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '异常信息',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`job_log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 601 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1038 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_logininfor
@@ -1806,7 +1866,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status`) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 283 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 313 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -1833,7 +1893,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 494 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 500 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -1879,7 +1939,7 @@ CREATE TABLE `sys_oper_log`  (
   INDEX `idx_sys_oper_log_bt`(`business_type`) USING BTREE,
   INDEX `idx_sys_oper_log_s`(`status`) USING BTREE,
   INDEX `idx_sys_oper_log_ot`(`oper_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2086 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2334 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_post

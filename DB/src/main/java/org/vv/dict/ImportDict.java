@@ -62,7 +62,6 @@ public class ImportDict {
 		strs.remove(0);
 		strs.remove(0);
 		strs.forEach(item -> {
-			System.out.println(item);
 			DictData d = new DictData();
 			if(item.contains("=")){
 				String prefix = item.trim().substring(0, item.indexOf("="));
@@ -75,13 +74,19 @@ public class ImportDict {
 		dictTypes.add(dt);
 	}
 
-
+	static List list = new ArrayList();
 	public static void insertData(Set<DictType> set) {
+
 		set.parallelStream().forEach(item -> {
-			String sql = String.format(SYS_DICT_TYPE_SQL, item.getDictName(), item.getDictType(), "");
-			DBTool.insert(sql);
-			List<DictData> dictDatas = item.getDictDatas();
-			dictDatas.forEach(dictDataInsert(dictDatas,item.getDictType(),item.getDictName()));
+			if(!list.contains(item.getDictType())){
+				list.add(item.getDictType());
+				String sql = String.format(SYS_DICT_TYPE_SQL, item.getDictName(), item.getDictType(), "");
+				DBTool.insert(sql);
+				List<DictData> dictDatas = item.getDictDatas();
+				dictDatas.forEach(dictDataInsert(dictDatas,item.getDictType(),item.getDictName()));
+			}else{
+				System.out.println(item.getDictType());
+			}
 		});
 	}
 
